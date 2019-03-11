@@ -1,0 +1,2 @@
+class GigTag < ApplicationRecord
+end

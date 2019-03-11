@@ -1,0 +1,2 @@
+class BarTag < ApplicationRecord
+end
