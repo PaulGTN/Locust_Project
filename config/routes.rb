@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resource :home, only: [:show]
 
     root to: "home#show"
+  devise_for :users
+  root 'bars#index' # page d'acceuil
+  resources :bars
+  resources :users
   
   # devise_scope :user dorg/routing.html
 

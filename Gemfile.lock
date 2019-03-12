@@ -245,7 +245,10 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+<<<<<<< HEAD
   dotenv-rails
+=======
+>>>>>>> 7cfe680e46cf9d02e41d18ede1a3cf6a51de1d79
   faker
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
