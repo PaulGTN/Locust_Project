@@ -1,1 +1,46 @@
-<h1> New Gig </h1>
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+          <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
+          </div>
+          <div class="content-center">
+              <h1 class="title">Ajouter un concert</h1>
+              <div class="content">
+
+              </div>
+        	</div>
+      	</div>
+
+	      <div class="section">
+	        <div class="container">
+	        		<%= form_for @gigs do |newgig| %>
+	        			<div class="form-group">
+	        				<label>C'est quoi ?</label>
+	        				<%= f.text_field :name, class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<label>C'est où ?</label>
+	        				<%= f.text_field :bar, class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<label>C'est quand ?</label>
+	        				<%= f.date_field :matriculation_date, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<label>Une petite description ?</label>
+	        				<%= f.text_field :desc, class: 'form-control' %>
+	        			</div>
+	        		<% end %>
+	        </div>
+	      </div>
+    </div>
+</body>
+
+</html>

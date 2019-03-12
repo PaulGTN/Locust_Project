@@ -5,7 +5,7 @@ class GigsController < ApplicationController
 	end
 
   def show
-    @gigs = Gigs.find(params[:id])
+    #@gigs = Gigs.find(params[:id])
   end
 
 end
