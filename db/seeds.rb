@@ -25,7 +25,7 @@ end
 puts "1 range created"
 
 15.times do 
-  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: SecureRandom.urlsafe_base64)
 end
 puts "15 users created"
 
