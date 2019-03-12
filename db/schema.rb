@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_142528) do
+ActiveRecord::Schema.define(version: 2019_03_11_150734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gig_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gig_id"], name: "index_attendances_on_gig_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "bar_tags", force: :cascade do |t|
+    t.bigint "bar_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_bar_tags_on_bar_id"
+    t.index ["tag_id"], name: "index_bar_tags_on_tag_id"
+  end
+
+  create_table "bars", force: :cascade do |t|
+    t.string "name"
+    t.string "adress"
+    t.string "city"
+    t.string "zip_code"
+    t.bigint "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_bars_on_price_id"
+  end
+
+  create_table "gig_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "gig_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gig_id"], name: "index_gig_tags_on_gig_id"
+    t.index ["tag_id"], name: "index_gig_tags_on_tag_id"
+  end
+
+  create_table "gigs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.string "price_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
