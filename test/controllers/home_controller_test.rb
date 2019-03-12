@@ -5,10 +5,4 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get home_index_url
     assert_response :success
   end
-
-  test "should get private" do
-    get home_private_url
-    assert_response :success
-  end
-
 end
