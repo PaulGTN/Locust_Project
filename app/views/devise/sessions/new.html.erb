@@ -1,0 +1,41 @@
+<%# pour se connecter  %>
+<div class="page-header section-image">
+  <div class="page-header-image" style="background-image:url(https://www.numerama.com/content/uploads/2016/01/chaton-gros-plan.jpg)"></div>
+    <div class="content">
+      <div class="container">
+        <h1>Se connecter</h1>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-5 ml-auto">
+              <label>Votre adresse mail</label>
+              <%= f.email_field :email, class: 'form-control input-small', placeholder: 'Saisissez votre adresse mail...' %>
+            </div>
+
+            <div class="form-group col-md-5 mr-auto">
+              <label>Votre mot de passe</label>
+              <%= f.password_field :password, class: 'form-control input-small', placeholder: 'Saisissez votre mot de passe...' %>
+            </div>
+          </div>
+
+        <div class="form-group col-md-8 ml-auto mr-auto">
+          <button id="signup-button" type="submit" class="btn btn-block btn-primary">Connexion</button>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <label>Se souvenir de moi</label>
+          </div>
+        <% end %>
+
+        <div class="pull-center">
+            <h6>
+                Pas encore inscrit ? <a href="./sign_up" class="link footer-link">Créez votre compte</a>
+            </h6>
+        </div>
+      </div>
+    </div>
+</div>
+
+<% end %>

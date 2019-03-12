@@ -64,6 +64,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "Locust_Project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  # pour récupérer le mot de passe sur mon app en prod
+  config.action_mailer.default_url_options = { :host => 'mon-petit-criquet.herokuapp.com' }
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
