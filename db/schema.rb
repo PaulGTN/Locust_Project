@@ -56,8 +56,15 @@ ActiveRecord::Schema.define(version: 2019_03_11_150734) do
   create_table "gigs", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
+<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+    t.bigint "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_gigs_on_bar_id"
+>>>>>>> index-bar
   end
 
   create_table "prices", force: :cascade do |t|
