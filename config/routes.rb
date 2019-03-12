@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'home#index' # page d'acceuil
+  root 'bars#index' # page d'acceuil
+  resources :bars
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
