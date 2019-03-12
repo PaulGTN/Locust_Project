@@ -16,26 +16,33 @@
       	</div>
 
 	      <div class="section">
-	        <div class="container">
+	        <div class="form-group col-md-8 ml-auto mr-auto">
 	        		<%= form_for @gigs do |newgig| %>
-	        			<div class="form-group">
-	        				<label>C'est quoi ?</label>
-	        				<%= f.text_field :name, class: 'form-control' %>
+	        			<div center class="form-group">
+	        				<h3>C'est quoi ?</h3>
+	        				<%= newgig.text_field :name, class: 'form-control' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<label>C'est où ?</label>
-	        				<%= f.text_field :bar, class: 'form-control' %>
+	        				<h3>C'est où ?</h3>
+	        				<%= newgig.text_field :bar, class: 'form-control' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<label>C'est quand ?</label>
-	        				<%= f.date_field :matriculation_date, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+	        				<h3>Quel genre de musique ?</h3>
+
+	        				<%= newgig.text_field :bar, class: 'form-control' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<label>Une petite description ?</label>
-	        				<%= f.text_field :desc, class: 'form-control' %>
+	        				<h3>C'est quand ?</h3>
+	        				<%= newgig.date_field :date, value: newgig.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+	        			</div>
+
+
+
+	        			<div class="pull-center">
+	        				<button type="submit" class="btn btn-primary btn-round">Rock on, baby !</button>
 	        			</div>
 	        		<% end %>
 	        </div>

@@ -1,7 +1,8 @@
 class GigsController < ApplicationController
 
 	def new
-	  @gigs = Gigs.new
+	  @gigs = Gig.new
+	  @tags = Tag.all
 	end
 
   def show
