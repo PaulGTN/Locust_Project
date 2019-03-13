@@ -10,41 +10,45 @@
           <div class="content-center">
               <h1 class="title">Ajouter un bar</h1>
               <div class="content">
-
+								<div class="page-description">
+								  <h4>Entrez les informations du nouveau bar afin de lui associer des événements</h4>
+								</div>
               </div>
         	</div>
       	</div>
 
 	      <div class="section">
-	        <div class="form-group col-md-8 ml-auto mr-auto">
-	        		<%= form_for @bars do |newbar| %>
-	        			<div center class="form-group">
-	        				<h3>C'est quoi le nom du bar ?</h3>
-	        				<%= newbar.text_field :name, class: 'form-control' %>
-	        			</div>
+	        <div class="form-group col-md-6 ml-auto mr-auto">
+        		<%= form_for @bars do |newbar| %>
+        			<div center class="form-group">
+        				<label>C'est quoi le nom du bar ?</label>
+        				<%= newbar.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du bar...' %>
+        			</div>
 
-	        			<div class="form-group">
-	        				<h3>C'est où ?</h3>
-	        				<%= newbar.text_field :adress, class: 'form-control' %>
-	        			</div>
+        			<div class="form-group">
+        				<label>C'est où ?</label>
+        				<%= newbar.text_field :adress, class: 'form-control', placeholder: "Saisissez l'adresse postale du bar..." %>
+        			</div>
+						
 
-	        			<div class="form-group">
-	        				<h3>Quelle ville</h3>
+      				<label>Quelle ville ?</label>
+      				<div class="form-row">
+									<div class="form-group col-md-4">
+		        				<%= newbar.text_field :zip_code, class: 'form-control', placeholder: 'Code postal...' %>
+		        			</div>
+		        			<div class="form-group col-md-8">
+		        				<%= newbar.text_field :city, class: 'form-control', placeholder: 'Ville...' %>
+		        			</div>
+	        		</div>
 
-	        				<%= newbar.text_field :zip_code, class: 'form-control' %>
-	        				<%= newbar.text_field :city, class: 'form-control' %>
-	        			</div>
+        			<div class="form-group">
+        				<label>Quel budget prévoir ?</label>
+        				<%= newbar.text_field :price, class: 'form-control' %>
+        			</div>
 
-	        			<div class="form-group">
-	        				<h3>Quel budget prévoir ?</h3>
-	        				<%= newbar.text_field :price, class: 'form-control' %>
-	        			</div>
-
-
-
-	        			<div class="pull-center">
-	        				<button type="submit" class="btn btn-primary btn-round">Rock on, baby !</button>
-	        			</div>
+        			<div class="content-center">
+        				<button type="submit" class="btn btn-primary btn-round">Valider</button>
+        			</div>
 	        		<% end %>
 	        </div>
 	      </div>

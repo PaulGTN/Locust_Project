@@ -10,7 +10,9 @@
           <div class="content-center">
               <h1 class="title">Ajouter un concert</h1>
               <div class="content">
-
+								<div class="page-description">
+								  <h4>Entrez les informations du concert que vous souhaitez ajouter</h4>
+								</div>
               </div>
         	</div>
       	</div>
@@ -19,24 +21,24 @@
 	        <div class="form-group col-md-8 ml-auto mr-auto">
 	        		<%= form_for @gigs do |newgig| %>
 	        			<div center class="form-group">
-	        				<h3>C'est quoi ?</h3>
-	        				<%= newgig.text_field :name, class: 'form-control' %>
+	        				<label>C'est quoi ?</label>
+	        				<%= newgig.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du concert...' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<h3>C'est où ?</h3>
-	        				<%= newgig.text_field :bar, class: 'form-control' %>
+	        				<label>C'est où ?</label>
+	        				<%= newgig.text_field :bar, class: 'form-control', placeholder: 'Quel bar pour ce concert ?' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<h3>Quel genre de musique ?</h3>
+	        				<label>Quel genre de musique ?</label>
 
-	        				<%= newgig.text_field :bar, class: 'form-control' %>
+	        				<%= newgig.text_field :bar, class: 'form-control', placeholder: 'Choisissez un style de musique...' %>
 	        			</div>
 
 	        			<div class="form-group">
-	        				<h3>C'est quand ?</h3>
-	        				<%= newgig.date_field :date, value: newgig.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+	        				<label>C'est quand ?</label>
+	        				<%= newgig.date_field :date, value: newgig.object.try(:strftime,"%m/%d/%Y"), class: 'form-control', placeholder: 'Choisissez une date...' %>
 	        			</div>
 
 
