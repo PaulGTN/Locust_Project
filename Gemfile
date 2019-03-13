@@ -2,11 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-<<<<<<< HEAD
 gem "table_print"
-=======
-
->>>>>>> c91b8ec49a515e12947f1df311b9b04769ab89b9
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
