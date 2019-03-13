@@ -1,0 +1,54 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+          <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
+          </div>
+          <div class="content-center">
+              <h1 class="title">Ajouter un bar</h1>
+              <div class="content">
+
+              </div>
+        	</div>
+      	</div>
+
+	      <div class="section">
+	        <div class="form-group col-md-8 ml-auto mr-auto">
+	        		<%= form_for @bars do |newbar| %>
+	        			<div center class="form-group">
+	        				<h3>C'est quoi le nom du bar ?</h3>
+	        				<%= newbar.text_field :name, class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<h3>C'est où ?</h3>
+	        				<%= newbar.text_field :adress, class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<h3>Quelle ville</h3>
+
+	        				<%= newbar.text_field :zip_code, class: 'form-control' %>
+	        				<%= newbar.text_field :city, class: 'form-control' %>
+	        			</div>
+
+	        			<div class="form-group">
+	        				<h3>Quel budget prévoir ?</h3>
+	        				<%= newbar.text_field :price, class: 'form-control' %>
+	        			</div>
+
+
+
+	        			<div class="pull-center">
+	        				<button type="submit" class="btn btn-primary btn-round">Rock on, baby !</button>
+	        			</div>
+	        		<% end %>
+	        </div>
+	      </div>
+    </div>
+</body>
+
+</html>
