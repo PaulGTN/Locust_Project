@@ -10,4 +10,10 @@ class BarsController < ApplicationController
     @bar_tags = @styles.bar_tags
   end
 
+  def show
+    @bar = Bar.find(params[:id])
+    #@tags = @bar.tags
+    #@gigs = @bar.gigs
+  end
+
 end
