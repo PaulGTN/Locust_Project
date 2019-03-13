@@ -2606,13 +2606,13 @@ input.datetimepicker[data-color="yellow"] + .bootstrap-datetimepicker-widget {
         color: #367dff; }
 
 .btn-primary {
-  background-color: #f96332;
+  background-color: #bb4545;
   color: #FFFFFF; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary.active:focus, .btn-primary.active:hover,
   .show > .btn-primary.dropdown-toggle,
   .show > .btn-primary.dropdown-toggle:focus,
   .show > .btn-primary.dropdown-toggle:hover {
-    background-color: #fa7a50;
+    background-color: #c42222;
     color: #FFFFFF;
     -webkit-box-shadow: none;
             box-shadow: none; }
@@ -3929,7 +3929,7 @@ body {
       padding: 5px 15px; }
   .navbar .navbar-nav .nav-link:not(.btn) {
     text-transform: uppercase;
-    font-size: 0.7142em;
+    font-size: 0.9742em;
     padding: 0.5rem 0.7rem;
     line-height: 1.625rem; }
     .navbar .navbar-nav .nav-link:not(.btn) i.fa + p,
@@ -3966,7 +3966,7 @@ body {
     border: 1px solid transparent; }
   .navbar .navbar-brand {
     text-transform: uppercase;
-    font-size: 0.8571em;
+    font-size: 1.1571em;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     line-height: 1.625rem; }
@@ -3989,7 +3989,7 @@ body {
   .navbar .button-dropdown .navbar-toggler-bar:nth-child(2) {
     width: 17px; }
   .navbar.navbar-transparent {
-    background-color: transparent !important;
+    background-color: #bb4545 !important;
     -webkit-box-shadow: none;
             box-shadow: none;
     color: #FFFFFF;
