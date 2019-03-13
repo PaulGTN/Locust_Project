@@ -17,7 +17,7 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item">
                     <div class="page-header header-filter">
-                        <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/1076999/pexels-photo-1076999.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
+                        <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/765228/pexels-photo-765228.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
                         <div class="content-center text-center">
                             <div class="row">
                                 <div class="col-md-8 ml-auto mr-auto">
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-md-8 ml-auto mr-auto text-center">
                                     <h1 class="title">Choisis ta came !</h1>
-                                    <h4 class="description text-white">Rock, rap, jazz et plein d'autres!</h4>
+                                    <h4 class="description text-white">Rock, rap, jazz et plein d'autres !</h4>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="content-center text-center">
                             <div class="row">
                                 <div class="col-md-8 ml-auto mr-auto">
-                                    <h1 class="title">Tous les bons plans sont là !</h1>
+                                    <h1 class="title">Tous les bons plans sont là (enfin en-dessous) !</h1>
                                     <h4 class="description text-white">Juste à chercher, bouger et passer une bonne soirée !</h4>
                                 </div>
                             </div>
@@ -72,52 +72,62 @@
 														    <div class="col-md-6 ml-auto mr-auto">
 <form>
   <div class="form-group">
-<select class="btn-group bootstrap-select btn btn-primary btn-round">
-  <option>Choisis ton style musical</option>
-  <%@tags.each do |tag|%>
-  <option><%= tag.name %> </option>
-	<%end%>
+<select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ton style" tabindex="-98">
+        <option class="bs-title-option" value="Choisis ton style">Choisis ton style</option>
+        <option disabled="" selected="">Choisis ton style</option>
+        <%@tags.each do |tag|%>
+        <option><%= tag.name %> </option>
+        <%end%>       
+      </select> 
 </select></div>
   <div class="form-group">
-<select class="btn-group bootstrap-select btn btn-primary btn-round">
-  <option>Choisis ta ville</option>
+<select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ta ville" tabindex="-98">
+        <option class="bs-title-option" value="Choisis ta ville">Choisis ta ville</option>
+        <option disabled="" selected="">Choisis ta ville</option>
   <%@bars.each do |bar|%>
   <option><%= bar.city %> </option>
 	<%end%>
 </select></div>
     <div class="form-group">
-<select class="btn-group bootstrap-select btn btn-primary btn-round">
-  <option>Choisis ton prix (optionnel)</option>
+<select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ton prix (optionnel)" tabindex="-98">
+        <option class="bs-title-option" value="">Choisis ton prix (optionnel)/option>
+        <option disabled="" selected="">Choisis ton prix (optionnel)</option>
   <%@prices.each do |price|%>
   <option><%= price.price_range %> </option>
 	<%end%>
 </select></div>
 <center>
-  <button type="submit" class="btn btn-primary justify-content-end">Let The Music Play !</button></center>
+  <button type="submit" class="btn btn-primary btn-round justify-content-end">Let The Music Play !</button></center>
 </form>
                                     </div>
 																		</div>
 																		</div>
 																		</div>
 																		</div>
+
+
                                   <div class="main">
             <div class="section">
                 <div class="container">
                 
                         <div class="col-md-12">
+                        <center><h1>LES NOUVEAUX BARS</h1></center>
                             <div class="row">
 
                           <%@bars.each do |bar|%>
                           
 <div class="col-md-6 ml-auto">
+
   <div class="card card-background card-background-product card-raised" style="background-image: url('https://images.pexels.com/photos/1185434/pexels-photo-1185434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
     <div class="card-body">
     <h2 class="card-title"><%= bar.name %></h2>
       <p class="card-description">
       <%= bar.city %></br>
-      Prix : <%= bar.price.price_range %>
-    </p>
-    <<%= link_to  "Voir les concerts", new_bar_path, class: "btn-secondary btn-round" %>>
+      Prix : <%= bar.price.price_range %></br>
+      Style : <%= bar.tags.name %>
+    </p></br>
+    <%= link_to  "Voir les concerts", new_bar_path, class: "btn-secondary btn-round" %>
+    <%= link_to  "Ajouter aux favoris",  "#" , class: "btn-secondary btn-round" %>
     </div>
   </div>
 </div>
@@ -129,7 +139,6 @@
                     </div>
                 </div>
             </div>
-  
         <!-- end-main-raised -->
     </div>
 </body>
