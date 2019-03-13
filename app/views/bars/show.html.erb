@@ -12,7 +12,7 @@
                       <!-- First image on the left side -->
                       <p class="blockquote blockquote-primary">
                       Style :
-                      <%= @bar.tags.each do |tag| %>
+                      <% @bar.tags.each do |tag| %>
                       <%= tag.name %>
                       <%end%>
                       </p>
@@ -31,9 +31,9 @@
               </div>                           
           </div>  
       </div>
-      <%= @bar.gigs.each do |gig| %>
+      <% @bar.gigs.each do |gig| %>
 				<div class="row">
-						<div class="col-md-7">
+						<div class="col-md-6">
 								<h6 class="category text-danger">
 										<i class="#"></i> <%= gig.name %>
 								</h6>
@@ -41,7 +41,12 @@
 										<a href="#pablo">Date : <%= gig.date %></a>
 								</h3>
 								<p class="card-description">
-									Description
+									Nombre de participants : <%= gig.users.count %>
+								</p>
+								<p class="card-description">
+									Style : 
+									
+									
 								</p>
 								</div>
 						<div class="col-md-5">
