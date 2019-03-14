@@ -1,0 +1,64 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+          <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
+          </div>
+          <div class="content-center">
+              <h1 class="title">Ajouter un bar</h1>
+              <div class="content">
+								<div class="page-description">
+								  <h4>Entrez les informations du nouveau bar afin de lui associer des événements</h4>
+								</div>
+              </div>
+        	</div>
+      	</div>
+
+	      <div class="section">
+	        <div class="form-group col-md-6 ml-auto mr-auto">
+        		<%= form_for @bars do |newbar| %>
+        			<div center class="form-group">
+        				<label>C'est quoi le nom du bar ?</label>
+        				<%= newbar.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du bar...' %>
+        			</div>
+
+        			<div class="form-group">
+        				<label>C'est où ?</label>
+        				<%= newbar.text_field :adress, class: 'form-control', placeholder: "Saisissez l'adresse postale du bar..." %>
+        			</div>
+						
+
+      				<label>Quelle ville ?</label>
+      				<div class="form-row">
+								<div class="form-group col-md-4">
+	        				<%= newbar.text_field :zip_code, class: 'form-control', placeholder: 'Code postal...' %>
+	        			</div>
+	        			<div class="form-group col-md-8">
+	        				<%= newbar.text_field :city, class: 'form-control', placeholder: 'Ville...' %>
+	        			</div>
+	        		</div>
+
+        			<div class="form-group">
+        				<label>Quel budget prévoir ?</label>
+        				<select class="selectpicker" data-size="7" data-style="form-control" title="Choisis ton prix (optionnel)" tabindex="-98">
+  				        <option class="bs-title-option" value="">Choisis ton prix (optionnel)</option>
+        				        
+        				  <%@prices.each do |price|%>
+        				  <option><%= price.price_range %> </option>
+        					<%end%>
+        				</select>
+        			</div>
+
+        			<center><div class="form-group col-md-4">
+        				<button type="submit" class="btn btn-primary btn-round">Valider</button>
+        			</div></center>
+	        	<% end %>
+	        </div>
+	      </div>
+    </div>
+</body>
+
+</html>

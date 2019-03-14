@@ -1,5 +1,7 @@
 class BarsController < ApplicationController
 
+  before_action :authenticate_user, only: [:new]
+
   def index
     @tags = Tag.all
     @prices = Price.all
@@ -28,11 +30,39 @@ class BarsController < ApplicationController
 
   end
 
+  def new
+    @bar = Bar.new
+    @tags = Tag.all
+    @prices = Price.all
+    @cities = Bar.all
+  end
+
+  def create
+			@bar = Bar.new(post_params)
+			
+
+    if @bars.save
+      redirect_to @bars
+    else
+      redirect_to root_path
+    end
+  end 
+
   private
 
   def bar_params
     params.require(:bar).permit(:city, :term)
   end
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      redirect_to root_path
+    end
+  end
+
+  def post_params
+    params.require(:bar).permit(:name, :adress, :zip_code, :city, :price)
+  end
 
 end
