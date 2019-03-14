@@ -39,22 +39,22 @@ puts "10 tags created"
 end 
 puts "10 bars created"
 
-20.times do 
+30.times do 
   gig = Gig.create!(name: Faker::Music.band, date: Faker::Date.forward(10), bar_id: Bar.all.ids.sample)
 end
-puts "20 gigs created"
+puts "30 gigs created"
 
-5.times do 
+20.times do 
   gig_tag = GigTag.create!(tag_id: Tag.all.ids.sample, gig_id: Gig.all.ids.sample)
 end
-puts "5 gig-tags created"
+puts "20 gig-tags created"
 
-5.times do 
+20.times do 
   bar_tag = BarTag.create!(tag_id: Tag.all.ids.sample, bar_id: Bar.all.ids.sample)
 end
-puts "5 bar-tags created"
+puts "20 bar-tags created"
 
-20.times do
+30.times do
   attendance = Attendance.create!(user_id: User.all.ids.sample, gig_id: Gig.all.ids.sample)
 end
-puts "20 attendances created"
+puts "30 attendances created"
