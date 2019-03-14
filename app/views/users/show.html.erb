@@ -11,10 +11,14 @@
                 <h3 class="title">Mon Profil</h3>
                 <div class="content">
                     <div class="social-description">
-
+                        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+                        <p><%= @user.email %></p>
                         <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
                     </div>
                 </div>
             </div>
         </div>
         <div class="section">
+        </div>
+    </div>
+</body>
