@@ -27,4 +27,14 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+
+  geocoded_by :location
+  after_validation :geocode 
+
+
+  def location
+    [town, country].compact.join(", ")
+  end
+
+
 end

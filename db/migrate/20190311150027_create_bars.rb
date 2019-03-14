@@ -7,6 +7,11 @@ class CreateBars < ActiveRecord::Migration[5.2]
       t.string :zip_code
       t.belongs_to :price, index: true 
 
+      t.float :latitude
+      t.float :longitude
+      t.string :city
+      t.string :country
+
       t.timestamps
     end
   end

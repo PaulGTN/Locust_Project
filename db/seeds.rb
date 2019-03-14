@@ -58,3 +58,9 @@ puts "20 bar-tags created"
   attendance = Attendance.create!(user_id: User.all.ids.sample, gig_id: Gig.all.ids.sample)
 end
 puts "30 attendances created"
+
+5.times do |i|
+  bars.create!(delivery_address: Faker::Address.street_address, zip_code: Faker::Address.zip_code, user_id: User.all.sample.id, bar_id: Bar.all.sample.id )
+  bars.create!(delivery_address: Faker::Address.street_address, zip_code: Faker::Address.zip_code, town: "Paris", country: "France", user_id: User.all.sample.id, bar_id: Product.all.sample.id)
+end
+puts "Footprint created"

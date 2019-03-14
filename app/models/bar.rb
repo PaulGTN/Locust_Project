@@ -5,5 +5,11 @@ class Bar < ApplicationRecord
   has_many :bar_tags
   has_many :tags, through: :bar_tags
 
-  
+  geocoded_by :location
+  after_validation :geocode 
+
+
+  def location
+    [town, country].compact.join(", ")
+  end
 end

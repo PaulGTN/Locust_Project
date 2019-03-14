@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'home/show'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
+  # get 'home/show'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root 'home#index' # page d'acceuil
+  root 'bars#index' # page d'acceuil
 
   get 'auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     root to: "home#show"
   root 'bars#index' # page d'acceuil
   resources :bars
-  resources :user
+  resources :users
   
   # devise_scope :user dorg/routing.html
 
