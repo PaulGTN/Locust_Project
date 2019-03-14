@@ -1,10 +1,6 @@
 class BarsController < ApplicationController
 
   #before_action :authenticate_user, only: [:new]
-<<<<<<< HEAD
-
-=======
->>>>>>> 40e8a21f9c5f3973966b8c413b40640dfdf7d4ec
 
   def index
     @tags = Tag.all
@@ -66,15 +62,7 @@ class BarsController < ApplicationController
     end
   end
 
-  def post_params
-    params.require(:bar).permit(:name, :adress, :zip_code, :city, :price)
-  end
-
-<<<<<<< HEAD
-		def post_params
-			params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
-		end
-=======
->>>>>>> 40e8a21f9c5f3973966b8c413b40640dfdf7d4ec
-
+	def post_params
+		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
+	end
 end
