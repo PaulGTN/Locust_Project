@@ -12,7 +12,7 @@
                 <div class="content">
                     <div class="social-description">
                         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-                        <p><%= @user.email %></p>
+                        <h5><%= @user.email %></h5>
                         <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
                     </div>
                 </div>
