@@ -13,6 +13,8 @@ class BarsController < ApplicationController
   def new
     @bars = Bar.new
     @tags = Tag.all
+    @prices = Price.all
+    @cities = Bar.all
   end
 
 end
