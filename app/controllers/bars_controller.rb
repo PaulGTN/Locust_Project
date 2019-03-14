@@ -20,14 +20,14 @@ class BarsController < ApplicationController
   end
 
   def new
-    @bars = Bar.new
+    @bar = Bar.new
     @tags = Tag.all
     @prices = Price.all
     @cities = Bar.all
   end
 
   	def create
-			@bars = Bar.new(post_params)
+			@bar = Bar.new(post_params)
 			
 
 			if @bars.save
