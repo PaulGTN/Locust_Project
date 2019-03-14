@@ -1,6 +1,6 @@
 class BarsController < ApplicationController
 
-  before_action :authenticate_user, only: [:new]
+  #before_action :authenticate_user, only: [:new]
 
 
   def index
@@ -26,16 +26,17 @@ class BarsController < ApplicationController
     @cities = Bar.all
   end
 
-  	def create
-			@bar = Bar.new(post_params)
-			
+  def create
+		@bar = Bar.new(post_params)
+		
 
-			if @bars.save
-				redirect_to @bars
-			else
-				redirect_to root_path
-			end
-		end 
+		if @bar.save
+			redirect_to @bar
+		else
+      redirect_to root_path
+      puts @bar.errors.full_messages
+		end
+	end 
 
 
 	private 
@@ -48,7 +49,7 @@ class BarsController < ApplicationController
 	  end
 
 		def post_params
-			params.require(:bar).permit(:name, :adress, :zip_code, :city, :price)
+			params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
 		end
 
 end
