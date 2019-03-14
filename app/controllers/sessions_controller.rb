@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
 	# corespond à la page de login
 
 	def new
@@ -15,7 +14,7 @@ class SessionsController < ApplicationController
 	    session[:user_id] = @user.id
 	    remember @user
 	    # redirige où tu veux, avec un flash ou pas
-	    redirect_to root_path
+	    redirect_to home_path
 	  else
 	    flash.now[:danger] = 'Invalid email/password combination'
 	    render 'new'
@@ -25,7 +24,7 @@ class SessionsController < ApplicationController
 	# logout
 	def destroy
 		session.delete(:user_id)
-		redirect_to root_path
+		redirect_to home_path
 	end
 
 end
