@@ -1,16 +1,31 @@
 class BarsController < ApplicationController
 
   #before_action :authenticate_user, only: [:new]
+<<<<<<< HEAD
 
+=======
+>>>>>>> 40e8a21f9c5f3973966b8c413b40640dfdf7d4ec
 
   def index
     @tags = Tag.all
-    @bars = Bar.last(10)
     @prices = Price.all
+    @bars = Bar.last(10)
+    #@bars = Bar.all #if params[:tag]
+    #Bar.where(["tag LIKE ?", tag]) if tag.present?
+    #Bar.where(["city LIKE ?", city]) if city.present?
+    #Bar.where(["price LIKE ?", price]) if price.present?
+    #else
     #@i = 1
     #@tags_orders = @tags.sort
     #@styles = Bar.find_by(params[:id])
     #@bar_tags = @styles.bar_tags
+    #Bar.last(10)
+    #end 
+    #@bars = if params[:city]
+    #  Bar.where('city Like ?', "%#{params[:city]}%")
+    #else
+    #  Bar.last(10)
+    #end
   end
 
   def show
@@ -38,18 +53,28 @@ class BarsController < ApplicationController
 		end
 	end 
 
+  private
 
-	private 
+  def bar_params
+    params.require(:bar).permit(:city, :term)
+  end
 
-	  def authenticate_user
-	    unless current_user
-	      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
-	      redirect_to root_path
-	    end
-	  end
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      redirect_to root_path
+    end
+  end
 
+  def post_params
+    params.require(:bar).permit(:name, :adress, :zip_code, :city, :price)
+  end
+
+<<<<<<< HEAD
 		def post_params
 			params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
 		end
+=======
+>>>>>>> 40e8a21f9c5f3973966b8c413b40640dfdf7d4ec
 
 end
