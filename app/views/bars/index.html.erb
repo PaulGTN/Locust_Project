@@ -124,7 +124,9 @@
       <p class="card-description">
       <%= bar.city %></br>
       Prix : <%= bar.price.price_range %></br>
-      Style : <%= bar.tags.name %>
+      Style : <% bar.tags.each do |bartag| %> 
+      <%= bartag.name %><br>
+      <%end%>
     </p></br>
     <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-neutral btn-round" %>
     <%= link_to  "Ajouter aux favoris",  "#" , class: "btn-neutral btn-round" %>
