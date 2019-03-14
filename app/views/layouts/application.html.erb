@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>LocustProject</title>
+  <title>Mon Petit Criquet</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -25,9 +25,7 @@
     <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-transparent" color-on-scroll="500">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="/" rel="tooltip" data-placement="bottom">
-                    Mon Petit Criquet
-                </a>
+                  <%= link_to "Mon Petit Criquet", root_path, :class => "navbar-brand" %>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
@@ -36,15 +34,12 @@
             </div>
             <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
                 <ul class="navbar-nav ml-auto">
-              <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-        
-          <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">  
-           
-                    <%= link_to "Accueil", root_path, :class => "navbar-brand" %>
-                    
-            <% if user_signed_in? %>
-              <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">     
+          			<div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">  
+              	<%= link_to "Accueil", root_path, :class => "navbar-brand" %>
+            		<% if user_signed_in? %>
+              		<div class="nav-item dropdown">
+                	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.first_name != nil %>
                   <%= current_user.first_name %>
                 <% else %>
@@ -52,7 +47,7 @@
                 <% end %>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-					<%= link_to "Mon Profil", user_path(current_user), :class => "dropdown-item" %>
+									<%= link_to "Mon Profil", user_path(current_user), :class => "dropdown-item" %>
                 	<%= link_to "Éditer mon profil", edit_user_registration_path, :class => "dropdown-item" %>
                   <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete,  data: { confirm: "Tu es sûr(e) ?" }, :class => "dropdown-item" %>
                 </div>
