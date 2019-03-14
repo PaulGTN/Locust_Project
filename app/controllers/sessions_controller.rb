@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
 	# corespond à la page de login
 
 	def new
