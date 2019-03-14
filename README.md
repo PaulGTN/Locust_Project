@@ -74,6 +74,13 @@ https://trello.com/b/hkruNiVc/locust
 
 https://docs.google.com/document/d/1FCpDrL4c8lpUlRpDRycF2tE8JoSqzdAD8k7iH2jCRLE/edit
 
+
+## ajout du liens pour la ressource des API facebook
+
+https://richonrails.com/articles/facebook-authentication-in-ruby-on-rails
+
+
+
 ## L'équipe <a name="team"></a> 
 
 - Tanguy / @Dillinger 
