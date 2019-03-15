@@ -1,1 +1,68 @@
-<h1> Show Gig </h1>
+<div class="projects-3" data-background-color="black">
+  <div class="col-md-8 mr-auto ml-auto text-center">
+      <h2 class="title"><%= @gig.name%></h2>
+      <h4>Description</h4>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6 px-0">
+              <div class="col-sm-12">
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="far fa-map"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Où</h5>
+                          <p class="description"><%= @gig.bar.name%><br>
+													<%= @gig.bar.adress%><br>
+													<%= @gig.bar.city%>
+													</p>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="far fa-clock"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Quand</h5>
+                          <p class="description"><%= @gig.date%></p>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="fas fa-music"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Quoi</h5>
+                          <p class="description"><% @gig.tags.each do |tag|%></p>
+                          <%= tag.name%><br>
+                          <%end%>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="fas fa-users"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Nombre de participant(s)</h5>
+                          <p class="description"><%= @gig.users.count%></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-5">
+              <div class="image-container">
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+                  <img src="https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+              </div>
+          </div>
+      </div>
+      <center>
+      <%= button_to  "Participer au concert", class:"btn btn-primary btn-round" %></center>
+  </div>
+</div>

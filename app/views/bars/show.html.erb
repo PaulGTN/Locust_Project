@@ -35,19 +35,27 @@
 				<div class="row">
 						<div class="col-md-6">
 								<h6 class="category text-danger">
-										<i class="#"></i> <%= gig.name %>
+										<i class="#"></i>
+										<%= gig.name %>
 								</h6>
 								<h3 class="card-title">
-										<a href="#pablo">Date : <%= gig.date %></a>
+										<a href="#pablo">Date : 
+										<%= gig.date %></a>
 								</h3>
 								<p class="card-description">
 									Nombre de participants : <%= gig.users.count %>
+								</p><p class="card-description">
+									Style : <% gig.tags.each do |gigtag|%></p>
+                          <%= gigtag.name%><br>
+                          <%end%>
 								</p>
 								<p class="card-description">
                                     Description
-									
-									
 								</p>
+								<div>
+								<%= button_to  "Détails", gig_path(gig), method: :get, class:"btn btn-primary btn-round" %>
+								<br>
+								</div>
 								</div>
 						<div class="col-md-5">
 								<div class="card-image">

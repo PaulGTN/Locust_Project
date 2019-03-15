@@ -61,8 +61,8 @@
       <%end%>
                             </td>
                             <td class="text-right">
-															<%= button_to "Voir", bar_path(bar), method: :get, class: "btn btn-info btn-rnd " %>
-															<%= button_to "Supprimer", admin_bar_path(bar), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce bar ?"} %>
+															<%= button_to "Voir", bar_path(bar), method: :get, class: "btn btn-info btn-round " %>
+															<%= button_to "Supprimer", admin_bar_path(bar), type: 'submit', class: "btn btn-danger btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce bar ?"} %>
                     
                             </td>
                         </tr>
@@ -128,9 +128,14 @@
                             <td class="text-center">
                                 <%= gig.bar.name %></h2>
                             </td>
+														<td class="text-righ">
+                                <% gig.tags.each do |gigtag| %> 
+														<%= gigtag.name %><br>
+														<%end%>
+                            </td>
                             <td class="text-right">
-															<%= button_to "Voir", gig_path(gig), method: :get, class: "btn btn-info btn-rnd " %>
-															<%= button_to "Supprimer", admin_gig_path(gig), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce concert ?"} %>
+															<%= button_to "Voir", gig_path(gig), method: :get, class: "btn btn-info btn-round" %>
+															<%= button_to "Supprimer", admin_gig_path(gig), type: 'submit', class: "btn btn-danger btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce concert ?"} %>
                     
                             </td>
                         </tr>
