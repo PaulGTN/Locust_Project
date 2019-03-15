@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :gigs
-  root 'bars#index' # page d'acceuil
-  resources :bars
-  resources :users  
+  root 'bar#index'
+  resources :users
+  resources :bars, only: [:show, :index]
+  resources :gigs, only: [:show, :index]
+
+  scope 'admin', module: 'admin', as: 'admin' do
+    root 'bar#index'
+    resources :bars
+    resources :gigs
+  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

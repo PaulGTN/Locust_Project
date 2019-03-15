@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+<<<<<<< HEAD
   protect_from_forgery with: :exception
 
 
@@ -18,4 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
 
+=======
+  #Vérifier si l'utilisateur est connecté
+  def user_signed_in?
+    !current_user.nil?
+  end 
+  
+>>>>>>> 208c06a1849fb2de1eb5cf9ff792f1fd126be9be
 end
