@@ -42,9 +42,11 @@ class BarsController < ApplicationController
 		
 
 		if @bar.save
-			redirect_to @bar
+      redirect_to @bar
+      flash[:success] = "Le bar a bien été crée"
 		else
-      redirect_to root_path
+      redirect_to :new
+      flash[:danger] = "Tous les champs ne sont pas remplis"
       puts @bar.errors.full_messages
 		end
 	end 

@@ -19,7 +19,7 @@
 
 	      <div class="section">
 	        <div class="form-group col-md-8 ml-auto mr-auto">
-	        		<%= form_for @gig do |newgig| %>
+	        		<%= form_for @gig, :url => { :action => :create } do |newgig| %>
 	        			<div center class="form-group">
 	        				<label>C'est quoi ?</label>
 	        				<%= newgig.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du concert...' %>

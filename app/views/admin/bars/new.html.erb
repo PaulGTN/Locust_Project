@@ -19,7 +19,7 @@
 
 	      <div class="section">
 	        <div class="form-group col-md-6 ml-auto mr-auto">
-        		<%= form_for @bar do |newbar| %>
+        		<%= form_for @bar, :url => { :action => :create }  do |newbar| %>
         			<div center class="form-group">
         				<%= label_tag "C'est quoi le nom du bar ?" %>
         				<%= newbar.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du bar...' %>
@@ -47,6 +47,7 @@
 							</div>
 
         			<center><div class="form-group col-md-4">
+
         				<button type="submit" class="btn btn-primary btn-round">Valider</button>
         			</div></center>
 	        	<% end %>

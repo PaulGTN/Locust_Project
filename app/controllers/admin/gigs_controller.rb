@@ -23,6 +23,12 @@ class GigsController < ApplicationController
 			end
 		end 
 
+	  
+	def destroy
+		@gig = Gig.find(params[:id])
+		@gig.destroy
+		redirect_to admin_root_path flash[:success] = "Le concert a bien été supprimé"
+	end
 
 	private 
 

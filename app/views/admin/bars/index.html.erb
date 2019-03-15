@@ -15,9 +15,10 @@
 												<br>
 												<br>
                         <center><h1>Bienvenue dans le dashboard admnistrateur</h1></center>
+                       
                             <div class="row">
-														<center><h3>Listes des bars</h3></center>
-            <div class="table-responsive" style="backgroung-color :'black'">
+								 <center><h3>Listes des bars</h3></center>						
+            <div class="table-responsive">
                 <table class="table">
                     <thead class="">
                         <tr><th class="text-center">
@@ -61,7 +62,7 @@
                             </td>
                             <td class="text-right">
 															<%= button_to "Voir", bar_path(bar), method: :get, class: "btn btn-info btn-rnd " %>
-															<%= button_to "Supprimer", bar_path(bar), class: "btn btn-danger btn-rnd " %>
+															<%= button_to "Supprimer", admin_bar_path(bar), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce bar ?"} %>
                     
                             </td>
                         </tr>
@@ -83,7 +84,14 @@
 						</div>
 </div>
 </div>
-						                       <div class="row">
+</div>
+</div>
+</div>
+</div>
+						                          <div class="section">
+                <div class="container">         
+                        <div class="col-md-12">												
+                            <div class="row">                                           
 														<center><h3>Listes des concerts</h3></center>
             <div class="table-responsive">
                 <table class="table">
@@ -121,8 +129,8 @@
                                 <%= gig.bar.name %></h2>
                             </td>
                             <td class="text-right">
-															<%= button_to "Voir", class: "btn btn-info btn-rnd " %>
-															<%= button_to "Supprimer", class: "btn btn-danger btn-rnd " %>
+															<%= button_to "Voir", gig_path(gig), method: :get, class: "btn btn-info btn-rnd " %>
+															<%= button_to "Supprimer", admin_gig_path(gig), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce concert ?"} %>
                     
                             </td>
                         </tr>
@@ -141,6 +149,11 @@
 						<%= button_to  "Ajouter un concert", new_admin_gig_path, method: :get, class: "btn btn-primary btn-round btn-lg" %>
 						</div>
 						</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
                                         

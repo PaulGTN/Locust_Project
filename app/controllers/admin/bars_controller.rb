@@ -47,11 +47,17 @@ module Admin
 		if @bar.save
 			redirect_to @bar
 		else
-      redirect_to root_path
+      redirect_to admin_root_path
       puts @bar.errors.full_messages
 		end
-	end 
-
+  end 
+  
+  def destroy
+    @bar = Bar.find(params[:id])
+    @bar.destroy
+    redirect_to admin_root_path flash[:success] = "Le bar a bien été supprimé"
+  end
+  
   private
 
   def bar_params
@@ -61,7 +67,7 @@ module Admin
   def authenticate_user
     unless current_user
       flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
-      redirect_to root_path
+      redirect_to root_path 
     end
   end
 
