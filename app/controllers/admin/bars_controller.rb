@@ -1,11 +1,14 @@
-class BarsController < ApplicationController
+module Admin 
+  
+  class BarsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
     @tags = Tag.all
     @prices = Price.all
-    @bars = Bar.last(10)
+    @bars = Bar.all
+    @gigs = Gig.all
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?
     #Bar.where(["city LIKE ?", city]) if city.present?
@@ -42,15 +45,19 @@ class BarsController < ApplicationController
 		
 
 		if @bar.save
-      redirect_to @bar
-      flash[:success] = "Le bar a bien été crée"
+			redirect_to @bar
 		else
-      redirect_to :new
-      flash[:danger] = "Tous les champs ne sont pas remplis"
+      redirect_to admin_root_path
       puts @bar.errors.full_messages
 		end
-	end 
-
+  end 
+  
+  def destroy
+    @bar = Bar.find(params[:id])
+    @bar.destroy
+    redirect_to admin_root_path flash[:success] = "Le bar a bien été supprimé"
+  end
+  
   private
 
   def bar_params
@@ -60,13 +67,13 @@ class BarsController < ApplicationController
   def authenticate_user
     unless current_user
       flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
-      redirect_to root_path
+      redirect_to root_path 
     end
   end
 
   def is_admin
-    @bar = Bar.find(params[:id])
-    unless user_signed_in? && current.user.role === 'admin'
+    #@bar = Bar.find(params[:id])
+    unless user_signed_in? && current_user.role === 'admin'
       flash[:danger] = "Vous ne pouvez pas accéder à cette page"
       redirect_to root_path
     end
@@ -75,4 +82,5 @@ class BarsController < ApplicationController
 	def post_params
 		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
 	end
+end
 end

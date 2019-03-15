@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="style.scss">
+</head>
+
+<body class="ecommerce-page">
+
+                                  <div class="main">
+            <div class="section">
+                <div class="container">
+                
+                        <div class="col-md-12">
+												<br>
+												<br>
+                        <center><h1>Bienvenue dans le dashboard admnistrateur</h1></center>
+                       
+                            <div class="row">
+								 <center><h3>Listes des bars</h3></center>						
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="">
+                        <tr><th class="text-center">
+                            Numéro
+                        </th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Adresse
+                        </th>
+                        <th class="text-center">
+                            Ville
+                        </th>
+                        <th class="text-right">
+                            Styles musicaux
+                        </th>
+                        <th class="text-right">
+                            Actions
+                        </th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                        <%@bars.each do |bar|%>
+                            <td class="text-center">
+                                <%= bar.id %></h2>
+                            </td>
+                            <td>
+                                <%= bar.name %></h2>
+                            </td>
+                            <td>
+                               	<%= bar.adress %></h2>
+                            </td>
+                            <td class="text-center">
+                                <%= bar.city %></h2>
+                            </td>
+                            <td class="text-right">
+                                <% bar.tags.each do |bartag| %> 
+      <%= bartag.name %><br>
+      <%end%>
+                            </td>
+                            <td class="text-right">
+															<%= button_to "Voir", bar_path(bar), method: :get, class: "btn btn-info btn-rnd " %>
+															<%= button_to "Supprimer", admin_bar_path(bar), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce bar ?"} %>
+                    
+                            </td>
+                        </tr>
+                      
+                        </tr>
+												<%end%>
+                    </tbody>
+                </table>
+								
+            </div>
+						  <div class="container">
+                
+                        <div class="col-md-12">
+                            <div class="row">
+														
+														    <div class="col-md-3 ml-auto mr-auto">
+						<%= button_to  "Ajouter un bar", new_admin_bar_path, method: :get, class: "btn btn-primary btn-round btn-lg" %>
+						</div>
+						</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+						                          <div class="section">
+                <div class="container">         
+                        <div class="col-md-12">												
+                            <div class="row">                                           
+														<center><h3>Listes des concerts</h3></center>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="">
+                        <tr><th class="text-center">
+                            Numéro
+                        </th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th class="text-center">
+                            Lieu
+                        </th>
+                        
+                        <th class="text-right">
+                            Actions
+                        </th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                        <%@gigs.each do |gig|%>
+                            <td class="text-center">
+                                <%= gig.id %></h2>
+                            </td>
+                            <td>
+                                <%= gig.name %></h2>
+                            </td>
+                            <td>
+                               	<%= gig.date %></h2>
+                            </td>
+                            <td class="text-center">
+                                <%= gig.bar.name %></h2>
+                            </td>
+                            <td class="text-right">
+															<%= button_to "Voir", gig_path(gig), method: :get, class: "btn btn-info btn-rnd " %>
+															<%= button_to "Supprimer", admin_gig_path(gig), type: 'submit', class: "btn btn-danger btn-rnd", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir supprimer ce concert ?"} %>
+                    
+                            </td>
+                        </tr>
+                      
+                        </tr>
+												<%end%>
+                    </tbody>
+                </table>
+            </div>
+            						  <div class="container">
+                
+                        <div class="col-md-12">
+                            <div class="row">
+														
+														    <div class="col-md-3 ml-auto mr-auto">
+						<%= button_to  "Ajouter un concert", new_admin_gig_path, method: :get, class: "btn btn-primary btn-round btn-lg" %>
+						</div>
+						</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+                                        
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var slider2 = document.getElementById('sliderRefine');
+
+        noUiSlider.create(slider2, {
+            start: [42, 880],
+            connect: true,
+            range: {
+                'min': [30],
+                'max': [900]
+            }
+        });
+
+        var limitFieldMin = document.getElementById('price-left');
+        var limitFieldMax = document.getElementById('price-right');
+
+        slider2.noUiSlider.on('update', function(values, handle) {
+            if (handle) {
+                limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+            } else {
+                limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+            }
+        });
+    });
+</script>
+
+</html>

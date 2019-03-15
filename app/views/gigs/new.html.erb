@@ -1,0 +1,50 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+          <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
+          </div>
+          <div class="content-center">
+              <h1 class="title">Ajouter un concert</h1>
+              <div class="content">
+								<div class="page-description">
+								  <h4>Entrez les informations du concert que vous souhaitez ajouter</h4>
+								</div>
+              </div>
+        	</div>
+      	</div>
+
+	      <div class="section">
+	        <div class="form-group col-md-8 ml-auto mr-auto">
+	        		<%= form_for @gig do |newgig| %>
+	        			<div center class="form-group">
+	        				<label>C'est quoi ?</label>
+	        				<%= newgig.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du concert...' %>
+	        			</div>
+
+	        			<div class="form-group">
+        				<%= newgig.label "C'est où ?" %>
+        				<%= newgig.select :bar_id, options_for_select(Bar.all.collect{ |bar| [bar.name, bar.id] }.insert(0, "Choisis le bar")), {}, {class: "selectpicker"} %> 
+							</div>
+
+	        			<div class="form-group">
+	        				<label>C'est quand ?</label>
+	        				<%= newgig.date_field :date, value: newgig.object.try(:strftime,"%m/%d/%Y"), class: 'form-control', placeholder: 'Choisissez une date...' %>
+	        				
+	        			</div>
+
+
+
+	        			<center><div class="pull-center">
+	        				<button type="submit" class="btn btn-primary btn-round">Rock on, baby !</button>
+	        			</div></center>
+	        		<% end %>
+	        </div>
+	      </div>
+    </div>
+</body>
+
+</html>
