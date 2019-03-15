@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'bar#index'
+  root 'bars#index'
   resources :users
   resources :bars, only: [:show, :index]
   resources :gigs, only: [:show, :index]
 
   scope 'admin', module: 'admin', as: 'admin' do
-    root 'bar#index'
+    root 'bars#index'
     resources :bars
     resources :gigs
   end

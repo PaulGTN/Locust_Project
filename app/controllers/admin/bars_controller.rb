@@ -1,11 +1,14 @@
-class BarsController < ApplicationController
+module Admin 
+  
+  class BarsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
     @tags = Tag.all
     @prices = Price.all
-    @bars = Bar.last(10)
+    @bars = Bar.all
+    @gigs = Gig.all
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?
     #Bar.where(["city LIKE ?", city]) if city.present?
@@ -63,8 +66,8 @@ class BarsController < ApplicationController
   end
 
   def is_admin
-    @bar = Bar.find(params[:id])
-    unless user_signed_in? && current.user.role === 'admin'
+    #@bar = Bar.find(params[:id])
+    unless user_signed_in? && current_user.role === 'admin'
       flash[:danger] = "Vous ne pouvez pas accéder à cette page"
       redirect_to root_path
     end
@@ -73,4 +76,5 @@ class BarsController < ApplicationController
 	def post_params
 		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
 	end
+end
 end
