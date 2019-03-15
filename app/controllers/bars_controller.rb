@@ -1,6 +1,6 @@
 class BarsController < ApplicationController
-
-  before_action :authenticate_user, only: [:new]
+  before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:index, :show]
 
   def index
     @tags = Tag.all
@@ -57,6 +57,14 @@ class BarsController < ApplicationController
   def authenticate_user
     unless current_user
       flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      redirect_to root_path
+    end
+  end
+
+  def is_admin
+    @bar = Bar.find(params[:id])
+    unless user_signed_in? && current.user.role === 'admin'
+      flash[:danger] = "Vous ne pouvez pas accéder à cette page"
       redirect_to root_path
     end
   end

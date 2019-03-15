@@ -37,6 +37,9 @@
               <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">     
           			<div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">  
               	<%= link_to "Accueil", root_path, :class => "navbar-brand" %>
+                <% if isAdmin? %>
+                <%= link_to "Gestion du site", :class => "navbar-brand" %>
+                <%end%>
             		<% if user_signed_in? %>
               		<div class="nav-item dropdown">
                 	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

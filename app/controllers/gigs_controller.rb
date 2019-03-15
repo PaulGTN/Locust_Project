@@ -1,4 +1,5 @@
 class GigsController < ApplicationController
+	before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def show
     #@gigs = Gigs.find(params[:id])
@@ -28,7 +29,15 @@ class GigsController < ApplicationController
 	      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
 	      redirect_to new_session_path
 	    end
-	  end
+		end
+		
+		def is_admin
+			@gig = Gig.find(params[:id])
+			unless user_signed_in? && current.user.role === 'admin'
+				flash[:danger] = "Vous ne pouvez pas accéder à cette page"
+				redirect_to root_path
+			end
+		end
 
 		def post_params
 			params.require(:gig).permit(:name, :bar, :gig_tag, :date)
