@@ -64,7 +64,9 @@
       </div>
       <center>
       <%= button_to  "FAKE", new_attendance_path(@gig), method: :create, action: :get, class:"btn btn-primary btn-round" %>
+      <% if user_signed_in? && gig.users.exclude?(current_user) %>
       <%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => @gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+      <%end%>
   </div>
 </div>
 
