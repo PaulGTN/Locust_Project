@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
 
   def location
-    [town, country].compact.join(", ")
+    [city, country].compact.join(", ")
   end
 
 

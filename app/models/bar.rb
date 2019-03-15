@@ -6,10 +6,14 @@ class Bar < ApplicationRecord
   has_many :tags, through: :bar_tags
 
   geocoded_by :location
-  after_validation :geocode 
+  after_validation :geocode #if: :location_changed?
 
 
   def location
-    [town, country].compact.join(", ")
+    [city, country].compact.join(", ")
+  end
+
+  def location_changed?
+    city.changed? || country.changed?
   end
 end

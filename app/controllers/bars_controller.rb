@@ -16,4 +16,8 @@ class BarsController < ApplicationController
 
   end
 
+  def bars_params
+    params.require(:bars).permit(:bars, :zip_code, :city, :country, :latitude, :longitude, :result, :user_id, :bars_id)
+  end
+
 end

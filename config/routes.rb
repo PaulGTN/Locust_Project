@@ -14,14 +14,10 @@ Rails.application.routes.draw do
 
     root to: "home#show"
   root 'bars#index' # page d'acceuil
+  resources :bar
   resources :bars
   resources :users
   
-  # devise_scope :user dorg/routing.html
-
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
-
+  
 end
 

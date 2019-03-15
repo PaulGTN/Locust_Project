@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 2019_03_12_141028) do
     t.string "city"
     t.string "zip_code"
     t.bigint "price_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["price_id"], name: "index_bars_on_price_id"
