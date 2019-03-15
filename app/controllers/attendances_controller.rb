@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create]
+  before_action :authenticate_user, only: [:new, :destroy]
 
 	def new
 	  @attendance = Attendance.new
@@ -20,6 +20,14 @@ class AttendancesController < ApplicationController
       flash[:danger] = "Oups !"
       puts @attendance.errors.full_messages
 		end
+  end 
+
+  def destroy
+    def destroy
+      @attendance = Attendance.where("current_user.id => ? AND gig_id => ?", current_user.id, params[:gig_id])
+      @attendance.destroy
+      redirect_to root_path flash[:success] = "Ta participation a bien été annulée"
+    end
   end 
   
   private 

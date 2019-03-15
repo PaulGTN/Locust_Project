@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :bars, only: [:show, :index]
   resources :gigs, only: [:show, :index]
-  resources :attendances, only: [:new, :create]
+  resources :attendances, only: [:new, :create, :destroy]
 
   scope 'admin', module: 'admin', as: 'admin' do
     root 'bars#index'
