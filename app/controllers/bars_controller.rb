@@ -1,6 +1,11 @@
 class BarsController < ApplicationController
+<<<<<<< HEAD
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:index, :show]
+=======
+
+  #before_action :authenticate_user, only: [:new]
+>>>>>>> development
 
   def index
     @tags = Tag.all
@@ -38,15 +43,16 @@ class BarsController < ApplicationController
   end
 
   def create
-			@bar = Bar.new(post_params)
-			
+		@bar = Bar.new(post_params)
+		
 
-    if @bars.save
-      redirect_to @bars
-    else
+		if @bar.save
+			redirect_to @bar
+		else
       redirect_to root_path
-    end
-  end 
+      puts @bar.errors.full_messages
+		end
+	end 
 
   private
 
@@ -69,8 +75,7 @@ class BarsController < ApplicationController
     end
   end
 
-  def post_params
-    params.require(:bar).permit(:name, :adress, :zip_code, :city, :price)
-  end
-
+	def post_params
+		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
+	end
 end

@@ -6,16 +6,16 @@ class GigsController < ApplicationController
   end
 
 	def new
-	  @gigs = Gig.new
+	  @gig = Gig.new
 	  @tags = Tag.all
 	end
 
   	def create
-			@gigs = Gig.new(post_params)
+			@gig = Gig.new(post_params)
 			
 
-			if @gigs.save
-				redirect_to @gigs
+			if @gig.save
+				redirect_to bar_path(@gig.bar_id)
 			else
 				redirect_to root_path
 			end
@@ -40,7 +40,7 @@ class GigsController < ApplicationController
 		end
 
 		def post_params
-			params.require(:gig).permit(:name, :bar, :gig_tag, :date)
+			params.require(:gig).permit(:name, :bar_id, :date)
 		end
 
 

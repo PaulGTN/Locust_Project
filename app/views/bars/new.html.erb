@@ -19,14 +19,14 @@
 
 	      <div class="section">
 	        <div class="form-group col-md-6 ml-auto mr-auto">
-        		<%= form_for @bars do |newbar| %>
+        		<%= form_for @bar do |newbar| %>
         			<div center class="form-group">
-        				<label>C'est quoi le nom du bar ?</label>
+        				<%= label_tag "C'est quoi le nom du bar ?" %>
         				<%= newbar.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du bar...' %>
         			</div>
 
         			<div class="form-group">
-        				<label>C'est où ?</label>
+        				<%= label_tag "C'est où ?" %>
         				<%= newbar.text_field :adress, class: 'form-control', placeholder: "Saisissez l'adresse postale du bar..." %>
         			</div>
 						
@@ -42,15 +42,9 @@
 	        		</div>
 
         			<div class="form-group">
-        				<label>Quel budget prévoir ?</label>
-        				<select class="selectpicker" data-size="7" data-style="form-control" title="Choisis ton prix (optionnel)" tabindex="-98">
-  				        <option class="bs-title-option" value="">Choisis ton prix (optionnel)</option>
-        				        
-        				  <%@prices.each do |price|%>
-        				  <option><%= price.price_range %> </option>
-        					<%end%>
-        				</select>
-        			</div>
+        				<%= newbar.label "Quel budget prévoir ?" %>
+        				<%= newbar.select :price_id, options_for_select(Price.all.collect{ |price| [price.price_range, price.id] }.insert(0, "Choisis ton prix")), {}, {class: "selectpicker"} %> 
+							</div>
 
         			<center><div class="form-group col-md-4">
         				<button type="submit" class="btn btn-primary btn-round">Valider</button>
