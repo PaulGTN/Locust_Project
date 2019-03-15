@@ -2,7 +2,8 @@ class GigsController < ApplicationController
 	before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def show
-    @gig = Gig.find(params[:id])
+		@gig = Gig.find(params[:id])
+		@current_user = current_user
   end
 
 	def new

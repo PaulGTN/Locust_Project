@@ -12,16 +12,16 @@ class GigsController < ApplicationController
 	  @tags = Tag.all
 	end
 
-  	def create
-			@gig = Gig.new(post_params)
-			
+	def create
+		@gig = Gig.new(post_params)
+		
 
-			if @gig.save
-				redirect_to bar_path(@gig.bar_id)
-			else
-				redirect_to root_path
-			end
-		end 
+		if @gig.save
+			redirect_to bar_path(@gig.bar_id)
+		else
+			redirect_to root_path
+		end
+	end 
 
 	  
 	def destroy
