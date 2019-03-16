@@ -18,4 +18,17 @@ class ApplicationController < ActionController::Base
   end
 
 
+  #Vérifier si l'utilisateur est connecté
+  def user_signed_in?
+    !current_user.nil?
+  end 
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      redirect_to new_session_path
+    end
+  end
+
+  
 end

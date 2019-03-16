@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :attendances
   has_many :gigs, through: :attendances
   has_one_attached :avatar
+  has_many :favorites
+  has_many :bars, through: :favorites
+
 
   
 
