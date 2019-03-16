@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :attendances
   has_many :gigs, through: :attendances
+  has_many :favorites
+  has_many :bars, through: :favorites
 
   
 
