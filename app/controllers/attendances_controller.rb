@@ -24,12 +24,10 @@ class AttendancesController < ApplicationController
   end 
 
   def destroy
-    def destroy
-      @attendance = Attendance.where("current_user.id => ? AND gig_id => ?", current_user.id, params[:gig_id])
+      @attendance = Attendance.find(params[:id])
       @attendance.destroy
       redirect_to root_path flash[:success] = "Ta participation a bien été annulée"
-    end
-  end 
+  end
   
   private 
 

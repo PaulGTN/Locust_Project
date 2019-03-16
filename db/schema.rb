@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_174411) do
+ActiveRecord::Schema.define(version: 2019_03_16_134621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_174411) do
     t.bigint "price_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["price_id"], name: "index_bars_on_price_id"
   end
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_174411) do
     t.bigint "bar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["bar_id"], name: "index_gigs_on_bar_id"
   end
 
