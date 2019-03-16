@@ -5,7 +5,8 @@ class AttendancesController < ApplicationController
 	  @attendance = Attendance.new
 	end
 
-	def create
+  def create
+    #@gig = Gig.find(params[:id])
     @attendance = Attendance.new(post_params)
     #@gig = Gig.find(params[:id])
     #@user = current_user
@@ -13,8 +14,8 @@ class AttendancesController < ApplicationController
 		
 
 		if @attendance.save
-      redirect_to root_path
-      flash[:success] = "OK !"
+      redirect_to gig_path(@attendance.gig)
+      flash[:notice] = "OK !"
 		else
       redirect_to root_path
       flash[:danger] = "Oups !"

@@ -87,9 +87,12 @@
         </div>
     </nav>
   <!-- End Navbar -->
-
+	<br>
+	<br>
+	<div><%= flash[:notice] %></div>
+	<div><%= flash[:danger] %></div>
   <%= yield %>
-
+	
   <script type="text/javascript">
       $(document).ready(function() {
           // the body of this function is in assets/js/now-ui-kit.js
