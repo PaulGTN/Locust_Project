@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :attendances
   has_many :gigs, through: :attendances
+  has_one_attached :avatar
 
   
 

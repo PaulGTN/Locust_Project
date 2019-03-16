@@ -9,16 +9,30 @@
             </div>
             <div class="content-center">
                 <h3 class="title">Mon Profil</h3>
-                <div class="content">
-                    <div class="social-description">
-                        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-                        <h5><%= @user.email %></h5>
-                        <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
-                    </div>
+                <div class ="container">
+                  <div class="photo-container">
+                    <%if @user.avatar.attached?%>
+                      <%= image_tag @user.avatar, alt: 'avatar' %>
+                    <%else%>
+                      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+                    <%end%>
+                  </div>
+                  <div class="social-description">
+                      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+                      <h5><%= @user.email %></h5>
+                      <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
+                  </div>
                 </div>
             </div>
         </div>
         <div class="section">
+            <div class ="container">
+              <label>Changer d'avatar ?</label>
+                <%= form_tag user_avatars_path(@user), multipart: true do %>
+                  <%= file_field_tag :avatar %>
+                  <%= submit_tag "OK", :class => "btn btn-primary btn-icon btn-sm btn-round" %>
+                <% end %>
+            </div>
         </div>
     </div>
 </body>
