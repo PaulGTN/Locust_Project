@@ -6,15 +6,15 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
-  resources :bars, only: [:create, :show, :index] do
-    resources :barpicture1, only: [:create, :show, :index]
-    resources :barpicture2, only: [:create, :show, :index] 
+  resources :bars do
+    resources :barpicture1
+    resources :barpicture2
   end   
 
-  resources :gigs, only: [:create, :show, :index] do
-    resources :gigpicture, only: [:create, :show, :index]
+  resources :gigs do
+    resources :gigpicture
   end
-  
+
   resources :attendances, only: [:new, :create, :destroy]
   resources :favorites, only: [:new, :create, :destroy]
 

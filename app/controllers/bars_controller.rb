@@ -27,6 +27,7 @@ class BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
     @gigs = @bar.gigs
+    #@gigpicture = @gigs.gigpicture MÉTHODE POUR PHOTOS CUSTOM DES CONCERTS ???
 
   end
 
@@ -43,7 +44,7 @@ class BarsController < ApplicationController
 
 		if @bar.save
       redirect_to @bar
-      flash[:success] = "Le bar a bien été crée"
+      flash[:success] = "Le bar a bien été créé"
 		else
       redirect_to :new
       flash[:danger] = "Tous les champs ne sont pas remplis"

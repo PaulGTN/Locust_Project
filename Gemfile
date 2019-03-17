@@ -68,3 +68,4 @@ gem 'devise'
 gem 'faker'
 gem 'table_print'
 gem 'letter_opener'
+gem "aws-sdk-s3", require: false
