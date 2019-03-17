@@ -1,5 +1,9 @@
 class AttendancesController < ApplicationController
+<<<<<<< HEAD
   #before_action :authenticate_user, only: [:new, :create, :destroy]
+=======
+  before_action :authenticate_user, only: [:new, :create, :destroy]
+>>>>>>> 50574f1ebc5915f58d924f105aaa1369f3fcd56c
 
 	def index
 		@attendances = Attendance.all
@@ -33,6 +37,7 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
+<<<<<<< HEAD
 
 		@attendance = Attendance.last
 		@attendance_id = @attendance.id
@@ -44,6 +49,14 @@ class AttendancesController < ApplicationController
   end
 
   private
+=======
+      @attendance = Attendance.find(params[:id])
+      @attendance.destroy
+      redirect_to root_path flash[:success] = "Ta participation a bien été annulée"
+  end
+  
+  private 
+>>>>>>> 50574f1ebc5915f58d924f105aaa1369f3fcd56c
 
   def post_params
     params.permit(:user_id, :gig_id)

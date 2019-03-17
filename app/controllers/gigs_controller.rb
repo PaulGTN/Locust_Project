@@ -7,7 +7,12 @@ class GigsController < ApplicationController
 
   def show
 		@gig = Gig.find(params[:id])
+<<<<<<< HEAD
 		@attendance = Attendance.find(params[:id])
+=======
+		@current_user = current_user
+		#@attendance = Attendance.where("current_user.id => current_user.id && gig_id => @gig.id")
+>>>>>>> 50574f1ebc5915f58d924f105aaa1369f3fcd56c
   end
 
 	def new
