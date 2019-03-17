@@ -36,7 +36,7 @@
                           <h5 class="info-title">Quoi</h5>
                           <p class="description"><% @gig.tags.each do |tag|%></p>
                           <%= tag.name%><br>
-                          <%end%>
+                          <% end %>
                       </div>
                   </div>
                   <div class="info info-horizontal">
@@ -64,11 +64,11 @@
       </div>
       <center>
       <% if user_signed_in? && @gig.users.exclude?(current_user) %>
-      <%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => @gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %>
+      <%= link_to "Participer au concert", user_gig_attendances_path(current_user.id, @gig.id), method: :post, remote: true, class:"btn btn-primary btn-round" %>
       <% elsif  user_signed_in? && @gig.users.include?(current_user)%>
 			<h6> <%= "Tu participes déjà à ce concert" %></h6>
+      <%= link_to "Ne plus Participer", attendance_path(@attendance), method: :delete, remote: true, class:"btn btn-primary btn-round" %>
 			<%end%>
-			<%= button_to  "Retour", bar_path(@gig.bar), method: :get, class:"btn btn-primary btn-round" %></center>
+			<%= link_to  "Retour", bar_path(@gig.bar), method: :get, class:"btn btn-primary btn-round" %></center>
   </div>
 </div>
-

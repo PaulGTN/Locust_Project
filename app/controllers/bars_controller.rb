@@ -16,7 +16,7 @@ class BarsController < ApplicationController
     #@styles = Bar.find_by(params[:id])
     #@bar_tags = @styles.bar_tags
     #Bar.last(10)
-    #end 
+    #end
     #@bars = if params[:city]
     #  Bar.where('city Like ?', "%#{params[:city]}%")
     #else
@@ -39,7 +39,7 @@ class BarsController < ApplicationController
 
   def create
 		@bar = Bar.new(post_params)
-		
+
 
 		if @bar.save
       redirect_to @bar
@@ -49,7 +49,7 @@ class BarsController < ApplicationController
       flash[:danger] = "Tous les champs ne sont pas remplis"
       puts @bar.errors.full_messages
 		end
-	end 
+	end
 
   private
 
