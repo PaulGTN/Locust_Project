@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'bars#index'
   resources :users do
     resources :gigs do
-      resources :attendances 
+      resources :attendances
     end
   end
   resources :attendances, only: %i[create new destroy]
