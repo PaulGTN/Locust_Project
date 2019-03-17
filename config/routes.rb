@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[new create destroy]
   end
   resources :gigs, only: %i[show index]
+  resources :favorites, only: %i[new create destroy]
   
  
 

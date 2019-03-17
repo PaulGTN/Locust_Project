@@ -27,6 +27,7 @@ class BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
     @gigs = @bar.gigs
+    @favorite = Favorite.find(params[:id])
 
   end
 

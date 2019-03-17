@@ -34,6 +34,7 @@
 						<% elsif  user_signed_in? && @bar.users.include?(current_user)%>
 						<br>
 						<h6><%= "Ce bar fait parti de tes favoris" %></h6>
+						<%= link_to "Retirer des mes favoris", favorite_path(@favorite), method: :delete, remote: true, class:"btn btn-primary btn-round" %>
 						<%end%>
 						<br>								
 					</div>
