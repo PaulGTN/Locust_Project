@@ -7,4 +7,14 @@ class Bar < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
 
+  private
+
+  def self.search(city)
+    if city
+      where('city LIKE ?', "%#{city}%").order('id DESC')
+    else 
+      all
+    end
+  end
+
 end

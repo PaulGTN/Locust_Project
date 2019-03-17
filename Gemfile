@@ -67,4 +67,4 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'faker'
 gem 'table_print'
-
+gem 'ransack'

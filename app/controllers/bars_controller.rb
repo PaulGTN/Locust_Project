@@ -5,7 +5,7 @@ class BarsController < ApplicationController
   def index
     @tags = Tag.all
     @prices = Price.all
-    @bars = Bar.last(10)
+    @bars = Bar.search(params[:city])
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?
     #Bar.where(["city LIKE ?", city]) if city.present?
@@ -19,6 +19,11 @@ class BarsController < ApplicationController
     #end 
     #@bars = if params[:city]
     #  Bar.where('city Like ?', "%#{params[:city]}%")
+    #else
+    #  Bar.last(10)
+    #end
+    #@bars = if params([:name])
+    #    Bar.where('city Like ?', "%#{params[:city]}%")
     #else
     #  Bar.last(10)
     #end
@@ -54,10 +59,6 @@ class BarsController < ApplicationController
 
   private
 
-  def bar_params
-    params.require(:bar).permit(:city, :term)
-  end
-
   def authenticate_user
     unless current_user
       flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
@@ -75,5 +76,9 @@ class BarsController < ApplicationController
 
 	def post_params
 		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
-	end
+  end
+  
+  def bar_params
+    params.require(:bar).permit(:city, :price, :tags)
+  end
 end
