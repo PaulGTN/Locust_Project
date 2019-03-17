@@ -32,6 +32,7 @@
           </p>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
     <% @bar.gigs.each do |gig| %>
       <div class="row">
@@ -71,4 +72,86 @@
 <%end%>
 <center><%= button_to "Retour", root_path, method: :get, class:"btn btn-primary btn-round" %></center>
 </div>
+=======
+      <div class="section-story-overview">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="image-container image-left" style="background-image: url('https://images.pexels.com/photos/712588/pexels-photo-712588.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+                      <!-- First image on the left side -->
+                      <p class="blockquote blockquote-primary">
+                      Style :
+                      <% @bar.tags.each do |tag| %>
+                      <%= tag.name %>
+                      <%end%>
+                      </p>
+                  </div>
+              </div>
+              <div class="col-md-5">
+                  <!-- First image on the right side, above the article -->
+                  <div class="image-container image-right" style="background-image: url('https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+                  </div>
+                  <h6 class="category text-primary">Ville : <%= @bar.city %></h6>
+                  <h4 class="card-title">Adresse : <%= @bar.adress %></h4>
+                  <h4 class="card-title">Prix : <%= @bar.price.price_range %></h4>
+                  <p>
+                      Description
+                  </p>
+				  		<div>
+						<% if user_signed_in? && @bar.users.exclude?(current_user) %>
+						<%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => @bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+						<% elsif  user_signed_in? && @bar.users.include?(current_user)%>
+						<br>
+						<h6><%= "Ce bar fait parti de tes favoris" %></h6>
+						<%end%>
+						<br>								
+					</div>
+        </div>                           
+      </div>  
+    </div>
+	  <h3>Concert(s) à venir</h3>
+      <% @bar.gigs.each do |gig| %>
+	  <% if gig.date > Time.now %>
+				<div class="row">
+						<div class="col-md-6">
+								<h6 class="category text-danger">
+										<i class="#"></i>
+										<%= gig.name %>
+								</h6>
+								<h3 class="card-title">
+										<a href="#pablo">Date : 
+										<%= gig.date %></a>
+								</h3>
+								<p class="card-description">
+									Nombre de participants : <%= gig.users.count %>
+								</p><p class="card-description">
+									Style : <% gig.tags.each do |gigtag|%></p>
+                          <%= gigtag.name%><br>
+                          <%end%>
+								</p>
+								<p class="card-description">
+                Description
+								</p>
+								<div>
+								<%= button_to  "Détails", gig_path(gig), method: :get, class:"btn btn-secondary btn-round" %>
+								<% if user_signed_in? && gig.users.exclude?(current_user) %>
+								<%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-secondary btn-round"  %></center>
+								<% elsif  user_signed_in? && gig.users.include?(current_user)%>
+								<br>
+								<h6><%= "Tu participes déjà à ce concert" %></h6>
+								<%end%>
+								<br>								
+								</div>
+								</div>
+						<div class="col-md-5">
+								<div class="card-image">
+										<img class="img img-raised rounded" src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+								</div>
+								</br>
+						</div>
+					</div>
+				<%end%>
+			<%end%> 
+		<center><%= button_to  "Retour", root_path, method: :get, class:"btn btn-primary btn-round" %></center>  
+	</div>      
+>>>>>>> 50574f1ebc5915f58d924f105aaa1369f3fcd56c
 </div>

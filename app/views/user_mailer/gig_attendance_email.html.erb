@@ -4,9 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Salut <%= @user.first_name %> !</h1>
     <p>
-      Tu t'es inscrit sur mon-petit-criquet en utilisant l'e-mail suivant : <%= @user.email %>.
+      Ta participation au concert de <%= @gig.name %> a bien été prise en compte !
+    </p>
+    <p>
+      Ce concert aura lieu le <%= @gig.date %>, note le dans ton agenda !
     </p>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.

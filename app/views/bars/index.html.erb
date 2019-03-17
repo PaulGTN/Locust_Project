@@ -129,7 +129,15 @@
       <%end%>
     </p></br>
     <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-neutral btn-round" %>
-    <%= link_to  "Ajouter aux favoris",  "#" , class: "btn-neutral btn-round" %>
+    <div>
+        <% if user_signed_in? && bar.users.exclude?(current_user) %>
+        <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+        <% elsif  user_signed_in? && bar.users.include?(current_user)%>
+        <br>
+        <h6><%= "Ce bar fait parti de tes favoris" %></h6>
+        <%end%>
+        <br>								
+        </div>
     </div>
   </div>
 </div>
