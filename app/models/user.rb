@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :bars, through: :favorites
 
-  
+  accepts_nested_attributes_for :gigs
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
