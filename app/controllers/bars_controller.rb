@@ -5,6 +5,7 @@ class BarsController < ApplicationController
   def index
     @tags = Tag.all
     @prices = Price.all
+    @favorite = Favorite.all
     @bars = Bar.search(params[:city])
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?

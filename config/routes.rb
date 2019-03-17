@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   root 'bars#index'
 
   resources :users do
-    resources :gigs do
-      resources :attendances
+    resources :bars do
+      resources :favorites do
+        resources :gigs do
+          resources :attendances
+        end
+      end
     end
   end
   resources :attendances, only: %i[create new destroy]

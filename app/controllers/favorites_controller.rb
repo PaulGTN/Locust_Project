@@ -1,6 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :destroy]
 
+  def index
+    @favorite = Favorite.all
+  end
+
 	def new
 	  @favorite = Favorite.new
 	end
@@ -8,19 +12,24 @@ class FavoritesController < ApplicationController
   def create
     #@gig = Gig.find(params[:id])
     @favorite = Favorite.new(post_params)
+    @bar = Favorite.find(params[:bar_id])
     #@gig = Gig.find(params[:id])
     #@user = current_user
     #@favorite = favorite.create(gig_id: @gig, user_id: @user)
 		
 
-		if @favorite.save
-      redirect_to bar_path(@favorite.bar)
-      flash[:notice] = "OK !"
-		else
-      redirect_to root_path
-      flash[:danger] = "Oups !"
-      puts @favorite.errors.full_messages
-		end
+    if
+			@favorite.save
+      respond_to do |format|
+        format.html { redirect_back fallback_location: @bar, notice: 'Le bar a été ajouté à tes favoris' }
+        format.json { render :show, status: :ok, location: @bar }
+      end
+
+		 else
+        redirect_to root_path
+        flash[:danger] = "Oups !"
+        puts @favorite.errors.full_messages
+	 	 end
   end 
 
   def destroy

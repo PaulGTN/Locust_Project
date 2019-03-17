@@ -80,7 +80,7 @@ module Admin
   end
 
 	def post_params
-		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
+		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id, :tag_ids)
 	end
 end
 end
