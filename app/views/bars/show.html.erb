@@ -1,78 +1,74 @@
 <div class="projects-3" data-background-color="black">
   <div class="container">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title"><%= @bar.name%></h2>
+      </div>
+    </div>
+    <div class="section-story-overview">
       <div class="row">
-          <div class="col-md-8 ml-auto mr-auto text-center">
-              <h2 class="title"><%= @bar.name%></h2>
+        <div class="col-md-6">
+          <div class="image-container image-left" style="background-image: url('https://images.pexels.com/photos/712588/pexels-photo-712588.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+            <!-- First image on the left side -->
+            <p class="blockquote blockquote-primary">
+              Style :
+              <% @bar.tags.each do |tag| %>
+                <%= tag.name %>
+              <%end%>
+            </p>
           </div>
+        </div>
+        <div class="col-md-5">
+          <!-- First image on the right side, above the article -->
+          <div class="image-container image-right" style="background-image: url('https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')"></div>
+          <h6 class="category text-primary">Ville :
+            <%= @bar.city %></h6>
+          <h4 class="card-title">Adresse :
+            <%= @bar.adress %></h4>
+          <h4 class="card-title">Prix :
+            <%= @bar.price.price_range %></h4>
+          <p>
+            Description
+          </p>
+        </div>
       </div>
-      <div class="section-story-overview">
-          <div class="row">
-              <div class="col-md-6">
-                  <div class="image-container image-left" style="background-image: url('https://images.pexels.com/photos/712588/pexels-photo-712588.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
-                      <!-- First image on the left side -->
-                      <p class="blockquote blockquote-primary">
-                      Style :
-                      <% @bar.tags.each do |tag| %>
-                      <%= tag.name %>
-                      <%end%>
-                      </p>
-                  </div>
-              </div>
-              <div class="col-md-5">
-                  <!-- First image on the right side, above the article -->
-                  <div class="image-container image-right" style="background-image: url('https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
-                  </div>
-                  <h6 class="category text-primary">Ville : <%= @bar.city %></h6>
-                  <h4 class="card-title">Adresse : <%= @bar.adress %></h4>
-                  <h4 class="card-title">Prix : <%= @bar.price.price_range %></h4>
-                  <p>
-                      Description
-                  </p>
-              </div>                           
-          </div>  
+    </div>
+    <% @bar.gigs.each do |gig| %>
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="category text-danger">
+            <i class="#"></i>
+            <%= gig.name %>
+          </h6>
+          <h3 class="card-title">
+            <a href="#pablo">Date :
+              <%= gig.date %></a>
+          </h3>
+          <p class="card-description">
+            Nombre de participants :
+            <%= gig.users.count %>
+          </p>
+          <p class="card-description">
+            Style :
+            <% gig.tags.each do |gigtag|%><br>
+            <%= gigtag.name%><br>
+        </p>
+        <p class="card-description">
+          Description
+        </p>
+        <div>
+          <%= link_to "Détails", gig_path(gig.id), method: :get, class:"btn btn-primary btn-round" %>
+            <% end %>
+          <br>
+        </div>
       </div>
-      <% @bar.gigs.each do |gig| %>
-				<div class="row">
-						<div class="col-md-6">
-								<h6 class="category text-danger">
-										<i class="#"></i>
-										<%= gig.name %>
-								</h6>
-								<h3 class="card-title">
-										<a href="#pablo">Date : 
-										<%= gig.date %></a>
-								</h3>
-								<p class="card-description">
-									Nombre de participants : <%= gig.users.count %>
-								</p><p class="card-description">
-									Style : <% gig.tags.each do |gigtag|%></p>
-                          <%= gigtag.name%><br>
-                          <%end%>
-								</p>
-								<p class="card-description">
-                                    Description
-								</p>
-								<div>
-								<%= button_to  "Détails", gig_path(gig), method: :get, class:"btn btn-primary btn-round" %>
-								<% if user_signed_in? && gig.users.exclude?(current_user) %>
-								<%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
-								<% elsif  user_signed_in? && gig.users.include?(current_user)%>
-								<br>
-								<h6><%= "Tu participes déjà à ce concert" %></h6>
-								<%end%>
-								<br>								
-								</div>
-								</div>
-						<div class="col-md-5">
-								<div class="card-image">
-										<img class="img img-raised rounded" src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
-								</div>
-								</br>
-						</div>
-				</div> 
-			<%end%> 
-			<center><%= button_to  "Retour", root_path, method: :get, class:"btn btn-primary btn-round" %></center>  
-	</div>      
+      <div class="col-md-5">
+        <div class="card-image">
+          <img class="img img-raised rounded" src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260">
+        </div>
+    </div>
+  </div>
+<%end%>
+<center><%= button_to "Retour", root_path, method: :get, class:"btn btn-primary btn-round" %></center>
 </div>
-
-  
+</div>
