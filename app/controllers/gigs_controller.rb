@@ -14,6 +14,8 @@ class GigsController < ApplicationController
 
   	def create
 			@gig = Gig.new(post_params)
+			@gig.gigpicture.attach(params[:gigpicture])
+			redirect_to(gig_path(@gig))
 			
 
 			if @gig.save

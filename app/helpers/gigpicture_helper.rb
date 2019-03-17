@@ -1,0 +1,2 @@
+module GigpictureHelper
+end

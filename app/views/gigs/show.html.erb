@@ -52,13 +52,23 @@
           </div>
           <div class="col-md-5">
               <div class="image-container">
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-                  <img src="https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+                <%if @gig.gigpicture.attached?%>
+                  <%= image_tag @gig.gigpicture, alt: 'gigpicture' %>
+                <%else%>
+                  <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                <%end%>
+                <br></br>
+                <label>Changer la photo ?</label>
+                  <%= form_tag gig_gigpicture_index_path(@gig), multipart: true do %>
+                    <%= file_field_tag :gigpicture %>
+                    <%= submit_tag "Mettre à jour", :class => "btn btn-primary btn-round" %>
+                <% end %>
               </div>
           </div>
       </div>
