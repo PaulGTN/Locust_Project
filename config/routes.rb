@@ -2,9 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'bars#index'
-  resources :users
+  resources :users do
     resources :avatars, only: [:create]
-  resources :bars, only: [:show, :index]
+  end
+
+  resources :bars, only: [:show, :index] do
+    resources :barpicture1, only: [:create]
+    resources :barpicture2, only: [:create] 
+  end   
+
   resources :gigs, only: [:show, :index]
   resources :attendances, only: [:new, :create, :destroy]
   resources :favorites, only: [:new, :create, :destroy]
@@ -15,6 +21,6 @@ Rails.application.routes.draw do
     resources :gigs
   end
   
->>>>>>> development
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

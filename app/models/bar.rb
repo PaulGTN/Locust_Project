@@ -6,5 +6,7 @@ class Bar < ApplicationRecord
   has_many :tags, through: :bar_tags
   has_many :favorites
   has_many :users, through: :favorites
+  has_one_attached :barpicture1
+  has_one_attached :barpicture2
 
 end
