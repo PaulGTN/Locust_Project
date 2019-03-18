@@ -10,7 +10,7 @@
               <div class="col-md-6">
             		<div class="image-container image-left">
                   <%if @bar.barpicture1.attached?%>
-                    <%= image_tag @bar.barpicture1, alt: 'barpicture1' %>
+                    <%= image_tag @bar.barpicture1, class:"image_tag_show", alt: 'barpicture1' %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
@@ -27,7 +27,7 @@
               	<div class="image-container image-right">
                   <!-- First image on the right side, above the article -->
                   <%if @bar.barpicture2.attached?%>
-                    <%= image_tag @bar.barpicture2, alt: 'barpicture2' %>
+                    <%= image_tag @bar.barpicture2, class:"image_tag_show", alt: 'barpicture2' %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
@@ -45,6 +45,10 @@
 						<br>
 						<h6><%= "Ce bar fait partie de tes favoris" %></h6>
 						<%end%>
+
+						<% if user_signed_in? && current_user.role === 'admin' %>
+						  <%= button_to "Modifier les photos du bar ?", edit_admin_bar_path, method: :get, class:"btn btn-secondary btn-round" %> 
+						<% end %>
 						<br>								
 					</div>
         </div>                           
@@ -98,16 +102,6 @@
 				<%end%>
 			<%end%> 
 		<center><%= button_to  "Retour", root_path, method: :get, class:"btn btn-primary btn-round" %></center>  
-		<label>Changer les photos du bar ?</label>
-		<h6> Photo de gauche : </h6>
-		<%= form_tag bar_barpicture1_index_path(@bar), multipart: true do %>
-		  <%= file_field_tag :barpicture1 %>
-		  <%= submit_tag "mettre à jour" %>
-		<% end %>
-		<h6> Photo de droite : </h6>
-		<%= form_tag bar_barpicture2_index_path(@bar), multipart: true do %>
-		  <%= file_field_tag :barpicture2 %>
-		  <%= submit_tag "mettre à jour" %>
-		<% end %>
+
 	</div>      
 </div>

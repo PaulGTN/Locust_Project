@@ -57,6 +57,10 @@ module Admin
     @bar.destroy
     redirect_to admin_root_path flash[:success] = "Le bar a bien été supprimé"
   end
+
+  def edit
+    @bar = Bar.find(params[:id])
+  end
   
   private
 

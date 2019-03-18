@@ -23,6 +23,10 @@ class GigsController < ApplicationController
 		end
 	end 
 
+	def edit
+	  @gig = Gig.find(params[:id])
+	end
+
 	  
 	def destroy
 		@gig = Gig.find(params[:id])
