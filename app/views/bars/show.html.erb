@@ -47,7 +47,7 @@
 						<%end%>
 
 						<% if user_signed_in? && current_user.role === 'admin' %>
-						  <%= button_to "Modifier les photos du bar ?", edit_admin_bar_path, method: :get, class:"btn btn-secondary btn-round" %> 
+						  <%= button_to "Modifier les photos du bar", edit_admin_bar_path, method: :get, class:"btn btn-info btn-round" %> 
 						<% end %>
 						<br>								
 					</div>
