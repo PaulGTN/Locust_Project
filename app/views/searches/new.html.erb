@@ -1,0 +1,18 @@
+<%= form_for @search do |f| %>
+
+	<div class="form-group">
+		<%= f.select :city, options_for_select(@cities.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+	</div> 
+
+  <div class="form-group">
+		<%= f.select :name, options_for_select(@bars.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+	</div>     
+
+  <div class="form-group">
+		<%= f.select :tag, options_for_select(@tags.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+	</div>             
+
+		<center><div class="form-group col-md-4">
+			<%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %>
+				</div></center>
+			<% end %>

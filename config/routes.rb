@@ -19,9 +19,8 @@ Rails.application.routes.draw do
   resources :bars, only: %i[show index] 
   resources :gigs, only: %i[show index]
   resources :favorites, only: %i[new create destroy]
+  resources :searches
   
- 
-
   scope 'admin', module: 'admin', as: 'admin' do
     root 'bars#index'
     resources :bars
