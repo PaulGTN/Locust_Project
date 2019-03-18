@@ -8,7 +8,7 @@
       <div class="section-story-overview">
           <div class="row">
               <div class="col-md-6">
-            		<div class="photo-container">
+            		<div class="image-container image-left">
                   <%if @bar.barpicture1.attached?%>
                     <%= image_tag @bar.barpicture1, alt: 'barpicture1' %>
                   <%else%>
@@ -24,7 +24,7 @@
                 </div>
               </div>
               <div class="col-md-5">
-              	<div class="photo-container">
+              	<div class="image-container image-right">
                   <!-- First image on the right side, above the article -->
                   <%if @bar.barpicture2.attached?%>
                     <%= image_tag @bar.barpicture2, alt: 'barpicture2' %>
@@ -43,7 +43,7 @@
 						<%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => @bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
 						<% elsif  user_signed_in? && @bar.users.include?(current_user)%>
 						<br>
-						<h6><%= "Ce bar fait parti de tes favoris" %></h6>
+						<h6><%= "Ce bar fait partie de tes favoris" %></h6>
 						<%end%>
 						<br>								
 					</div>
@@ -86,7 +86,11 @@
 								</div>
 						<div class="col-md-5">
 								<div class="card-image">
-										  <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+									<%if gig.gigpicture.attached?%>
+										<%= image_tag gig.gigpicture, alt: 'gigpicture' %>
+									<%else%>
+									<p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+									<%end%>
 								</div>
 								</br>
 						</div>

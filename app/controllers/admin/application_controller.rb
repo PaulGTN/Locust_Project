@@ -3,7 +3,7 @@ module Admin
   class ApplicationController < ::ApplicationController
     before_action :only_admin
 
-    layout 'admin'
+    #layout 'admin'
   
     private
 

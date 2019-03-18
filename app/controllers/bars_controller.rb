@@ -26,9 +26,7 @@ class BarsController < ApplicationController
 
   def show
     @bar = Bar.find(params[:id])
-    @gigs = @bar.gigs
-    #@gigpicture = @gigs.gigpicture MÉTHODE POUR PHOTOS CUSTOM DES CONCERTS ???
-
+    @gig = @bar.gigs
   end
 
   def new
@@ -74,6 +72,6 @@ class BarsController < ApplicationController
   end
 
 	def post_params
-		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
+		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id, :barpicture1, :barpicture2)
 	end
 end
