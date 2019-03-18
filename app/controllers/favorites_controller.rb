@@ -37,12 +37,11 @@ class FavoritesController < ApplicationController
     #  @favorite.destroy
     #  redirect_to root_path flash[:success] = "Ce bar ne fait plus parti de tes favoris"
 
-    @favorite = Favorite.last
-    @favorite_id = @favorite.id
-    @favorite.destroy!
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: @favorite.bar, notice: 'Ce bar  ne fait plus parti de tes favoris' }
-      format.json { render :show, status: :ok, location: @favorit.bar }
+      format.html { redirect_back fallback_location: user_path(current_user), notice: 'Ce bar ne fait plus parti de tes favoris' }
+      format.json { render :show, status: :ok, location: user_path(current_user) }
     end
   end
   
