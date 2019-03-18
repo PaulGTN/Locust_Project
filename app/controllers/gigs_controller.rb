@@ -5,10 +5,11 @@ class GigsController < ApplicationController
 		@attendances = Attendance.all
 	end
 
-  def show
+	def show
+		
 		@gig = Gig.find(params[:id])
 		@current_user = current_user
-		@attendance = Attendance.find(params[:id])
+		#@attendance = Attendance.find(params[:id])
 		#@attendance = Attendance.where("current_user.id => current_user.id && gig_id => @gig.id")
   end
 

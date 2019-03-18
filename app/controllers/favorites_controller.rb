@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
   def create
     #@gig = Gig.find(params[:id])
     @favorite = Favorite.new(post_params)
-    @bar = Favorite.find(params[:bar_id])
+    #@bar = Favorite.find(params[:bar_id])
     #@gig = Gig.find(params[:id])
     #@user = current_user
     #@favorite = favorite.create(gig_id: @gig, user_id: @user)
@@ -21,8 +21,8 @@ class FavoritesController < ApplicationController
     if
 			@favorite.save
       respond_to do |format|
-        format.html { redirect_back fallback_location: @bar, notice: 'Le bar a été ajouté à tes favoris' }
-        format.json { render :show, status: :ok, location: @bar }
+        format.html { redirect_back fallback_location: @favorite.bar, notice: 'Le bar a été ajouté à tes favoris' }
+        format.json { render :show, status: :ok, location: @favorite.bar }
       end
 
 		 else
@@ -41,8 +41,8 @@ class FavoritesController < ApplicationController
     @favorite_id = @favorite.id
     @favorite.destroy!
     respond_to do |format|
-      format.html { redirect_back fallback_location: @bar, notice: 'Ce bar  ne fait plus parti de tes favoris' }
-      format.json { render :show, status: :ok, location: @bar }
+      format.html { redirect_back fallback_location: @favorite.bar, notice: 'Ce bar  ne fait plus parti de tes favoris' }
+      format.json { render :show, status: :ok, location: @favorit.bar }
     end
   end
   
