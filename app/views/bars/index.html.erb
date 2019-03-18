@@ -122,10 +122,11 @@
     <div class="card-body">
     <h2 class="card-title"><%= bar.name %></h2>
       <p class="card-description">
-      <%= bar.city %></br>
-      Prix : <%= bar.price.price_range %></br>
+      <%= bar.city %><br>
+      Prix : <%= bar.price.price_range %><br>
       Style : <%= bar.tags.name %>
-    </p></br>
+    </p>
+    <br>
     <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-neutral btn-round" %>
     <%= link_to  "Ajouter aux favoris",  "#" , class: "btn-neutral btn-round" %>
     </div>

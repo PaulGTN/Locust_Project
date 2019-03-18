@@ -14,10 +14,11 @@ Rails.application.routes.draw do
 
     root to: "home#show"
   root 'bars#index' # page d'acceuil
-  resources :bar
-  resources :bars
+  # resources :bar
   resources :users
   
+  resources :bars
+
   
 end
 
