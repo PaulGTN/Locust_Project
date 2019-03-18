@@ -1,9 +1,15 @@
 class GigsController < ApplicationController
 	before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
-  def show
+	def index
+		@attendances = Attendance.all
+	end
+
+	def show
+		
 		@gig = Gig.find(params[:id])
 		@current_user = current_user
+		#@attendance = Attendance.find(params[:id])
 		#@attendance = Attendance.where("current_user.id => current_user.id && gig_id => @gig.id")
   end
 
@@ -30,7 +36,7 @@ class GigsController < ApplicationController
 
 	  def authenticate_user
 	    unless current_user
-	      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+	      flash[:error] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
 	      redirect_to new_session_path
 	    end
 		end
@@ -38,7 +44,7 @@ class GigsController < ApplicationController
 		def is_admin
 			@gig = Gig.find(params[:id])
 			unless user_signed_in? && current.user.role === 'admin'
-				flash[:danger] = "Vous ne pouvez pas accéder à cette page"
+				flash[:error] = "Vous ne pouvez pas accéder à cette page"
 				redirect_to root_path
 			end
 		end

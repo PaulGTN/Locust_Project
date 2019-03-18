@@ -25,7 +25,7 @@
               <% end %>
 
             <div class="form-group col-md-6 ml-auto mr-auto">
-              <label> Nouveau mot de passe <em>(Votre mot de passe doit comporter au moins <%= @minimum_password_length %> caractères)</em></label><br />
+              <label> Nouveau mot de passe <em>(doit comporter au moins <%= @minimum_password_length %> caractères)</em></label><br />
               <%= useredit.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Nouveau mot de passe...' %>
               <% if @minimum_password_length %>
               <% end %>
@@ -51,6 +51,6 @@
 
             <%= link_to "Retour", :back %>
             <br></br>
+      </div>
     </div>
 </div>
-

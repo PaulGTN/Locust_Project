@@ -5,7 +5,8 @@ class BarsController < ApplicationController
   def index
     @tags = Tag.all
     @prices = Price.all
-    @bars = Bar.last(10)
+    @favorite = Favorite.all
+    @bars = Bar.search(params[:city])
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?
     #Bar.where(["city LIKE ?", city]) if city.present?
@@ -22,11 +23,17 @@ class BarsController < ApplicationController
     #else
     #  Bar.last(10)
     #end
+    #@bars = if params([:name])
+    #    Bar.where('city Like ?', "%#{params[:city]}%")
+    #else
+    #  Bar.last(10)
+    #end
   end
 
   def show
     @bar = Bar.find(params[:id])
-    @gig = @bar.gigs
+    @gigs = @bar.gigs
+    #@favorite = Favorite.find(params[:id])
   end
 
   def new
@@ -45,16 +52,12 @@ class BarsController < ApplicationController
       flash[:success] = "Le bar a bien été créé"
 		else
       redirect_to :new
-      flash[:danger] = "Tous les champs ne sont pas remplis"
+      flash[:error] = "Tous les champs ne sont pas remplis"
       puts @bar.errors.full_messages
 		end
 	end 
 
   private
-
-  def bar_params
-    params.require(:bar).permit(:city, :term)
-  end
 
   def authenticate_user
     unless current_user
@@ -73,5 +76,9 @@ class BarsController < ApplicationController
 
 	def post_params
 		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id, :barpicture1, :barpicture2)
-	end
+  end
+  
+  def bar_params
+    params.require(:bar).permit(:city, :price, :tags)
+  end
 end

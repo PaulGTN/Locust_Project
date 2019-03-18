@@ -9,4 +9,14 @@ class Bar < ApplicationRecord
   has_one_attached :barpicture1
   has_one_attached :barpicture2
 
+  private
+
+  def self.search(city)
+    if city
+      where('city LIKE ?', "%#{city}%").order('id DESC')
+    else 
+      all
+    end
+  end
+
 end
