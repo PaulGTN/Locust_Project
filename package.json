@@ -1,5 +1,7 @@
 {
   "name": "Locust_Project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "sweetalert2": "^8.5.0"
+  }
 }

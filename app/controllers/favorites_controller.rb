@@ -21,13 +21,13 @@ class FavoritesController < ApplicationController
     if
 			@favorite.save
       respond_to do |format|
-        format.html { redirect_back fallback_location: @favorite.bar, notice: 'Le bar a été ajouté à tes favoris' }
+        format.html { redirect_back fallback_location: @favorite.bar, successp: 'Le bar a été ajouté à tes favoris' }
         format.json { render :show, status: :ok, location: @favorite.bar }
       end
 
 		 else
         redirect_to root_path
-        flash[:danger] = "Oups !"
+        flash[:error] = "Oups, quelque chose ne s'est pas passé comme prévu !"
         puts @favorite.errors.full_messages
 	 	 end
   end 
@@ -40,7 +40,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: user_path(current_user), notice: 'Ce bar ne fait plus parti de tes favoris' }
+      format.html { redirect_back fallback_location: user_path(current_user), success: 'Ce bar ne fait plus parti de tes favoris' }
       format.json { render :show, status: :ok, location: user_path(current_user) }
     end
   end

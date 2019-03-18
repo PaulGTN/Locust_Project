@@ -44,7 +44,8 @@ module Admin
 		@bar = Bar.new(post_params)
 		
 
-		if @bar.save
+    if @bar.save
+      flash[:success] = "Le bar a bien été créé"
 			redirect_to @bar
 		else
       redirect_to admin_root_path
