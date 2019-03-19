@@ -59,13 +59,13 @@
   							<br>
   							<br>
                 <%if @gig.gigpicture.attached?%>
-                  <%= image_tag @gig.gigpicture, class:"image_tag_edit", alt: 'gigpicture' %>
+                  <%= image_tag @gig.gigpicture %>
                 <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                 <%end%>
                 <br></br>
                 <% if user_signed_in? && current_user.role === 'admin' %>
-                  <%= button_to "Modifier la photo du concert ?", edit_admin_gig_path, method: :get, class:"btn btn-secondary btn-round" %> 
+                  <%= button_to "Modifier la photo du concert", edit_admin_gig_path, method: :get, class:"btn btn-secondary btn-round" %> 
                 <% end %>
               </div>
           </div>

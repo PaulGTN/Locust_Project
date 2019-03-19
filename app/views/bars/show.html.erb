@@ -80,7 +80,7 @@
 								<%= button_to  "Détails", gig_path(gig), method: :get, class:"btn btn-secondary btn-round" %>
 		
 								<% if user_signed_in? && gig.users.exclude?(current_user) %>
-								<%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-success btn-round"  %></center>
+								<%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
 								<% elsif  user_signed_in? && gig.users.include?(current_user)%>
 								<br>
 								<h6><%= "Tu participes déjà à ce concert" %></h6>
