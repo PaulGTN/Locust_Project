@@ -8,29 +8,28 @@
             <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/2000885/pexels-photo-2000885.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
             </div>
             <div class="content-center">
-                <h3 class="title">Mon Profil</h3>
-                <div class="photo-container">
-                  <%if @user.avatar.attached?%>
-                    <%= image_tag @user.avatar, alt: 'avatar' %>
-                  <%else%>
-                    <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-                  <%end%>
-                </div>
-                <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
-                <p class="category"><%= @user.email %></p>
-                <div class="content">
-                    <div class="social-description">
-                        <h2><%= @user.favorites.count %></h2>
-                        <p>Favoris</p>
-                    </div>
-                    <div class="social-description">
-                        <h2><%= @user.attendances.count %></h2>
-                        <p>Concerts</p>
-                    </div>
-                </div>
-                        <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
-                    </div>
-                </div>
+              <div class="photo-container">
+                <%if @user.avatar.attached?%>
+                  <%= image_tag @user.avatar, alt: 'avatar' %>
+                <%else%>
+                  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+                <%end%>
+              </div>
+              <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
+              <p class="category"><%= @user.email %></p>
+              <div class="content">
+                  <div class="social-description">
+                      <h2><%= @user.favorites.count %></h2>
+                      <p>Favoris</p>
+                  </div>
+                  <div class="social-description">
+                      <h2><%= @user.attendances.count %></h2>
+                      <p>Concerts</p>
+                  </div>
+              </div>
+                      <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
+                  </div>
+              </div>
             </div>
         </div>
     					<div class="blogs-3">
@@ -49,7 +48,12 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="card-image">
-                                            <img class="img img-raised rounded" src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                                     
+                                            <%if fav.@bar.barpicture1.attached?%>
+                                              <%= image_tag @bar.barpicture1, class:"image_tag_show", alt: 'barpicture1' %>
+                                            <%else%>
+                                              <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+                                            <%end%>
                                         </div>
                                     </div>
 																		<div class="col-md-4">
@@ -99,7 +103,7 @@
                                     </div>
 																		<div class="col-md-4">
                                         <div class="card-image">
-                                            <img class="img img-raised rounded" src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +128,11 @@
                                     </div>
 																		<div class="col-md-4">
                                         <div class="card-image">
-                                            <img class="img img-raised rounded" src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                                          <%if gig.gigpicture.attached?%>
+                                            <%= image_tag gig.gigpicture, alt: 'gigpicture' %>
+                                          <%else%>
+                                          <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                                          <%end%>
                                         </div>
                                     </div>
                                 </div>
