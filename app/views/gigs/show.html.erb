@@ -65,18 +65,18 @@
                 <%end%>
                 <br></br>
                 <% if user_signed_in? && current_user.role === 'admin' %>
-                  <%= button_to "Modifier la photo du concert ?", edit_admin_gig_path, method: :get, class:"btn btn-info btn-round" %> 
+                  <%= button_to "Modifier la photo du concert ?", edit_admin_gig_path, method: :get, class:"btn btn-secondary btn-round" %> 
                 <% end %>
               </div>
           </div>
       </div>
       <center>
       <% if user_signed_in? && @gig.users.exclude?(current_user) %>
-      <%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => @gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-success btn-round" %>
+      <%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => @gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %>
       <% elsif  user_signed_in? && @gig.users.include?(current_user)%>
 			<h6> <%= "Tu participes déjà à ce concert" %></h6>
 			<%end%></center>
-			<center><%= button_to  "Retour", bar_path(@gig.bar), method: :get, class:"btn btn-primary btn-round" %></center>
+			<center><%= button_to  "Retour", bar_path(@gig.bar), method: :get, class:"btn btn-secondary btn-round" %></center>
   </div>
 </div>
 
