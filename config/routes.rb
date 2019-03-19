@@ -15,9 +15,14 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :attendances, only: %i[create new destroy]
-  resources :bars, only: %i[show index] 
-  resources :gigs, only: %i[show index]
+  resources :bars, only: %i[show index search] do
+    collection do 
+      get :search
+    end 
+  end 
+  resources :gigs, only: %i[show index search] 
   resources :favorites, only: %i[new create destroy]
   resources :searches
   

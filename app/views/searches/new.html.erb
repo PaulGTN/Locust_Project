@@ -5,11 +5,11 @@
 	</div> 
 
   <div class="form-group">
-		<%= f.select :name, options_for_select(@bars.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+		<%= f.select :tags, options_for_select(@tags.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
 	</div>     
 
   <div class="form-group">
-		<%= f.select :tag, options_for_select(@tags.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+		<%= f.select :price, options_for_select(@price.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
 	</div>             
 
 		<center><div class="form-group col-md-4">

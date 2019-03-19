@@ -2,9 +2,9 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @bars = Bar.uniq.pluck(:name)
-    @cities = Bar.uniq.pluck(:city)
-    @tags = Tag.uniq.pluck(:name)
+    @price = Bar.pluck(:price_id)
+    @cities = Bar.pluck(:city)
+    @tags = Tag.pluck(:name)
   end
 
   def create
@@ -19,6 +19,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:name, :tag, :city)
+    params.require(:search).permit(:price, :tags, :city)
+  end
 
 end

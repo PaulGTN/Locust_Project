@@ -71,15 +71,15 @@
 														
 														    <div class="col-md-6 ml-auto mr-auto">
                                                             <%= button_to  "Recherche", new_search_path %>
-<%= form_for(search_bars_path, :method => 'get') do |f| %>
+<%= form_for(search_bars_path, :method => 'get', :id => 'bars_search') do |f| %>
 <div class="form-group">
-		<%= f.select :search, options_for_select(@cities.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+		<%= f.select :city, options_for_select(@cities.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
 	</div>
     <div class="form-group">
-		<%= f.select :search, options_for_select(@prices.insert(0, "Choisis ton style")), {}, {class: "selectpicker"} %> 
+		<%= f.select :price_range, options_for_select(@prices.insert(0, "Choisis ton style")), {}, {class: "selectpicker"} %> 
 	</div>  
     <div class="form-group">
-		<%= f.select :search, options_for_select(@tags.insert(0, "Choisis ton budget")), {}, {class: "selectpicker"} %> 
+		<%= f.select :tags, options_for_select(@tags.insert(0, "Choisis ton budget")), {}, {class: "selectpicker"} %> 
 	</div>   
 
 		<center><div class="form-group col-md-4">

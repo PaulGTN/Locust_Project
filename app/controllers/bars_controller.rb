@@ -3,10 +3,11 @@ class BarsController < ApplicationController
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
-    @tags = Tag.all
-    @prices = Price.all
+    @tags = Tag.pluck(:name)
+    @prices = Price.pluck(:price_range)
     @favorite = Favorite.all
     @bars = Bar.search(params[:city])
+    @cities = Bar.pluck(:city)
     #@bars = Bar.all #if params[:tag]
     #Bar.where(["tag LIKE ?", tag]) if tag.present?
     #Bar.where(["city LIKE ?", city]) if city.present?
@@ -34,8 +35,15 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
     @gigs = @bar.gigs
     #@favorite = Favorite.find(params[:id])
-
   end
+
+  def search
+    if params[:search].blank
+      @bars = Bar.all
+    else 
+      @bars = Bar.search(params)
+    end
+  end 
 
   def new
     @bar = Bar.new
@@ -50,7 +58,7 @@ class BarsController < ApplicationController
 
 		if @bar.save
       redirect_to @bar
-      flash[:success] = "Le bar a bien été crée"
+      flash[:success] = "Le bar a bien été crée poe"
 		else
       redirect_to :new
       flash[:error] = "Tous les champs ne sont pas remplis"
@@ -79,7 +87,8 @@ class BarsController < ApplicationController
 		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
   end
   
-  def bar_params
-    params.require(:bar).permit(:city, :price, :tags)
+  def search_params
+    params.permit(:city, :tags, :price_range)
   end
+
 end

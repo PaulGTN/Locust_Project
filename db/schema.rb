@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_210029) do
   end
 
   create_table "searches", force: :cascade do |t|
-    t.string "name"
+    t.string "price"
     t.string "city"
-    t.string "tag"
+    t.string "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
