@@ -68,4 +68,3 @@ gem 'devise'
 gem 'letter_opener'
 gem "aws-sdk-s3", require: false
 gem 'ransack'
-gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'

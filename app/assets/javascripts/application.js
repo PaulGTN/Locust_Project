@@ -14,7 +14,6 @@
 //= require activestorage
 //= require turbolinks
 
-//= require sweetalert2
 //= require core/jquery.3.2.1.min
 //= require core/popper.min
 //= require core/bootstrap.min
