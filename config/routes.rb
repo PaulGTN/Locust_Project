@@ -32,5 +32,7 @@ Rails.application.routes.draw do
     resources :gigs
   end
   
+  get '/bar_results', to:'bars#bar_results'
+  post '/bar_search', to:'bars#bar_search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

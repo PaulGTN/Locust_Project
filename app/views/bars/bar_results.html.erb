@@ -1,0 +1,10 @@
+<h1> voici la liste des bars correspondant à ta recherche</h1>
+
+<% i = 0 %>
+<% @bars_search_by_my_user.size.times do %>
+	<%= @bars_search_by_my_user[i].fetch('name') %> </br>
+	<%= @bars_search_by_my_user[i].fetch('adress') %></br>
+	<%= @bars_search_by_my_user[i].fetch('city') %></br>
+	<%= @bars_search_by_my_user[i].fetch('description') %>
+	<% i += 1 %>
+<% end %>

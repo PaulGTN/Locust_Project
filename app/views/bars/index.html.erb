@@ -69,24 +69,18 @@
                         <div class="col-md-12">
                             <div class="row">
 														
-														    <div class="col-md-6 ml-auto mr-auto">
+<div class="col-md-6 ml-auto mr-auto">
                                                             <%= button_to  "Recherche", new_search_path %>
-<%= form_for(search_bars_path, :method => 'get') do |f| %>
+<%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
 <div class="form-group">
-		<%= f.select :search, options_for_select(@cities.insert(0, "Choisis ta ville")), {}, {class: "selectpicker"} %> 
+		 <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
 	</div>
-    <div class="form-group">
-		<%= f.select :search, options_for_select(@prices.insert(0, "Choisis ton style")), {}, {class: "selectpicker"} %> 
-	</div>  
-    <div class="form-group">
-		<%= f.select :search, options_for_select(@tags.insert(0, "Choisis ton budget")), {}, {class: "selectpicker"} %> 
-	</div>   
 
 		<center><div class="form-group col-md-4">
 			<%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %>
 				</div></center>
-			<% end %>
-                                    </div>
+<% end %>
+</div>
 																		</div>
 																		</div>
 																		</div>

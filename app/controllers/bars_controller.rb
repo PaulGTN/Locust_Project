@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
+  after_action :set_up_a_city, only: [:bar_search]
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
@@ -29,12 +30,22 @@ class BarsController < ApplicationController
     #else
     #  Bar.last(10)
     #end
+    @bars_search_by_my_user = Bar.new
   end
 
   def show
     @bar = Bar.find(params[:id])
     @gigs = @bar.gigs
     #@favorite = Favorite.find(params[:id])
+  end
+
+  def bar_results
+    @bars_search_by_my_user = Bar.where(city: set_up_a_city).as_json
+    @city = set_up_a_city
+  end
+
+  def bar_search
+    redirect_to bar_results_path
   end
 
   def search
@@ -89,6 +100,12 @@ class BarsController < ApplicationController
   
   def search_params
     params.permit(:city, :tags, :price_range)
+  end
+
+  def set_up_a_city
+    params[:city] ||= session[:city]
+    session[:city] = params[:city]
+    return session[:city].to_s
   end
 
 end
