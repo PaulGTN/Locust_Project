@@ -2,6 +2,5 @@
   "name": "Locust_Project",
   "private": true,
   "dependencies": {
-    "sweetalert2": "^8.5.0"
   }
 }
