@@ -1,0 +1,27 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+            <div class="page-header-image" data-parallax="true" style="background-image: url('https://wallpapertag.com/wallpaper/full/3/c/3/688665-cute-kitty-backgrounds-1920x1200-ipad-retina.jpg') ;">
+            </div>
+            <div class="content-center">
+                <h3 class="title">Mon Profil</h3>
+                <div class="content">
+                    <div class="social-description">
+                        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+                        <p><%= @user.email %></p>
+                        <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-primary" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+          
+        </div>
+    </div>
+</body>
+
+</html>

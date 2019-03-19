@@ -1,0 +1,12 @@
+<% if @search.search_bars.empty? %>
+<p>Pas de résultats</p>
+<% else %>
+
+<% @search.search_bars.each do |c| %>
+<div class="container">
+<p>Ville : <%= c.city %></p>
+<p>Prix : <%= c.price.price_range %></p>
+<p>Styles : <%= c.tags.name %></p>
+</div>
+<%end%>
+<%end%>
