@@ -1,0 +1,82 @@
+<div class="projects-3" data-background-color="black">
+  <div class="col-md-8 mr-auto ml-auto text-center">
+      <h2 class="title"><%= @gig.name%></h2>
+      <h4>Description</h4>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6 px-0">
+              <div class="col-sm-12">
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="far fa-map"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Où</h5>
+                          <p class="description"><%= @gig.bar.name%><br>
+													<%= @gig.bar.adress%><br>
+													<%= @gig.bar.city%>
+													</p>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="far fa-clock"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Quand</h5>
+                          <p class="description"><%= @gig.date%></p>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="fas fa-music"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Quoi</h5>
+                          <p class="description"><% @gig.tags.each do |tag|%></p>
+                          <%= tag.name%><br>
+                          <%end%>
+                      </div>
+                  </div>
+                  <div class="info info-horizontal">
+                      <div class="icon">
+                          <i class="fas fa-users"></i>
+                      </div>
+                      <div class="description">
+                          <h5 class="info-title">Nombre de participant(s)</h5>
+                          <p class="description"><%= @gig.users.count%></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-5">
+              <div class="image-container">
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+  							<br>
+                <%if @gig.gigpicture.attached?%>
+                  <%= image_tag @gig.gigpicture %>
+                <%else%>
+                  <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                <%end%>
+                <br></br>
+                <% if user_signed_in? && current_user.role === 'admin' %>
+                  <%= button_to "Modifier la photo du concert", edit_admin_gig_path, method: :get, class:"btn btn-secondary btn-round" %> 
+                <% end %>
+              </div>
+          </div>
+      </div>
+      <center>
+      <% if user_signed_in? && @gig.users.exclude?(current_user) %>
+      <%= button_to "Participer au concert", {:controller => "attendances", :action => "create", :gig_id => @gig.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %>
+      <% elsif  user_signed_in? && @gig.users.include?(current_user)%>
+			<h6> <%= "Tu participes déjà à ce concert" %></h6>
+			<%end%></center>
+			<center><%= button_to  "Retour", bar_path(@gig.bar), method: :get, class:"btn btn-secondary btn-round" %></center>
+  </div>
+</div>
+

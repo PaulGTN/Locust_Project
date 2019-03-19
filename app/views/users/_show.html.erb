@@ -1,0 +1,143 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body class="profile-page">
+    <div class="wrapper">
+        <div class="page-header page-header-small" filter-color="black">
+            <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/2000885/pexels-photo-2000885.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') ;">
+            </div>
+            <div class="content-center">
+              <div class="photo-container">
+                <%if @user.avatar.attached?%>
+                  <%= image_tag @user.avatar, alt: 'avatar' %>
+                <%else%>
+                  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+                <%end%>
+              </div>
+              <h3 class="title"><%= @user.first_name %> <%= @user.last_name %></h3>
+              <p class="category"><%= @user.email %></p>
+              <div class="content">
+                <div class="social-description">
+                    <h2><%= @user.favorites.count %></h2>
+                    <p>Favoris</p>
+                </div>
+                <div class="social-description">
+                    <h2><%= @user.attendances.count %></h2>
+                    <p>Concerts</p>
+                </div>
+              </div>
+              <%= link_to "Éditer mon profil", edit_user_registration_path, method: :get, :class => "btn btn-round btn-primary" %>
+            </div>
+        </div>
+    					<div class="blogs-3">
+                <div class="container">
+                  <center><h3>Changer d'avatar ?</h3>
+                    <%= form_tag user_avatars_path(@user), multipart: true do %>
+                      <%= file_field_tag :avatar %> <br></br>
+                      <%= submit_tag "Mettre à jour", :class => "btn btn-round btn-primary" %>
+                    <% end %></center>
+                    <div class="row">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <h2 class="title">Bar(s) Favori(s)</h2>
+                            <br>
+														<% @user.favorites.each do |fav|%>
+                            <div class="card card-plain card-blog">
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <div class="card-image">
+                                          <%if fav.bar.barpicture1.attached? %>
+                                            <%= image_tag fav.bar.barpicture1, class:"image_tag_favatt", alt: 'barpicture1' %>
+                                          <%else%>
+                                            <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+                                        <% end %>
+                                      </div>
+                                  </div>
+																	<div class="col-md-4">
+																	</div>
+                                  <div class="col-md-4">
+                                      <h3 class="card-title">
+                                          <p><%= fav.bar.name %></p>
+                                      </h3>
+                                      <h5 class="card-description">
+																				<%= fav.bar.adress %> / <%= fav.bar.city %>
+                                      </h5>
+																			<h5 class="card-description">
+																				<% fav.bar.tags.each do |tag|%>
+																				<%= tag.name %> 
+																				<%end%>
+                                      </h5>
+                                      <div class="author">
+																				<%= button_to "Retirer de mes favoris", favorite_path(fav), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de vouloir retirer ce bar de la liste des tes favoris ?"} %>
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+														<%end%>
+                        </div>
+                    </div>
+                </div>
+								<div class="blogs-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <h2 class="title">Concert(s) à Venir</h2>
+                            <br>
+														<% @user.attendances.each do |att|%>
+														<% if att.gig.date > Time.now %>
+                            <div class="card card-plain card-blog">
+                                <div class="row">                                   
+                                    <div class="col-md-8">
+                                        <h3 class="card-title">
+                                            <p><%= att.gig.name %></p>
+                                        </h3>
+                                        <h5 class="card-description">
+																					Lieu : <%= att.gig.bar.name %> <br></br> Date : <%= att.gig.date %>
+                                        </h5>
+                                        <div class="author">
+																					<%= button_to "Ne plus participer", attendance_path(att), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de ne plus vouloir participer à ce concert?"} %>
+                                        </div>
+                                    </div>
+																		<div class="col-md-4">
+                                        <div class="card-image">
+                                            <%if att.gig.gigpicture.attached? %>
+                                              <%= image_tag att.gig.gigpicture, class:"image_tag_favatt", alt: 'gigpicture' %>
+                                            <%else%>
+                                              <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                                          <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+														<%end%>
+														<%end%>
+                        </div>
+												<div class="col-md-10 ml-auto mr-auto">
+                            <h2 class="title">Concert(s) Passé(s)</h2>
+                            <br>
+														<% @user.attendances.each do |att|%>
+														<% if att.gig.date < Time.now %>
+                            <div class="card card-plain card-blog">
+                                <div class="row">                                   
+                                    <div class="col-md-8">
+                                        <h3 class="card-title">
+                                            <p><%= att.gig.name %></p>
+                                        </h3>
+                                        <h5 class="card-description">
+																					Lieu : <%= att.gig.bar.name %> / Date : <%= att.gig.date %>
+                                        </h5>                                    
+                                    </div>
+																		<div class="col-md-4">
+                                        <div class="card-image">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+														<%end%>
+														<%end%>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</body>
