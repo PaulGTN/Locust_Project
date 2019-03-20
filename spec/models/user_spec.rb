@@ -116,21 +116,21 @@ RSpec.describe User, type: :model do
 
     describe "gigs" do
            it "should have_many gigs" do
-            gig = gig.create(user: @user)
+            gig = Gig.create(user: @user)
             expect(@user.gigs.include?(gig)).to eq(false)
            end
     end
 
     describe "favorites" do
            it "should have_many favorites" do
-            favorite = favorite.create(user: @user)
+            favorite = Favorite.create(user: @user)
             expect(@user.favorites.include?(favorite)).to eq(false)
            end
     end
 
     describe "bars" do
            it "should have_many bars" do
-            bar = bar.create(user: @user)
+            bar = Bar_tags.create(user: @user)
             expect(@user.bars.include?(bar)).to eq(false)
            end
     end
