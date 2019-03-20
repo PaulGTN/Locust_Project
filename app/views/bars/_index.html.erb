@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="style.scss">
+
 </head>
 
 <body class="ecommerce-page">
@@ -85,6 +85,52 @@
                 </div>
               </div>
             </div>
+
+
+                      <!--     *********    BLOG CARDS     *********      -->
+                      <div class="cards">
+                        <div class="container">
+                            <div class="title">
+                                <h3 class="title">Cards</h3>
+                                <h3>
+                                    <small>Blog Cards</small>
+                                </h3>
+                            </div>
+                            <div class ="row">
+                              <div class="col-md-6 col-lg-4 d-flex">
+                                  <div class="card card-blog">
+                                      <div class="card-image">
+                                          <a href="#pablo">
+                                              <img class="img rounded" src="https://www.paris-normandie.fr/binrepository/1018x1274/0c0/1018d511/none/10904/YBIW/image_content_24955090_20190304152240.jpg">
+                                          </a>
+                                      </div>
+                                      <div class="card-body">
+                                          <h6 class="category text-primary">Features</h6>
+                                          <h5 class="card-title">
+                                              <a href="#nuk">That’s One Way To Ditch Your Passenger</a>
+                                          </h5>
+                                          <p class="card-description">
+                                              As near as we can tell, this guy must have thought he was going over backwards and tapped the rear break to bring the nose down...
+                                          </p>
+                                          <div class="card-footer">
+                                              <div class="author">
+                                                  <img src="assets/img/julie.jpg" alt="..." class="avatar img-raised">
+                                                  <span>Mike John</span>
+                                              </div>
+                                              <div class="stats stats-right">
+                                                  <i class="now-ui-icons tech_watch-time"></i> 5 min read
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+
+
+
+
           <div class="main">
             <div class="section">
                 <div class="container">
@@ -92,7 +138,7 @@
                         <center><h1>LES NOUVEAUX BARS</h1></center>
                             <div class="row">
                       <%@bars.each do |bar|%> 
-                    <div class="col-md-6 ml-auto">
+                    <div class="col-md-6 ml-auto d-flex">
                       <div class="card card-background card-background-product card-raised" style="background-image: url('https://images.pexels.com/photos/1185434/pexels-photo-1185434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
                         <div class="card-body">
                         <h2 class="card-title"><%= bar.name %></h2>
@@ -123,29 +169,7 @@
             </div>
           </div>
         <!-- end-main-raised -->
-    </div>
+
 </body>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var slider2 = document.getElementById('sliderRefine');
-        noUiSlider.create(slider2, {
-            start: [42, 880],
-            connect: true,
-            range: {
-                'min': [30],
-                'max': [900]
-            }
-        });
-        var limitFieldMin = document.getElementById('price-left');
-        var limitFieldMax = document.getElementById('price-right');
-        slider2.noUiSlider.on('update', function(values, handle) {
-            if (handle) {
-                limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
-            } else {
-                limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
-            }
-        });
-    });
-</script>
 
 </html>
