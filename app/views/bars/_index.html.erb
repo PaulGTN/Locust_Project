@@ -68,7 +68,7 @@
               <div class="col-md-12">
                 <div class="team-2" style="background-image :url('https://images.pexels.com/photos/18932/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
 
-                <div class="row">	
+                <div class="row">   
                   <div class="col-md-6 ml-auto mr-auto">
                     <center><h2>Trouve ta ville</h2></center>                                          
                       <%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
@@ -92,7 +92,7 @@
                         <center><h1>LES NOUVEAUX BARS</h1></center>
                             <div class="row">
                       <%@bars.each do |bar|%> 
-                    <div class="col-md-6 ml-auto">
+                    <div class="col-md-4 ml-auto">
                       <div class="card card-background card-background-product card-raised" style="background-image: url('https://images.pexels.com/photos/1185434/pexels-photo-1185434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
                         <div class="card-body">
                         <h2 class="card-title"><%= bar.name %></h2>
@@ -111,7 +111,7 @@
                             <br>
                             <h6><%= "Ce bar fait parti de tes favoris" %></h6>
                             <%end%>
-                            <br>								
+                            <br>                                
                           </div>
                         </div>
                       </div>
@@ -127,9 +127,7 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
-
         var slider2 = document.getElementById('sliderRefine');
-
         noUiSlider.create(slider2, {
             start: [42, 880],
             connect: true,
@@ -138,10 +136,8 @@
                 'max': [900]
             }
         });
-
         var limitFieldMin = document.getElementById('price-left');
         var limitFieldMax = document.getElementById('price-right');
-
         slider2.noUiSlider.on('update', function(values, handle) {
             if (handle) {
                 limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
