@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
+  after_action :set_up_a_city, only: [:bar_search]
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
