@@ -33,4 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/bar_results', to:'bars#bar_results'
+  post '/bar_search', to:'bars#bar_search'
+
 end

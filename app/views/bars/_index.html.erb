@@ -66,37 +66,20 @@
           <div class="section">
             <div class="container">
               <div class="col-md-12">
+                <div class="team-2" style="background-image :url('https://images.pexels.com/photos/18932/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+
                 <div class="row">	
-									<div class="col-md-6 ml-auto mr-auto">
-                    <form>
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <center><h2>Trouve ta ville</h2></center>                                          
+                      <%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
                       <div class="form-group">
-                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ton style" tabindex="-98">
-                            <option class="bs-title-option" value="Choisis ton style">Choisis ton style</option>
-                            <option disabled="" selected="">Choisis ton style</option>
-                            <%@tags.each do |tag|%>
-                            <option><%= tag.name %> </option>
-                            <%end%>       
-                          </select> 
-                    </select></div>
-                      <div class="form-group">
-                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ta ville" tabindex="-98">
-                            <option class="bs-title-option" value="Choisis ta ville">Choisis ta ville</option>
-                            <option disabled="" selected="">Choisis ta ville</option>
-                      <%@bars.each do |bar|%>
-                      <option><%= bar.city %> </option>
-                      <%end%>
-                    </select></div>
-                        <div class="form-group">
-                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round" title="Choisis ton prix (optionnel)" tabindex="-98">
-                            <option class="bs-title-option" value="">Choisis ton prix (optionnel)/option>
-                            <option disabled="" selected="">Choisis ton prix (optionnel)</option>
-                      <%@prices.each do |price|%>
-                      <option><%= price.price_range %> </option>
-                      <%end%>
-                    </select></div>
-                    <center>
-                      <button type="submit", href="#" class="btn btn-primary btn-round justify-content-end">Let The Music Play !</button></center>
-                    </form>
+                          <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
+                        </div>
+                          <center><div class="form-group col-md-4">
+                            <%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %></center>
+                        </div>
+                      <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -116,7 +99,7 @@
                           <p class="card-description">
                           <%= bar.city %></br>
                           Prix : <%= bar.price.price_range %></br>
-                          Style : <% bar.tags.each do |bartag| %> 
+                          Genre(s) : <% bar.tags.each do |bartag| %> 
                           <%= bartag.name %><br>
                           <%end%>
                         </p></br>

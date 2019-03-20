@@ -1,0 +1,32 @@
+<div class="page-header page-header-small" filter-color="black">
+  <div class="page-header-image" data-parallax="true" style="background-image: url('https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') ;">
+	</div>
+</div>
+<div id="blogs-4" class="blogs-4">
+	<div class="container">
+			<div class="row">
+					<div class="col-md-8 ml-auto mr-auto">
+							<h2 class="title">Bar(s) correpondant à ta recherche</h2>
+							<br>
+							<% i = 0 %>
+							<% @bars_search_by_my_user.size.times do %>
+							<div class="card card-plain card-blog">
+									<h6 class="category text-primary">Bar</h6>
+									<h3 class="card-title">
+											<%= @bars_search_by_my_user[i].fetch('name') %>
+									</h3>
+									<h6 class="category text-primary">Adresse</h6>
+										<%= @bars_search_by_my_user[i].fetch('adress') %><br><br>
+									<h6 class="category text-primary">Ville</h6>
+										<%= @bars_search_by_my_user[i].fetch('zip_code') %>
+										<%= @bars_search_by_my_user[i].fetch('city') %><br>
+									<h5 class="card-description">
+										<%= @bars_search_by_my_user[i].fetch('description') %></h5>
+									<%= link_to  "Voir le bar", bar_path(@bars_search_by_my_user[i].fetch('id')), class: "btn btn-primary btn-round" %>
+							</div>
+							<% i += 1 %>
+							<%end%>
+					</div>
+			</div>
+	</div>
+<div>
