@@ -1,34 +1,29 @@
 class BarsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
+  after_action :set_up_a_city, only: [:bar_search]
   #before_action :authenticate_user, only: [:index, :show]
 
   def index
     @tags = Tag.all
     @prices = Price.all
+    @favorite = Favorite.all
     @bars = Bar.last(10)
-    #@bars = Bar.all #if params[:tag]
-    #Bar.where(["tag LIKE ?", tag]) if tag.present?
-    #Bar.where(["city LIKE ?", city]) if city.present?
-    #Bar.where(["price LIKE ?", price]) if price.present?
-    #else
-    #@i = 1
-    #@tags_orders = @tags.sort
-    #@styles = Bar.find_by(params[:id])
-    #@bar_tags = @styles.bar_tags
-    #Bar.last(10)
-    #end 
-    #@bars = if params[:city]
-    #  Bar.where('city Like ?', "%#{params[:city]}%")
-    #else
-    #  Bar.last(10)
-    #end
+    @cities = Bar.pluck(:city)
+    @bars_search_by_my_user = Bar.new
   end
 
   def show
     @bar = Bar.find(params[:id])
     @gigs = @bar.gigs
-    @favorite = Favorite.find(params[:id])
+  end
 
+  def bar_search 
+    redirect_to bar_results_path
+  end
+
+  def bar_results
+    @bars_search_by_my_user = Bar.where(city: set_up_a_city).as_json
+    @city = set_up_a_city
   end
 
   def new
@@ -41,22 +36,17 @@ class BarsController < ApplicationController
   def create
 		@bar = Bar.new(post_params)
 		
-
 		if @bar.save
       redirect_to @bar
-      flash[:success] = "Le bar a bien été crée"
+      flash[:success] = "Le bar a bien été créé"
 		else
       redirect_to :new
-      flash[:danger] = "Tous les champs ne sont pas remplis"
+      flash[:error] = "Tous les champs ne sont pas remplis"
       puts @bar.errors.full_messages
 		end
 	end 
 
   private
-
-  def bar_params
-    params.require(:bar).permit(:city, :term)
-  end
 
   def authenticate_user
     unless current_user
@@ -74,6 +64,13 @@ class BarsController < ApplicationController
   end
 
 	def post_params
-		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id)
-	end
+		params.require(:bar).permit(:name, :adress, :zip_code, :city, :price_id, :barpicture1, :barpicture2)
+  end
+  
+  def set_up_a_city
+    params[:city] ||= session[:city]
+    session[:city] = params[:city]
+    return session[:city].to_s
+  end
+
 end

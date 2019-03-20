@@ -4,4 +4,5 @@ class Gig < ApplicationRecord
   has_many :tags, through: :gig_tags
   has_many :attendances
   has_many :users, through: :attendances
+  has_one_attached :gigpicture
 end

@@ -16,13 +16,13 @@ class AttendancesController < ApplicationController
     #@user = current_user
     #@attendance = Attendance.create(gig_id: @gig, user_id: @user)
 		@attendance = Attendance.new(post_params)
-    @gig = Attendance.find(params[:gig_id])
+    #@gig = Attendance.find(params[:gig_id])
 
   if
     @attendance.save
     respond_to do |format|
-      format.html { redirect_back fallback_location: @gig, notice: 'Ta partipation a bien été enregistrée !' }
-      format.json { render :show, status: :ok, location: @gig }
+      format.html { redirect_back fallback_location: @attendance.gig, notice: 'Ta partipation a bien été enregistrée !' }
+      format.json { render :show, status: :ok, location: @attendance.gig }
     end
   
     else

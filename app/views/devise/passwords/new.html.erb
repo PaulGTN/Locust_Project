@@ -6,16 +6,15 @@
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-
-
-      <div class="form-group col-md-auto ml-auto">
+      <div class="form-group col-md-6 ml-auto mr-auto">
               <label>Votre adresse mail</label>
               <input class="form-control input-small" placeholder="Saisissez votre adresse mail..." type="email" value="" name="user[email]" id="user_email">
             </div>
-
-
       </div>
 
       <%= render "devise/shared/links" %>
 
     <% end %>
+    </div>
+    </div>
+    </div>

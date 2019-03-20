@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
 
     it "is valid with valid attributes" do
       expect(@user).to be_a(User)
-      expect(@user).to be_valid     #création qui est valide
+      expect(@user).to be_valid     
     end
 
     describe "#first_name" do
@@ -93,18 +93,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-
-
-    # describe "#username" do
-    #   it "should not be lower that 3 characters" do
-    #     invalid_user = User.create(first_name: "Richard", last_name: "Dupontel", username: "Titi")
-    #     expect(invalid_user).not_to be_valid
-    #     expect(invalid_user.errors.include?(:username)).to eq(true)
-    #   end
-    # end
-
-
-
   context "associations" do
 
     describe "attendances" do
@@ -113,47 +101,13 @@ RSpec.describe User, type: :model do
               expect(@user.attendances.include?(attendance)).to eq(false)
             end
     end
-
-    # describe "gigs" do
-    #        it "should have_many gigs" do
-    #         gig = Gig.create(user: @user)
-    #         expect(@user.gigs.include?(gig)).to eq(false)
-    #        end
-    end
+  end
 
     describe "favorites" do
-           it "should have_many favorites" do
-            favorite = Favorite.create(user: @user)
-            expect(@user.favorites.include?(favorite)).to eq(false)
-           end
+         it "should have_many favorites" do
+          favorite = Favorite.create(user: @user)
+          expect(@user.favorites.include?(favorite)).to eq(false)
+         end
     end
   end
-  #   describe "bars" do
-  #          it "should have_many bars" do
-  #           bar = Bar.create(user: @user)
-  #           expect(@user.bars.include?(bar)).to eq(false)
-  #          end
-  #   end
-  # end
-  #
-  #
-  #
-  # context "public instance methods" do
-  #
-  #   describe "#full_name" do
-  #
-  #     it "should return a string" do
-  #       expect(@user.full_name).to be_a(String)
-  #     end
-  #
-  #     it "should return the full name" do
-  #       user_1 = User.create(first_name: "Richard", last_name: "Dupontel", username: "Titi")
-  #       expect(user_1.full_name).to eq("Richard Dupontel")
-  #       user_2 = User.create(first_name: "Jean-Michel", last_name: "Durant", username: "kikou_du_75")
-  #       expect(user_2.full_name).to eq("Jean-Michel Durant")
-  #     end
-  #   end
-  #
-  # end
-
 end

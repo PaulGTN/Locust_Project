@@ -1,0 +1,2 @@
+module Barpicture2Helper
+end

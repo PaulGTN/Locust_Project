@@ -13,84 +13,16 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  <!--     CSS files     -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  <!--     CSS files     -->
   <link href="./assets/css/bootstrap.min.scss" rel="stylesheet" />
   <link href="./assets/css/now-ui-kit.scss?v=1.2.0" rel="stylesheet" />
 </head>
 
 <body>
-
-  <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-transparent" color-on-scroll="500">
-        <div class="container">
-            <div class="navbar-translate">
-                  <%= link_to "Mon Petit Criquet", root_path, :class => "navbar-brand" %>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-                <ul class="navbar-nav ml-auto">
-              <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">     
-          			<div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">  
-              	<%= link_to "Accueil", root_path, :class => "navbar-brand" %>
-            		<% if user_signed_in? %>
-              		<div class="nav-item dropdown">
-                	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <% if current_user.first_name != nil %>
-                  <%= current_user.first_name %>
-                <% else %>
-                  Mon compte
-                <% end %>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									<%= link_to "Mon Profil", user_path(current_user), :class => "dropdown-item" %>
-                	<%= link_to "Éditer mon profil", edit_user_registration_path, :class => "dropdown-item" %>
-                  <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete,  data: { confirm: "Tu es sûr(e) ?" }, :class => "dropdown-item" %>
-                </div>
-                </div>
-                        <% else %>
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Connexion
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <%= link_to "Se Connecter", new_user_session_path, :class => "dropdown-item" %>
-                                    <%= link_to "S'inscrire", new_user_registration_path, :class => "dropdown-item" %>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-                  </li>
-    
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-                            <i class="#" aria-hidden="true"></i>
-                            <p>Infos</p>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">
-                                <i class="#"></i> About Us
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="#"></i> Contact
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <% if isAdmin? %>
-                <%= link_to "Gestion du site", admin_bars_path, :class => "navbar-brand" %>
-                <%end%>
-        </div>
-    </nav>
-  <!-- End Navbar -->
-	<br>
-	<br>
-	<div><%= flash[:notice] %></div>
-	<div><%= flash[:danger] %></div>
+  <%= render 'layouts/navbar'%>
+  <br>
+  <br>
+	<%= render 'layouts/flash'%>
   <%= yield %>
 	
   <script type="text/javascript">
@@ -102,41 +34,6 @@
   
 </body>
 
-<footer class="footer ">
-  <div class="container">
-      <nav>
-          <ul>
-              <li>
-                  <a href="#creative">
-                      Locust Devs
-                  </a>
-              </li>
-              <li>
-                  <a href="#creative">
-                      About Us
-                  </a>
-              </li>
-              <li>
-                  <a href="#creative">
-                      Blog
-                  </a>
-              </li>
-              <li>
-                  <a href="#creative">
-                      License
-                  </a>
-              </li>
-          </ul>
-      </nav>
-      <div class="copyright">
-          &copy;
-          <script>
-              document.write(new Date().getFullYear())
-          </script>, Designed by
-          <a href="#">Locust</a>. Coded by
-          <a href="#">Steph, Tanguy, Jack, Djémil et Paul</a>.
-      </div>
-  </div>
-</footer>
+  <%= render 'layouts/footer'%>
 
 </html>

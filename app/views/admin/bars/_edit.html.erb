@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="section-story-overview">
+
+		<h3>Modifier les photos du bar ?</h3>
+		<h6> Photo de gauche : </h6>
+		<%if @bar.barpicture1.attached?%>
+		  <%= image_tag @bar.barpicture1, class:"image_tag_edit", alt: 'barpicture1' %>
+		<%else%>
+		  <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+		<%end%>
+		<%= form_tag bar_barpicture1_index_path(@bar), multipart: true do %>
+		  <%= file_field_tag :barpicture1 %>
+		  <%= submit_tag "Mettre à jour", class:"btn btn-secondary btn-round" %>
+		<% end %>
+		<h6> Photo de droite : </h6>
+		<%if @bar.barpicture2.attached?%>
+		  <%= image_tag @bar.barpicture2, class:"image_tag_edit", alt: 'barpicture2' %>
+		<%else%>
+		  <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+		<%end%>
+		<%= form_tag bar_barpicture2_index_path(@bar), multipart: true do %>
+		  <%= file_field_tag :barpicture2 %>
+		  <%= submit_tag "Mettre à jour", class:"btn btn-secondary btn-round" %>
+		<% end %>
+
+		<center><%= button_to  "Retour", bar_path(@bar), method: :get, class:"btn btn-primary btn-round" %></center>
+
+	</div>
+
+</div>

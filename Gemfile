@@ -55,6 +55,7 @@ group :development do
   gem 'letter_opener'
 
 
+
 end
 
 group :test do
@@ -70,5 +71,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 gem 'devise'
 
+
 gem 'faker'
 gem 'table_print'
+
+gem 'letter_opener'
+gem "aws-sdk-s3", require: false
+gem 'ransack'

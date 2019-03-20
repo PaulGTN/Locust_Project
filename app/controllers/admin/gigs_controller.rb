@@ -14,14 +14,20 @@ class GigsController < ApplicationController
 
 	def create
 		@gig = Gig.new(post_params)
+		@tags = Tag.all
 		
 
 		if @gig.save
 			redirect_to bar_path(@gig.bar_id)
 		else
-			redirect_to root_path
+			redirect_to new_admin_gig_path
+			puts @gig.errors.full_messages
 		end
 	end 
+
+	def edit
+	  @gig = Gig.find(params[:id])
+	end
 
 	  
 	def destroy
@@ -48,7 +54,7 @@ class GigsController < ApplicationController
 		end
 
 		def post_params
-			params.require(:gig).permit(:name, :bar_id, :date)
+			params.require(:gig).permit(:name, :bar_id, :date, :tag_ids)
 		end
 
 

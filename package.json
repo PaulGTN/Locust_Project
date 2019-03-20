@@ -1,5 +1,6 @@
 {
   "name": "Locust_Project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+  }
 }

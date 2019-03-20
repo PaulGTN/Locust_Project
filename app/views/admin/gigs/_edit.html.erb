@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="section-story-overview">
+
+		<h3>Modifier la photo du concert ?</h3>
+
+		<%if @gig.gigpicture.attached?%>
+      <%= image_tag @gig.gigpicture, class:"image_tag_edit", alt: 'gigpicture' %>
+		<%else%>
+		  <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+		<%end%>
+		<%= form_tag gig_gigpicture_index_path(@gig), multipart: true do %>
+		  <%= file_field_tag :gigpicture %>
+		  <%= submit_tag "Mettre à jour", class:"btn btn-secondary btn-round" %>
+		<% end %>
+
+		<center><%= button_to  "Retour", gig_path(@gig), method: :get, class:"btn btn-primary btn-round" %></center>
+
+	</div>
+
+</div>
