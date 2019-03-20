@@ -1,4 +1,3 @@
-<%# pour se connecter  %>
 <div class="page-header section-image">
   <div class="page-header-image" style="background-image:url(https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)"></div>
     <div class="content">
@@ -19,11 +18,8 @@
           </div>
 
         <div class="form-group col-md-8 ml-auto mr-auto">
-              <%= link_to "Connexion", root_path   %>
+          <button id="signup-button" type="submit" class="btn btn-round btn-primary">Connexion</button>
         </div>
-
-
-
 
         <% if devise_mapping.rememberable? %>
           <div class="field">
@@ -35,6 +31,11 @@
         <div class="pull-center">
             <h6>
                 Pas encore inscrit ? <a href="./sign_up" class="link footer-link">Créez votre compte</a>
+            </h6>
+        </div>
+         <div class="pull-center">
+            <h6>
+                <%= link_to  "Mot de passe oublié ?", new_user_password_path, :class => "btn btn-primary btn-round" %>
             </h6>
         </div>
       </div>

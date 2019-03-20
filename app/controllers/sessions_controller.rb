@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
+	# corespond à la page de login
 
-  def new
+	def new
+	end
 
-  end
-
-  	# effectue l'hautentification
+	# effectue l'authentification
 	def create
 	  # cherche s'il existe un utilisateur en base avec l’e-mail
 	  @user = User.find_by(email: params[:email])
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 	    session[:user_id] = @user.id
 	    remember @user
 	    # redirige où tu veux, avec un flash ou pas
-	    redirect_to root_path
+	    redirect_to home_path
 	  else
 	    flash.now[:danger] = 'Invalid email/password combination'
 	    render 'new'
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 	# logout
 	def destroy
 		session.delete(:user_id)
-		redirect_to root_path
+		redirect_to home_path
 	end
 
 end

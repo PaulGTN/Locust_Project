@@ -68,7 +68,7 @@ https://trello.com/b/hkruNiVc/locust
 
 ## Le lien Heroku <a name="app"></a> 
 
-"heroku_url"
+https://mon-petit-criquet.herokuapp.com/
 
 ## Le barème THP <a name="grade"></a> 
 
