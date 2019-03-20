@@ -13,23 +13,23 @@ class GigsController < ApplicationController
 		#@attendance = Attendance.where("current_user.id => current_user.id && gig_id => @gig.id")
   end
 
-	def new
-	  @gig = Gig.new
-	  @tags = Tag.all
-	end
+	#def new
+	#  @gig = Gig.new
+	#  @tags = Tag.all
+	#end
 
-  	def create
-			@gig = Gig.new(post_params)
-			@gig.gigpicture.attach(params[:gigpicture])
-			redirect_to(gig_path(@gig))
+  #	def create
+	#		@gig = Gig.new(post_params)
+	#		@gig.gigpicture.attach(params[:gigpicture])
+	#		redirect_to(gig_path(@gig))
 			
 
-			if @gig.save
-				redirect_to bar_path(@gig.bar_id)
-			else
-				redirect_to root_path
-			end
-		end 
+	#		if @gig.save
+	#			redirect_to bar_path(@gig.bar_id)
+	#		else
+	#			redirect_to root_path
+	#		end
+	#	end 
 
 
 	private 
@@ -49,9 +49,9 @@ class GigsController < ApplicationController
 			end
 		end
 
-		def post_params
-			params.require(:gig).permit(:name, :bar_id, :date)
-		end
+		#def post_params
+		#	params.require(:gig).permit(:name, :bar_id, :date)
+		#end
 
 
 end

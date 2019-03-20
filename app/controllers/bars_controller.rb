@@ -26,25 +26,25 @@ class BarsController < ApplicationController
     @city = set_up_a_city
   end
 
-  def new
-    @bar = Bar.new
-    @tags = Tag.all
-    @prices = Price.all
-    @cities = Bar.all
-  end
+  #def new
+  #  @bar = Bar.new
+  #  @tags = Tag.all
+  #  @prices = Price.all
+  #  @cities = Bar.all
+  #end
 
-  def create
-		@bar = Bar.new(post_params)
+  #def create
+	#	@bar = Bar.new(post_params)
 		
-		if @bar.save
-      redirect_to @bar
-      flash[:success] = "Le bar a bien été créé"
-		else
-      redirect_to :new
-      flash[:error] = "Tous les champs ne sont pas remplis"
-      puts @bar.errors.full_messages
-		end
-	end 
+	#	if @bar.save
+  #    redirect_to @bar
+  #    flash[:success] = "Le bar a bien été créé"
+	#	else
+  #    redirect_to :new
+  #    flash[:error] = "Tous les champs ne sont pas remplis"
+  #    puts @bar.errors.full_messages
+	#	end
+	#end 
 
   private
 
