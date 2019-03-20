@@ -16,7 +16,7 @@
                   <%end%>
                     <!-- First image on the left side -->
                     <p class="blockquote blockquote-primary">
-                    Style :
+                    Genre(s) :
                     <% @bar.tags.each do |tag| %>
                     <%= tag.name %>
                     <%end%>
@@ -64,12 +64,12 @@
 										<%= gig.name %>
 								</h6>
 								<h3 class="card-title">
-										<p>Date : <%= gig.date %></p>
+										<p><%= gig.date.to_formatted_s(:long_ordinal) %></p>
 								</h3>
 								<p class="card-description">
 									Nombre de participants : <%= gig.users.count %>
 								</p><p class="card-description">
-									Style : <% gig.tags.each do |gigtag|%></p>
+									Genre : <% gig.tags.each do |gigtag|%></p>
                           <%= gigtag.name%><br>
                           <%end%>
 								</p>

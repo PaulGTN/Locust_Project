@@ -90,28 +90,31 @@
                       <!--     *********    BLOG CARDS     *********      -->
                       <div class="cards">
                         <div class="container">
-                            <div class="title">
-                                <h3 class="title">Cards</h3>
-                                <h3>
-                                    <small>Blog Cards</small>
-                                </h3>
-                            </div>
+                          <center><h2>PROCHAINS CONCERTS</h2></center>
                             <div class ="row">
-                              <div class="col-md-6 col-lg-4 d-flex">
+                              <%@gigs.each do |gig|%>
+
+                              <div class="col-md-6 col-lg-3 d-flex">
                                   <div class="card card-blog">
                                       <div class="card-image">
-                                          <a href="#pablo">
-                                              <img class="img rounded" src="https://www.paris-normandie.fr/binrepository/1018x1274/0c0/1018d511/none/10904/YBIW/image_content_24955090_20190304152240.jpg">
+                                          <%if gig.gigpicture.attached?%>
+                                            <%= image_tag gig.gigpicture, class:"gig_menu", alt: 'gigpicture' %>
+                                          <%else%>
+                                          <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                                          <%end%>
                                           </a>
                                       </div>
                                       <div class="card-body">
-                                          <h6 class="category text-primary">Features</h6>
+                                          <h4 class="category text-danger"><%= gig.name %></h4>
                                           <h5 class="card-title">
-                                              <a href="#nuk">That’s One Way To Ditch Your Passenger</a>
+                                            <%= gig.bar.name %>
                                           </h5>
-                                          <p class="card-description">
-                                              As near as we can tell, this guy must have thought he was going over backwards and tapped the rear break to bring the nose down...
+                                          <p>
+                                            <%= gig.bar.city %>
                                           </p>
+                                          <h6>
+                                              <%= gig.date.to_formatted_s(:long_ordinal) %>
+                                          </h6>
                                           <div class="card-footer">
                                               <div class="author">
                                                   <img src="assets/img/julie.jpg" alt="..." class="avatar img-raised">
@@ -124,6 +127,8 @@
                                       </div>
                                   </div>
                               </div>
+                              <% end %>
+
                             </div>
                         </div>
                       </div>
@@ -135,11 +140,18 @@
             <div class="section">
                 <div class="container">
                       <div class="col-md-12">
-                        <center><h1>LES NOUVEAUX BARS</h1></center>
+                        <center><h2>LES NOUVEAUX BARS</h2></center>
                             <div class="row">
                       <%@bars.each do |bar|%> 
-                    <div class="col-md-6 ml-auto d-flex">
-                      <div class="card card-background card-background-product card-raised" style="background-image: url('https://images.pexels.com/photos/1185434/pexels-photo-1185434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+                      <div class="col-md-4 ml-auto d-flex">
+                        <div class="card card-blog">
+                          <div class="fileinput-new thumbnail img-raised">
+                            <%if bar.barpicture1.attached?%>
+                              <%= image_tag bar.barpicture1, alt: 'barpicture1' %>
+                            <%else%>
+                              <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+                            <%end%>
+                          </div>
                         <div class="card-body">
                         <h2 class="card-title"><%= bar.name %></h2>
                           <p class="card-description">
@@ -149,7 +161,7 @@
                           <%= bartag.name %><br>
                           <%end%>
                         </p></br>
-                        <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-neutral btn-round" %>
+                        <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
                         <div>
                             <% if user_signed_in? && bar.users.exclude?(current_user) %>
                             <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>

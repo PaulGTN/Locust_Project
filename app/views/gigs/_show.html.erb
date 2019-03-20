@@ -25,7 +25,7 @@
                       </div>
                       <div class="description">
                           <h5 class="info-title">Quand</h5>
-                          <p class="description"><%= @gig.date%></p>
+                          <p class="description"><%= @gig.date.to_formatted_s(:long_ordinal)%></p>
                       </div>
                   </div>
                   <div class="info info-horizontal">
@@ -59,7 +59,7 @@
   							<br>
   							<br>
                 <%if @gig.gigpicture.attached?%>
-                  <%= image_tag @gig.gigpicture %>
+                  <%= image_tag @gig.gigpicture, class:"image_tag_show", alt:'gigpicture' %>
                 <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                 <%end%>

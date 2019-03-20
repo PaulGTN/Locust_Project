@@ -7,9 +7,10 @@ class BarsController < ApplicationController
     @tags = Tag.all
     @prices = Price.all
     @favorite = Favorite.all
-    @bars = Bar.last(10)
+    @bars = Bar.last(9)
     @cities = Bar.pluck(:city)
     @bars_search_by_my_user = Bar.new
+    @gigs = Gig.last(4)
   end
 
   def show

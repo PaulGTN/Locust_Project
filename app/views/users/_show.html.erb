@@ -92,7 +92,7 @@
                                             <p><%= att.gig.name %></p>
                                         </h3>
                                         <h5 class="card-description">
-																					Lieu : <%= att.gig.bar.name %> <br></br> Date : <%= att.gig.date %>
+																					Lieu : <%= att.gig.bar.name %> <br></br> <%= att.gig.date.to_formatted_s(:long_ordinal) %>
                                         </h5>
                                         <div class="author">
 																					<%= button_to "Ne plus participer", attendance_path(att), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de ne plus vouloir participer à ce concert?"} %>
@@ -124,15 +124,18 @@
                                             <p><%= att.gig.name %></p>
                                         </h3>
                                         <h5 class="card-description">
-																					Lieu : <%= att.gig.bar.name %> / Date : <%= att.gig.date %>
+																					Lieu : <%= att.gig.bar.name %> <br></br> <%= att.gig.date.to_formatted_s(:long_ordinal) %>
                                         </h5>                                    
                                     </div>
-																		<div class="col-md-4">
-                                        <div class="card-image">
-
-                                        </div>
-                                    </div>
-                                </div>
+                                  <div class="col-md-4">
+                                      <div class="card-image">
+                                          <%if att.gig.gigpicture.attached? %>
+                                            <%= image_tag att.gig.gigpicture, class:"image_tag_favatt", alt: 'gigpicture' %>
+                                          <%else%>
+                                            <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                                        <% end %>
+                                      </div>
+                                  </div>
                             </div>
 														<%end%>
 														<%end%>

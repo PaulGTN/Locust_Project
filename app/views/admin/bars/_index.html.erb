@@ -117,7 +117,7 @@
                                 <%= gig.name %></h2>
                             </td>
                             <td>
-                               	<%= gig.date %></h2>
+                               	<%= gig.date.to_formatted_s(:long_ordinal) %></h2>
                             </td>
                             <td class="text-center">
                                 <%= gig.bar.name %></h2>
