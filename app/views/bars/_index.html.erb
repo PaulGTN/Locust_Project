@@ -69,8 +69,12 @@
                     <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
                   </div>
                   <center><div class="form-group col-md-4">
-                    <%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %></center>
+                  <%= button_tag(type: "submit", class: "btn btn-primary btn-round") do %>
+                      <span class="btn-inner--icon"><i class="far fa-play-circle"></i></span>
+                        <span class="btn-inner--text d-none d-md-inline-block">Let The Music Play !</span>
                   </div>
+                  <% end %>
+
                   <% end %>
                 </div>
               </div>
@@ -134,27 +138,27 @@
               <div class="card text-white bg-dark">
                 <div class="fileinput-new thumbnail img-raised">
                   <%if bar.barpicture1.attached?%>
-                  <%= image_tag bar.barpicture1, alt: 'barpicture1', class:"bar-index" %>
+                  <%= image_tag bar.barpicture1, alt: 'barpicture1', class:"bar-menu" %>
                   <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
                 </div>
                 <div class="card-body">
-                  <center><h2 class="card-title"><%= bar.name.upcase %></h2>
+                  <center><h2 class="card-title"><%= bar.name %></h2>
                     <div class="card-description">
-                      <h5><%= bar.city %></h5></br>
-                      Prix : <%= bar.price.price_range %></br>
-                      Genre(s) : <% bar.tags.each do |bartag| %> 
-                      <%= bartag.name %><br>
+                     <h5><%= bar.city %></h5></br>
+                      <% bar.tags.each do |bartag| %> 
+                      <label class="badge-secondary badge-pill"><%= bartag.name %></label><br>
                       <%end%>
                     </div></center></br>
                     <hr>
                     <div class="card-footer">
                       <center>
-                        <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
-                        <br></br>
+                        <%= link_to bar_path(bar), class: "btn btn-info btn-round" do %><span class="btn-inner--icon"><i class="far fa-eye"></i></span>
+                        <span class="btn-inner--text d-none d-md-inline-block">Voir</span>
+                        <% end %> 
                         <% if user_signed_in? && bar.users.exclude?(current_user) %>
-                        <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+                        <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %></center>
                         <% elsif  user_signed_in? && bar.users.include?(current_user)%>
                         <%= button_to "Déjà en favori", root_path, method: :get, class:"btn btn-dark btn-round" %>
                         <%end%>
