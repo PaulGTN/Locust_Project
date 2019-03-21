@@ -16,6 +16,15 @@ RSpec.describe AttendancesController, type: :controller do
 
   describe "DELETE #destroy" do
     # des tests
+  #  before(:each) do 
+  #    @attendance = FactoryBot.create(:attendance)    
+  #  end
+    
+  #  it "deletes the attendance" do
+  #    expect{
+  #      delete :destroy, id: @attendance        
+  #    }.to change(Attendance, :count).by(-1)
+  #  end
   end
 
 end
