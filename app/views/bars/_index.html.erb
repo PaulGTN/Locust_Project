@@ -105,9 +105,9 @@
                                           </a>
                                       </div>
                                       <div class="card-body">
-                                          <h4 class="category text-danger"><%= gig.name %></h4>
+                                          <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
                                           <h5 class="card-title">
-                                            <%= gig.bar.name %>
+                                            <%= link_to gig.bar.name, bar_path(gig) %>
                                           </h5>
                                           <p>
                                             <%= gig.bar.city %>
@@ -115,15 +115,9 @@
                                           <h6>
                                               <%= gig.date.to_formatted_s(:long_ordinal) %>
                                           </h6>
-                                          <div class="card-footer">
-                                              <div class="author">
-                                                  <img src="assets/img/julie.jpg" alt="..." class="avatar img-raised">
-                                                  <span>Mike John</span>
-                                              </div>
-                                              <div class="stats stats-right">
-                                                  <i class="now-ui-icons tech_watch-time"></i> 5 min read
-                                              </div>
-                                          </div>
+                                          <hr>
+                                           <center><%= link_to  "+ d'infos", gig_path(gig), class: "btn text-white bg-dark btn-round" %></center>
+                                          </hr>
                                       </div>
                                   </div>
                               </div>
@@ -144,7 +138,7 @@
                             <div class="row">
                       <%@bars.each do |bar|%> 
                       <div class="col-md-4 ml-auto d-flex">
-                        <div class="card card-blog">
+                        <div class="card text-white bg-dark">
                           <div class="fileinput-new thumbnail img-raised">
                             <%if bar.barpicture1.attached?%>
                               <%= image_tag bar.barpicture1, alt: 'barpicture1' %>
@@ -153,24 +147,27 @@
                             <%end%>
                           </div>
                         <div class="card-body">
-                        <h2 class="card-title"><%= bar.name %></h2>
-                          <p class="card-description">
-                          <%= bar.city %></br>
-                          Prix : <%= bar.price.price_range %></br>
-                          Genre(s) : <% bar.tags.each do |bartag| %> 
-                          <%= bartag.name %><br>
-                          <%end%>
-                        </p></br>
-                        <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
-                        <div>
-                            <% if user_signed_in? && bar.users.exclude?(current_user) %>
-                            <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
-                            <% elsif  user_signed_in? && bar.users.include?(current_user)%>
-                            <br>
-                            <h6><%= "Ce bar fait parti de tes favoris" %></h6>
+                          <center><h2 class="card-title"><%= bar.name.upcase %></h2>
+                            <div class="card-description">
+                            <h5><%= bar.city %></h5></br>
+                            Prix : <%= bar.price.price_range %></br>
+                            Genre(s) : <% bar.tags.each do |bartag| %> 
+                            <%= bartag.name %><br>
                             <%end%>
-                            <br>                                
-                          </div>
+                          </div></center></br>
+                            <hr>
+                              <div>
+                                <center>
+                                  <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
+                                  <br></br>
+                                    <% if user_signed_in? && bar.users.exclude?(current_user) %>
+                                  <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+                                  <% elsif  user_signed_in? && bar.users.include?(current_user)%>
+                                  <%= button_to "Déjà en favori", root_path, method: :get, class:"btn btn-dark btn-round" %>
+                                  <%end%>
+                                </center>                             
+                              </div>
+                            </hr>
                         </div>
                       </div>
                     </div>                         
