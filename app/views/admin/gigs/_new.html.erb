@@ -25,6 +25,11 @@
 	        				<%= newgig.text_field :name, class: 'form-control', placeholder: 'Saisissez le nom du concert...' %>
 	        			</div>
 
+								<div class="form-group">
+        				<%= label_tag "Description" %>
+        				<%= newgig.text_field :description, class: 'form-control', placeholder: "Saisissez une description du bar..." %>
+        				</div>
+
 	        			<div class="form-group">
         				<%= newgig.label "Lieu" %>
         				<%= newgig.select :bar_id, options_for_select(Bar.all.collect{ |bar| [bar.name, bar.id] }.insert(0, "Choisis le bar")), {}, {class: "selectpicker"} %> 

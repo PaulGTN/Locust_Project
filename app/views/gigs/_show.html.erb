@@ -1,7 +1,6 @@
 <div class="projects-3" data-background-color="black">
   <div class="col-md-8 mr-auto ml-auto text-center">
       <h2 class="title"><%= @gig.name%></h2>
-      <h4>Description</h4>
   </div>
   <div class="container-fluid">
       <div class="row">
@@ -34,9 +33,10 @@
                       </div>
                       <div class="description">
                           <h5 class="info-title">Quoi</h5>
-                          <p class="description"><% @gig.tags.each do |tag|%></p>
-                          <%= tag.name%><br>
-                          <%end%>
+                          <p class="description">	<% @gig.tags.each do |tag|%>
+													Genre : <%= tag.name%><br>
+													<%end%><br>
+                          <%= @gig.description%></p>
                       </div>
                   </div>
                   <div class="info info-horizontal">

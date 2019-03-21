@@ -5,4 +5,5 @@ class Gig < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
   has_one_attached :gigpicture
+  validates :name, presence: true
 end

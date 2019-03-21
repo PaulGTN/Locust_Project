@@ -27,31 +27,31 @@ class BarsController < ApplicationController
     @city = set_up_a_city
   end
 
-  def new
-    @bar = Bar.new
-    @tags = Tag.all
-    @prices = Price.all
-    @cities = Bar.all
-  end
+  #def new
+  #  @bar = Bar.new
+  #  @tags = Tag.all
+  #  @prices = Price.all
+  #  @cities = Bar.all
+  #end
 
-  def create
-		@bar = Bar.new(post_params)
+  #def create
+	#	@bar = Bar.new(post_params)
 		
-		if @bar.save
-      redirect_to @bar
-      flash[:success] = "Le bar a bien été créé"
-		else
-      redirect_to :new
-      flash[:error] = "Tous les champs ne sont pas remplis"
-      puts @bar.errors.full_messages
-		end
-	end 
+	#	if @bar.save
+  #    redirect_to @bar
+  #    flash[:success] = "Le bar a bien été créé"
+	#	else
+  #    redirect_to :new
+  #    flash[:error] = "Tous les champs ne sont pas remplis"
+  #    puts @bar.errors.full_messages
+	#	end
+	#end 
 
   private
 
   def authenticate_user
     unless current_user
-      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      flash[:alert] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
       redirect_to root_path
     end
   end
@@ -59,7 +59,7 @@ class BarsController < ApplicationController
   def is_admin
     @bar = Bar.find(params[:id])
     unless user_signed_in? && current.user.role === 'admin'
-      flash[:danger] = "Vous ne pouvez pas accéder à cette page"
+      flash[:alert] = "Vous ne pouvez pas accéder à cette page"
       redirect_to root_path
     end
   end

@@ -4,18 +4,18 @@ Rails.application.routes.draw do
 
   root 'bars#index'
 
-  resources :users do
+  resources :users, :path => "commonpeople" do
     resources :avatars, only: [:create] 
   end
 
   resources :attendances, only: %i[create new destroy]
   resources :favorites, only: %i[new create destroy]
-  resources :bars, only: %i[show index] do
+  resources :bars, :path => "alabamasong", only: %i[show index] do
       resources :barpicture1 
       resources :barpicture2
   end
 
-  resources :gigs, only: %i[show index] do
+  resources :gigs, :path => "magicalmysterytour", only: %i[show index] do
     resources :gigpicture
     end
 
@@ -23,12 +23,12 @@ Rails.application.routes.draw do
 
     root 'bars#index'
 
-    resources :bars  do
+    resources :bars, :path => "masterofpuppets"  do
       resources :barpicture1 
       resources :barpicture2
     end
 
-    resources :gigs do
+    resources :gigs, :path => "dancetothemusic" do
     resources :gigpicture
     end
   end

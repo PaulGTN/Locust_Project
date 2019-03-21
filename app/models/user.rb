@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :favorites
   has_many :bars, through: :favorites
+  validates :first_name, presence: true
 
   accepts_nested_attributes_for :gigs
-  #accepts_nested_attributes_for :bars
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

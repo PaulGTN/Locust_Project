@@ -8,6 +8,8 @@ class Bar < ApplicationRecord
   has_many :users, through: :favorites
   has_one_attached :barpicture1
   has_one_attached :barpicture2
+  validates :name, presence: true
+  validates :city, presence: true
 
   private
 
