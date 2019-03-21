@@ -160,7 +160,7 @@
                         <% if user_signed_in? && bar.users.exclude?(current_user) %>
                         <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %></center>
                         <% elsif  user_signed_in? && bar.users.include?(current_user)%>
-                        <br><button class="btn btn-dark btn-round" disabled> Déjà en favori</button></br>
+                        <br><button class="btn btn-danger btn-round" disabled><span><i class="far fa-heart"></i></span></i> Déjà en favori</button></br>
                         <%end%>
                         </center>                             
                       </div>

@@ -47,7 +47,7 @@
                                   <div class="col-md-4">
                                       <div class="card-image">
                                           <%if fav.bar.barpicture1.attached? %>
-                                            <%= image_tag fav.bar.barpicture1, class:"image_tag_favatt", alt: 'barpicture1' %>
+                                            <%= image_tag fav.bar.barpicture1, alt: 'barpicture1' %>
                                           <%else%>
                                             <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                                         <% end %>
@@ -101,7 +101,7 @@
 																		<div class="col-md-4">
                                         <div class="card-image">
                                             <%if att.gig.gigpicture.attached? %>
-                                              <%= image_tag att.gig.gigpicture, class:"image_tag_favatt", alt: 'gigpicture' %>
+                                              <%= image_tag att.gig.gigpicture, alt: 'gigpicture' %>
                                             <%else%>
                                               <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                                           <% end %>
@@ -130,7 +130,7 @@
                                   <div class="col-md-4">
                                       <div class="card-image">
                                           <%if att.gig.gigpicture.attached? %>
-                                            <%= image_tag att.gig.gigpicture, class:"image_tag_favatt", alt: 'gigpicture' %>
+                                            <%= image_tag att.gig.gigpicture, alt: 'gigpicture' %>
                                           <%else%>
                                             <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                                         <% end %>
