@@ -100,7 +100,7 @@
                             Date
                         </th>
                         <th class="text-center">
-                            Lieu
+                            Genre
                         </th>
                         
                         <th class="text-right">
@@ -119,10 +119,7 @@
                             <td>
                                	<%= gig.date %></h2>
                             </td>
-                            <td class="text-center">
-                                <%= gig.bar.name %></h2>
-                            </td>
-														<td class="text-righ">
+														<td class="text-center">
                                 <% gig.tags.each do |gigtag| %> 
 														<%= gigtag.name %><br>
 														<%end%>
