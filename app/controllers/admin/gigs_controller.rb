@@ -40,7 +40,7 @@ class GigsController < ApplicationController
 
 	  def authenticate_user
 	    unless current_user
-	      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+	      flash[:alert] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
 	      redirect_to new_session_path
 	    end
 		end
@@ -48,7 +48,7 @@ class GigsController < ApplicationController
 		def is_admin
 			#@gig = Gig.find(params[:id])
 			unless user_signed_in? && current_user.role === 'admin'
-				flash[:danger] = "Vous ne pouvez pas accéder à cette page"
+				flash[:alert] = "Vous ne pouvez pas accéder à cette page"
 				redirect_to root_path
 			end
 		end

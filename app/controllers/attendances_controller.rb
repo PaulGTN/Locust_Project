@@ -20,7 +20,7 @@ class AttendancesController < ApplicationController
   
     else
       redirect_to root_path
-      flash[:danger] = "Oups !"
+      flash[:error] = "La participation n'a pas pu être enregistrée"
       puts @attendance.errors.full_messages
     end
   end

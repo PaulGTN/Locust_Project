@@ -71,7 +71,7 @@ module Admin
 
   def authenticate_user
     unless current_user
-      flash[:danger] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
+      flash[:alert] = "Connectez-vous pour avoir accès à cette fonctionnalité !"
       redirect_to root_path 
     end
   end
@@ -79,7 +79,7 @@ module Admin
   def is_admin
     #@bar = Bar.find(params[:id])
     unless user_signed_in? && current_user.role === 'admin'
-      flash[:danger] = "Vous ne pouvez pas accéder à cette page"
+      flash[:alert] = "Vous ne pouvez pas accéder à cette page"
       redirect_to root_path
     end
   end

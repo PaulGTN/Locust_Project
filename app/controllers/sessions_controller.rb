@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 	    # redirige où tu veux, avec un flash ou pas
 	    redirect_to home_path
 	  else
-	    flash.now[:danger] = 'Invalid email/password combination'
+	    flash.now[:error] = 'Email/mot de passe invalides'
 	    render 'new'
 	  end
 	end
