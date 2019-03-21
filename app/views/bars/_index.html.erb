@@ -138,7 +138,7 @@
             <%@bars.each do |bar|%> 
             <div class="col-md-4 ml-auto d-flex">
               <div class="card text-white bg-dark">
-                <div class="fileinput-new thumbnail img-raised">
+                <div class="card-image">
                   <%if bar.barpicture1.attached?%>
                   <%= image_tag bar.barpicture1, alt: 'barpicture1'%>
                   <%else%>
@@ -149,23 +149,23 @@
                   <center><h2 class="card-title"><%= bar.name %></h2>
                     <div class="card-description">
                      <h5><%= bar.city %></h5></br>
-
-                   </div></center></br>
-                   <hr>
-                   <div class="card-footer">
-                    <center>
-                      <%= link_to bar_path(bar), class: "btn btn-info btn-round" do %><span class="btn-inner--icon"><i class="far fa-eye"></i></span>
-                      <span class="btn-inner--text d-none d-md-inline-block">Voir</span>
-                      <% end %> 
-                      <% if user_signed_in? && bar.users.exclude?(current_user) %>
-                      <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %></center>
-                      <% elsif  user_signed_in? && bar.users.include?(current_user)%>
-                      <br><button class="btn btn-dark btn-round" disabled> Déjà en favori</button></br>
-                      <%end%>
-                    </center>                             
-                  </div>
-                </hr>
-              </div>
+                    </div>
+                  </center>
+                    
+                      <div class="card-footer">
+                        <center>
+                        <%= link_to bar_path(bar), class: "btn btn-info btn-round" do %><span class="btn-inner--icon"><i class="far fa-eye"></i></span>
+                        <span class="btn-inner--text d-none d-md-inline-block">Voir</span>
+                        <% end %> 
+                        <% if user_signed_in? && bar.users.exclude?(current_user) %>
+                        <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round" %></center>
+                        <% elsif  user_signed_in? && bar.users.include?(current_user)%>
+                        <br><button class="btn btn-dark btn-round" disabled> Déjà en favori</button></br>
+                        <%end%>
+                        </center>                             
+                      </div>
+                    
+                </div>
             </div>
           </div>                         
           <%end%>                             
