@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe "bars/bar_results", type: :view do
   before(:each) do
     @bar = FactoryBot.create(:bar)
-    @bars_search_by_my_user = @bar
+    @bars_search_by_my_user = @bar.city
+    @user = FactoryBot.create(:user)
+    current_user = @user.id
+
   end
 
   context 'it shows "bar details"' do

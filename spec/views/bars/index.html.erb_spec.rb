@@ -19,14 +19,22 @@ RSpec.describe "bars/index.html.erb", type: :view do
 
   context 'it shows "bar details"' do
     it "displays 'bar details'" do
-      # génére la page
-      render
-  
-      # le contenu "Bievenue" doit être dans la page
-      expect(rendered(@bar)).to have_content(:name)
-      expect(rendered(@bar)).to have_content(:city)
-      expect(rendered(@bar)).to have_content(:zip_code)
-      expect(rendered(@bar)).to have_content(:adress)
+      assign(:bars,
+      [
+        build(:bar, name: "Bordeaux"),
+        build(:bar, zip_code: "34000"),
+        build(:city),
+        build(:city)
+      ]
+    )
+
+    render
+
+    # vérifie que le name d'une des villes soit affiché
+    expect(rendered).to match /Bordeaux/
+
+    # vérifie que le zip_code d'une ville soit affiché
+    expect(rendered).to match /34000/
     end
   end
 
