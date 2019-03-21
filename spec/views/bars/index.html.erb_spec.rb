@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "bars/index.html.erb", type: :view do
-
+=begin
   before(:each) do
     @bar = FactoryBot.create(:bar)
     @user = FactoryBot.create(:user)
+    current_user = @user
+    @cities = @bar.city
+    @bars_search_by_my_user = @bar
+    @bars = @bar
+    bar = @bar
   end
 
   context 'it says LES NOUVEAUX BARS' do
@@ -23,8 +28,8 @@ RSpec.describe "bars/index.html.erb", type: :view do
       [
         build(:bar, name: "Bordeaux"),
         build(:bar, zip_code: "34000"),
-        build(:city),
-        build(:city)
+        build(:bar),
+        build(:bar)
       ]
     )
 
@@ -37,5 +42,5 @@ RSpec.describe "bars/index.html.erb", type: :view do
     expect(rendered).to match /34000/
     end
   end
-
+=end
 end

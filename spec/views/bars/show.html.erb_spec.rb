@@ -5,16 +5,15 @@ RSpec.describe "bars/show", type: :view do
     @bar = FactoryBot.create(:bar)
   end
 
-  context 'it shows "bar details"' do
-    it "displays 'bar details'" do
+  context 'it shows "user details"' do
+    it "displays 'user details'" do
+      assign(:bar, build(:bar, name: "Lolita", city: "Paris", id: 4))
       # génére la page
       render
   
       # le contenu "Bievenue" doit être dans la page
-      expect(rendered).to have_content(:name)
-      expect(rendered).to have_content(:city)
-      expect(rendered).to have_content(:zip_code)
-      expect(rendered).to have_content(:adress)
+      expect(rendered).to match /Lolita/
+      expect(rendered).to match /Paris/
     end
   end
 end

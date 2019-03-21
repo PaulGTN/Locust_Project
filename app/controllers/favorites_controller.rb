@@ -10,13 +10,8 @@ class FavoritesController < ApplicationController
 	end
 
   def create
-    #@gig = Gig.find(params[:id])
+
     @favorite = Favorite.new(post_params)
-    #@bar = Favorite.find(params[:bar_id])
-    #@gig = Gig.find(params[:id])
-    #@user = current_user
-    #@favorite = favorite.create(gig_id: @gig, user_id: @user)
-		
 
     if
 			@favorite.save
@@ -33,9 +28,6 @@ class FavoritesController < ApplicationController
   end 
 
   def destroy
-    #  @favorite = favorite.find(params[:id])
-    #  @favorite.destroy
-    #  redirect_to root_path flash[:success] = "Ce bar ne fait plus parti de tes favoris"
 
     @favorite = Favorite.find(params[:id])
     @favorite.destroy

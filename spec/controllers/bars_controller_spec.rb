@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe BarsController, type: :controller do
 
+  before(:each) do 
+    @bar = FactoryBot.create(:bar)    
+  end
+
   describe "GET #index" do
     # des tests
     it "returns http success" do
@@ -21,7 +25,7 @@ RSpec.describe BarsController, type: :controller do
   describe "GET #show" do
     # des tests
     it "returns http success" do
-      get :index
+      get :show, params: { id: @bar.id }
       expect(response).to have_http_status(:success)
     end
   end
