@@ -106,7 +106,7 @@
               <div class="card-body">
                 <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
                 <h5 class="card-title">
-                  <%= link_to gig.bar.name, bar_path(gig) %>
+                  <%= gig.bar.name %>
                 </h5>
                 <p>
                   <%= gig.bar.city %>
