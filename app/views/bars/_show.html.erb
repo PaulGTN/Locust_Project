@@ -11,13 +11,13 @@
               <div class="col-md-6">
             		<div class="image-container image-left">
                   <%if @bar.barpicture1.attached?%>
-                    <%= image_tag @bar.barpicture1, class:"image_tag_show", alt: 'barpicture1' %>
+                    <%= image_tag @bar.barpicture1, alt: 'barpicture1' %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
                     <!-- First image on the left side -->
                     <p class="blockquote blockquote-primary">
-                    Genre :
+                    	Genre :
                     <% @bar.tags.each do |tag| %>
                     <%= tag.name %>
                     <%end%>
@@ -28,7 +28,7 @@
               	<div class="image-container image-right">
                   <!-- First image on the right side, above the article -->
                   <%if @bar.barpicture2.attached?%>
-                    <%= image_tag @bar.barpicture2, class:"image_tag_show", alt: 'barpicture2' %>
+                    <%= image_tag @bar.barpicture2, alt: 'barpicture2' %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
@@ -42,7 +42,7 @@
 						<%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => @bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
 						<% elsif  user_signed_in? && @bar.users.include?(current_user)%>
 						<br>
-						<h6><%= "Ce bar fait partie de tes favoris" %></h6>
+						<button class="btn btn-danger btn-round" disabled><span><i class="far fa-heart"></i></span></i> Déjà en favori</button></br>
 						<%end%>
 
 						<% if user_signed_in? && current_user.role === 'admin' %>
@@ -63,12 +63,12 @@
 										<%= gig.name %>
 								</h6>
 								<h3 class="card-title">
-										<p>Date : <%= gig.date %></p>
+										<p><%= gig.date.to_formatted_s(:long_ordinal) %></p>
 								</h3>
 								<p class="card-description">
 									Nombre de participants : <%= gig.users.count %>
 								</p><p class="card-description">
-									Style : <% gig.tags.each do |gigtag|%></p>
+									Genre : <% gig.tags.each do |gigtag|%></p>
                           <%= gigtag.name%><br>
                           <%end%>
 								</p>

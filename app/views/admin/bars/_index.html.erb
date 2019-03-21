@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="style.scss">
 </head>
 
 <body class="ecommerce-page">
@@ -117,7 +116,7 @@
                                 <%= gig.name %></h2>
                             </td>
                             <td>
-                               	<%= gig.date %></h2>
+                               	<%= gig.date.to_formatted_s(:long_ordinal) %></h2>
                             </td>
 														<td class="text-center">
                                 <% gig.tags.each do |gigtag| %> 
