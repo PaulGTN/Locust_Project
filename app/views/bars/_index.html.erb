@@ -1,183 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-</head>
-
 <body class="ecommerce-page">
 
-    <div class="wrapper">
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item">
-                    <div class="page-header header-filter">
-                        <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/765228/pexels-photo-765228.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
-                        <div class="content-center text-center">
-                            <div class="row">
-                                <div class="col-md-8 ml-auto mr-auto">
-                                    <h1 class="title">C'est lundi, tu t'ennuies ?</h1>
-                                    <h4 class="description text-white">On a ce qu'il faut pour toi !</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <div class="page-header header-filter">
-                        <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/351265/pexels-photo-351265.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
-                        <div class="content-center">
-                            <div class="row">
-                                <div class="col-md-8 ml-auto mr-auto text-center">
-                                    <h1 class="title">Choisis ta came !</h1>
-                                    <h4 class="description text-white">Rock, rap, jazz et plein d'autres !</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="page-header header-filter">
-                        <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
-                        <div class="content-center text-center">
-                            <div class="row">
-                                <div class="col-md-8 ml-auto mr-auto">
-                                    <h1 class="title">Tous les bons plans sont là (enfin en-dessous) !</h1>
-                                    <h4 class="description text-white">Juste à chercher, bouger et passer une bonne soirée !</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <i class="fas fa-arrow-circle-left fa-5x"></i>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <i class="fas fa-arrow-circle-right fa-5x"></i>
-            </a>
-        </div>
-        <div class="main">
-          <div class="section">
-            <div class="container">
-              <div class="col-md-12">
-                <div class="team-2" style="background-image :url('https://images.pexels.com/photos/18932/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
-
-                <div class="row">   
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <center><h2>Trouve ta ville</h2></center>                                          
-                      <%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
-                      <div class="form-group">
-                          <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
-                        </div>
-                          <center><div class="form-group col-md-4">
-                            <%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %></center>
-                        </div>
-                      <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-                      <!--     *********    BLOG CARDS     *********      -->
-                      <div class="cards">
-                        <div class="container">
-                          <center><h2>PROCHAINS CONCERTS</h2></center>
-                            <div class ="row">
-                              <%@gigs.each do |gig|%>
-
-                              <div class="col-md-6 col-lg-3 d-flex">
-                                  <div class="card card-blog">
-                                      <div class="card-image">
-                                          <%if gig.gigpicture.attached?%>
-                                            <%= image_tag gig.gigpicture, class:"gig_menu", alt: 'gigpicture' %>
-                                          <%else%>
-                                          <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
-                                          <%end%>
-                                          </a>
-                                      </div>
-                                      <div class="card-body">
-                                          <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
-                                          <h5 class="card-title">
-                                            <%= link_to gig.bar.name, bar_path(gig) %>
-                                          </h5>
-                                          <p>
-                                            <%= gig.bar.city %>
-                                          </p>
-                                          <h6>
-                                              <%= gig.date.to_formatted_s(:long_ordinal) %>
-                                          </h6>
-                                          <hr>
-                                           <center><%= link_to  "+ d'infos", gig_path(gig), class: "btn btn-primary btn-round" %></center>
-                                          </hr>
-                                      </div>
-                                  </div>
-                              </div>
-                              <% end %>
-
-                            </div>
-                        </div>
-                      </div>
-
-
-
-
-          <div class="main">
-            <div class="section">
-                <div class="container">
-                      <div class="col-md-12">
-                        <center><h2>LES NOUVEAUX BARS</h2></center>
-                            <div class="row">
-                      <%@bars.each do |bar|%> 
-                      <div class="col-md-4 ml-auto d-flex">
-                        <div class="card text-white bg-dark">
-                          <div class="fileinput-new thumbnail img-raised">
-                            <%if bar.barpicture1.attached?%>
-                              <%= image_tag bar.barpicture1, alt: 'barpicture1' %>
-                            <%else%>
-                              <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
-                            <%end%>
-                          </div>
-                        <div class="card-body">
-                          <center><h2 class="card-title"><%= bar.name.upcase %></h2>
-                            <div class="card-description">
-                            <h5><%= bar.city %></h5></br>
-                            Prix : <%= bar.price.price_range %></br>
-                            Genre(s) : <% bar.tags.each do |bartag| %> 
-                            <%= bartag.name %><br>
-                            <%end%>
-                          </div></center></br>
-                            <hr>
-                              <div>
-                                <center>
-                                  <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
-                                  <br></br>
-                                    <% if user_signed_in? && bar.users.exclude?(current_user) %>
-                                  <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
-                                  <% elsif  user_signed_in? && bar.users.include?(current_user)%>
-                                  <%= button_to "Déjà en favori", root_path, method: :get, class:"btn btn-dark btn-round" %>
-                                  <%end%>
-                                </center>                             
-                              </div>
-                            </hr>
-                        </div>
-                      </div>
-                    </div>                         
-                    <%end%>                             
-                  </div>
+  <div class="wrapper">
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item">
+          <div class="page-header header-filter">
+            <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/765228/pexels-photo-765228.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
+            <div class="content-center text-center">
+              <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                  <h1 class="title">C'est lundi, tu t'ennuies ?</h1>
+                  <h4 class="description text-white">On a ce qu'il faut pour toi !</h4>
                 </div>
               </div>
             </div>
           </div>
-        <!-- end-main-raised -->
+        </div>
+        <div class="carousel-item active">
+          <div class="page-header header-filter">
+            <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/351265/pexels-photo-351265.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
+            <div class="content-center">
+              <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                  <h1 class="title">Choisis ta came !</h1>
+                  <h4 class="description text-white">Rock, rap, jazz et plein d'autres !</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="page-header header-filter">
+            <div class="page-header-image" style="background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');"></div>
+            <div class="content-center text-center">
+              <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                  <h1 class="title">Tous les bons plans sont là (enfin en-dessous) !</h1>
+                  <h4 class="description text-white">Juste à chercher, bouger et passer une bonne soirée !</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <i class="fas fa-arrow-circle-left fa-5x"></i>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <i class="fas fa-arrow-circle-right fa-5x"></i>
+      </a>
+    </div>
+    <div class="main">
+      <div class="section">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="team-2" style="background-image :url('https://images.pexels.com/photos/18932/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+
+              <div class="row">   
+                <div class="col-md-6 ml-auto mr-auto">
+                  <center><h2>Trouve ta ville</h2></center>                                          
+                  <%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
+                  <div class="form-group">
+                    <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
+                  </div>
+                  <center><div class="form-group col-md-4">
+                    <%= f.submit 'Let The Music Play', name: nil, class: "btn btn-primary btn-round" %></center>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--     *********    BLOG CARDS     *********      -->
+      <div class="cards">
+        <div class="container">
+          <center><h2>PROCHAINS CONCERTS</h2></center>
+          <div class ="row">
+            <%@gigs.each do |gig|%>
+
+            <div class="col-md-6 col-lg-3 d-flex">
+              <div class="card card-blog">
+                <div class="card-image">
+                  <%if gig.gigpicture.attached?%>
+                  <%= image_tag gig.gigpicture, class:"gig_menu", alt: 'gigpicture' %>
+                  <%else%>
+                  <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                  <%end%>
+                </a>
+              </div>
+              <div class="card-body">
+                <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
+                <h5 class="card-title">
+                  <%= link_to gig.bar.name, bar_path(gig) %>
+                </h5>
+                <p>
+                  <%= gig.bar.city %>
+                </p>
+                <h6>
+                  <%= gig.date.to_formatted_s(:long_ordinal) %>
+                </h6>
+                <hr>
+                <center><%= link_to  "+ d'infos", gig_path(gig), class: "btn btn-primary btn-round" %></center>
+              </hr>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="main">
+    <div class="section">
+      <div class="container">
+        <div class="col-md-12">
+          <center><h2>LES NOUVEAUX BARS</h2></center>
+          <div class="row">
+            <%@bars.each do |bar|%> 
+            <div class="col-md-4 ml-auto d-flex">
+              <div class="card text-white bg-dark">
+                <div class="fileinput-new thumbnail img-raised">
+                  <%if bar.barpicture1.attached?%>
+                  <%= image_tag bar.barpicture1, alt: 'barpicture1', class:"bar-index" %>
+                  <%else%>
+                  <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
+                  <%end%>
+                </div>
+                <div class="card-body">
+                  <center><h2 class="card-title"><%= bar.name.upcase %></h2>
+                    <div class="card-description">
+                      <h5><%= bar.city %></h5></br>
+                      Prix : <%= bar.price.price_range %></br>
+                      Genre(s) : <% bar.tags.each do |bartag| %> 
+                      <%= bartag.name %><br>
+                      <%end%>
+                    </div></center></br>
+                    <hr>
+                    <div class="card-footer">
+                      <center>
+                        <%= link_to  "Voir les concerts", bar_path(bar), class: "btn-warning btn-round" %>
+                        <br></br>
+                        <% if user_signed_in? && bar.users.exclude?(current_user) %>
+                        <%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
+                        <% elsif  user_signed_in? && bar.users.include?(current_user)%>
+                        <%= button_to "Déjà en favori", root_path, method: :get, class:"btn btn-dark btn-round" %>
+                        <%end%>
+                      </center>                             
+                    </div>
+                  </hr>
+                </div>
+              </div>
+            </div>                         
+            <%end%>                             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end-main-raised -->
 
 </body>
 
