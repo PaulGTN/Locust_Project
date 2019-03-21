@@ -41,6 +41,11 @@
 	        			</div>
 	        		</div>
 
+							<div class="form-group">
+        				<%= label_tag "Description" %>
+        				<%= newbar.text_field :description, class: 'form-control', placeholder: "Saisissez une description du bar..." %>
+        			</div>
+
         			<div class="form-group">
         				<%= newbar.label "Budget" %>
         				<%= newbar.select :price_id, options_for_select(Price.all.collect{ |price| [price.price_range, price.id] }.insert(0, "Choisis ton prix")), {}, {class: "selectpicker"} %> 

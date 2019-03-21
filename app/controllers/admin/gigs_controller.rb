@@ -18,7 +18,7 @@ class GigsController < ApplicationController
 		
 
 		if @gig.save
-			redirect_to bar_path(@gig.bar_id)
+			redirect_to bar_path(@gig)
 		else
 			redirect_to new_admin_gig_path
 			puts @gig.errors.full_messages
@@ -54,7 +54,7 @@ class GigsController < ApplicationController
 		end
 
 		def post_params
-			params.require(:gig).permit(:name, :bar_id, :date, :tag_ids)
+			params.require(:gig).permit(:name, :bar_id, :date, :tag_ids, :description)
 		end
 
 
