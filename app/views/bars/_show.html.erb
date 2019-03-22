@@ -11,7 +11,7 @@
               <div class="col-md-6">
             		<div class="image-container image-left">
                   <%if @bar.barpicture1.attached?%>
-                    <%= image_tag @bar.barpicture1, alt: 'barpicture1' %>
+                    <%= image_tag @bar.barpicture1, alt: 'barpicture1', style:"max-height:100%; max-width:100%;"  %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
@@ -28,7 +28,7 @@
               	<div class="image-container image-right">
                   <!-- First image on the right side, above the article -->
                   <%if @bar.barpicture2.attached?%>
-                    <%= image_tag @bar.barpicture2, alt: 'barpicture2' %>
+                    <%= image_tag @bar.barpicture2, alt: 'barpicture2' , style:"max-height:100%; max-width:100%;" %>
                   <%else%>
                     <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                   <%end%>
