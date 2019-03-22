@@ -102,16 +102,10 @@
               </div>
               <div class="card-body">
                 <center><h4 class="category text-danger"><%= truncate(gig.name.upcase, length: 17, separator: ' ') %></h4></center>
-                <h5><center>
-                  <%= gig.bar.name %>
-                </h5></center>
-                <center><label>
-                  <%= gig.bar.city %>
-                </label></center>
                 <br></br>
-                <h6><center>
+                <h3><center>
                   <%= gig.date.to_formatted_s(:long_ordinal) %>
-                </h6></center>
+                </h3></center>
                 <hr>
                 <center><%= link_to  "+ d'infos", gig_path(gig), class: "btn btn-primary btn-round" %></center>
               </hr>
