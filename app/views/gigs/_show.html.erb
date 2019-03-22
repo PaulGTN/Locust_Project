@@ -51,7 +51,7 @@
               </div>
           </div>
           <div class="col-md-5">
-              <div class="image-container">
+              <div class="image-container img">
   							<br>
   							<br>
   							<br>
@@ -59,7 +59,7 @@
   							<br>
   							<br>
                 <%if @gig.gigpicture.attached?%>
-                  <%= image_tag @gig.gigpicture, alt:'gigpicture' %>
+                  <%= image_tag @gig.gigpicture, alt:'gigpicture', :height => '550px', :width => '780px' %>
                 <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                 <%end%>

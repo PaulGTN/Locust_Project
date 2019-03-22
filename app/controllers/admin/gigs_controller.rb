@@ -18,7 +18,7 @@ class GigsController < ApplicationController
 		
 
 		if @gig.save
-			redirect_to bar_path(@gig)
+			redirect_to gig_path(@gig)
 		else
 			redirect_to new_admin_gig_path
 			puts @gig.errors.full_messages
