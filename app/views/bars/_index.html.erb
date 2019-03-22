@@ -101,7 +101,7 @@
                 </a>
               </div>
               <div class="card-body">
-                <center><h4 class="category text-danger"><%= truncate(gig.name.upcase, length: 17, separator: ' ') %></h4></center>
+                <center><h4 class="category text-danger"><%= truncate(gig.name.upcase, length: 25, separator: ' ') %></h4></center>
                 <br></br>
                 <h3><center>
                   <%= gig.date.to_formatted_s(:long_ordinal) %>
