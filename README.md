@@ -49,10 +49,10 @@ Trouvez votre bar, votre concert et "Let the Music play !" :guitar:
 
 Dans cette toute première version de MPC, **votre dévoué administrateur** se charge de TOUT !
 
- 	- création/modification/suppression des **bars**
- 	- ajout/gestion des **concerts**
+- création/modification/suppression des **bars**
+- ajout/gestion des **concerts**
 
- 	:arrow_right: Un bar ou un concert manque ? Vous avez une question ? Vous trouvez que l'admin a mauvais goût ? On sera ravis de tout savoir... contactez-nous sur mon-petit-criquet@yopmail.com :love_letter:
+:arrow_right: Un bar ou un concert manque ? Vous avez une question ? Vous trouvez que l'admin a mauvais goût ? On sera ravis de tout savoir... contactez-nous sur mon-petit-criquet@yopmail.com :love_letter:
 
 
 ## :loop: Pourquoi MPC ? <a name="why"></a> 
