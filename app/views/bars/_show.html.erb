@@ -36,7 +36,7 @@
 									<h5 class="category text-default">Adresse : <%= @bar.adress %></h5>
                   <h5 class="category text-default">Ville : <%= @bar.zip_code %> <%= @bar.city %></h5>
                   <h5 class="category text-default">Budget : <%= @bar.price.price_range %></h5><br>
-                  <h6><%= @bar.description %></h6>
+                  <p><%= @bar.description %></p>
 				  		<div>
 						<% if user_signed_in? && @bar.users.exclude?(current_user) %>
 						<%= button_to "Ajouter aux favoris", {:controller => "favorites", :action => "create", :bar_id => @bar.id, :user_id=> current_user.id} , :method=>:post, class:"btn btn-primary btn-round"  %></center>
@@ -90,7 +90,7 @@
 						<div class="col-md-5">
 								<div class="card-image">
 									<%if gig.gigpicture.attached?%>
-										<%= image_tag gig.gigpicture, alt: 'gigpicture' %>
+										<%= image_tag gig.gigpicture, alt: 'gigpicture' , :height => '330px', :width => '445px' %>
 									<%else%>
 									<p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
 									<%end%>
