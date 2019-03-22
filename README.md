@@ -1,6 +1,6 @@
 # :bug: :ant: :beetle: MON PETIT CRIQUET / LOCUST :beetle: :ant: :bug:
 
-Hello ! Bienvenue sur ce repo qui va vous présenter :tada: **Mon Petit Criquet** :tada: (ou Locust, pour les franglophones :fr: :uk: ).
+Hello ! Bienvenue sur ce repo qui va vous présenter :tada: **Mon Petit Criquet** :tada: (ou Locust, pour les franglophones :fr: :uk: ). Le lien du site est **EN BAS** :arrow_down:
 
 1. [Mon Petit Criquet (MPC), c'est quoi ?](#mpc)
 2. [Comment ça fonctionne ?](#how)
@@ -80,6 +80,10 @@ En guise de biais d'amélioration à cette première version, voici nos premièr
 
  Si vous avez d'autres idées pour améliorer **MPC**, nous serons ravis que vous nous en fassiez part :mailbox_with_mail:
 
+
+**Merci de votre attention !** :v: :v: :v:
+
+https://mon-petit-criquet.herokuapp.com/
 
 ## :running_shirt_with_sash: L'équipe <a name="team"></a> 
 
