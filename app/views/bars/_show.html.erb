@@ -66,14 +66,13 @@
 										<p><i class="far fa-clock"></i> <%= gig.date.to_formatted_s(:long_ordinal) %></p>
 								</h5>
 								<p class="card-description">
-									<i class="far fa-user"></i>   Nombre de participants : <%= gig.users.count %>
-								</p><p class="card-description">
+									<i class="fas fa-users"></i>  Nombre de participants : <%= gig.users.count %>
+								</p>
+								<p class="card-description">
+								<i class="fas fa-music"></i>
 									Genre : <% gig.tags.each do |gigtag|%></p>
                           <%= gigtag.name%><br>
                           <%end%>
-								</p>
-								<p class="card-description">
-                Description
 								</p>
 								<div>
 								<%= button_to  "Détails", gig_path(gig), method: :get, class:"btn btn-secondary btn-round" %>

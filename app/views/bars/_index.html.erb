@@ -66,7 +66,7 @@
                   <center><h2>Trouve ta ville   <i class="far fa-building"></i></h2></center>                                          
                   <%= form_for @bars_search_by_my_user, url: {action: "bar_search"} do |f| %>
                   <div class="form-group">
-                    <%= select_tag(:city, options_for_select(@cities.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
+                    <%= select_tag(:city, options_for_select(@cities.uniq.insert(0, "Choisis ta ville")), {class: 'selectpicker'} ) %>
                   </div>
                   <center><div class="form-group col-md-4">
                     <%= button_tag(type: "submit", class: "btn btn-primary btn-round") do %>
@@ -89,7 +89,7 @@
       <!--     *********    BLOG CARDS     *********      -->
       <div class="cards">
         <div class="container">
-          <center><h2>PROCHAINS CONCERTS   <i class="fas fa-music"></i></h2></center>
+          <center><h2>LES NOUVEAUX CONCERTS   <i class="fas fa-music"></i></h2></center>
           <div class ="row">
             <%@gigs.each do |gig|%>
 
