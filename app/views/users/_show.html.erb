@@ -68,6 +68,7 @@
 																				<%end%>
                                       </h5>
                                       <div class="author">
+                                        <%= button_to "Voir le bar", bar_path(fav.bar), class: "btn btn-default btn-round", method: :get %>
 																				<%= button_to "Retirer des favoris", favorite_path(fav), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Es-tu sûr de vouloir retirer ce bar de la liste des tes favoris ?"} %>
                                       </div>
                                   </div>
@@ -95,6 +96,7 @@
 																					Lieu : <%= att.gig.bar.name %> <br></br> <%= att.gig.date.to_formatted_s(:long_ordinal) %>
                                         </h5>
                                         <div class="author">
+                                          <%= button_to "Voir le concert", gig_path(att.gig), class: "btn btn-default btn-round", method: :get %>
 																					<%= button_to "Ne plus participer", attendance_path(att), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de ne plus vouloir participer à ce concert?"} %>
                                         </div>
                                     </div>
