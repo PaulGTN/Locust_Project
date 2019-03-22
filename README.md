@@ -69,14 +69,14 @@ Mais nous sommes aussi des amoureux de musique (et d'apéros), et dans le cadre 
 Évidemment, en 2 semaines de travail tout ne peut pas être parfait, et il y a quelques fonctionnalités et détails que nous n'avons pas pu pousser aussi loin qu'espéré en temps voulu :
  - la **search bar** :mag: que nous avons réussi à rendre opérationnelle en proposant une recherche par ville. Nous aurions souhaité proposer également une recherche par **genre musical**, ainsi que par **type de budget** ;
  - le **front** de **MPC** tel que vous le trouverez ici n'est pas aussi travaillé que nous l'aurions voulu : les views manquent quelque peu de dynamisme (animations, transitions, alertes) et sont pour la plupart assez simples (exemple des pages bars et concerts) ;
- - la gestion de la base de données (bars et concerts), bien que claire et facile à prendre en main, peut parfois jouer des tours. Nous pensons notamment au problème des suppressions liées (qui peut mener à la catastrophe :bomb: ).
+ - la **gestion de la base de données** (bars et concerts), bien que claire et facile à prendre en main, peut parfois jouer des tours. Nous pensons notamment au problème des suppressions liées (qui peut mener à la catastrophe :bomb: ).
 
 En guise de biais d'amélioration à cette première version, voici nos premières pistes de réflexion si ce projet vient à se poursuivre :
  - la **search bar** : proposer une "vraie" recherche multi-critères (ville, genre musical, budget) qui permet d'affiner les résultats de recherche ;
  - un **front** plus complet, qui permet un parcours plus fluide pour l'utilisateur ;
  - la possibilité de lier l'API **Facebook** à **MPC**, afin de simplifier la création de comptes utilisateurs. Cette piste a été explorée lors de ces 2 semaines de travail mais n'a pas abouti ;
  - lier l'API **Google Maps** à **MPC**, afin de pouvoir proposer des renseignements plus complets sur les pages bars et concerts et de l'implémenter dans un design plus travaillé ;
- - Une meilleure implication de l'utilisateur dans son parcours : la possibilité de laisser des avis, des commentaires, de partager ses "checklists" et de développer l'esprit communautaire de **MPC**
+ - Une **meilleure implication de l'utilisateur** dans son parcours : la possibilité de laisser **des avis, des commentaires, de partager ses "checklists"** et de développer l'esprit communautaire de **MPC**
 
  Si vous avez d'autres idées pour améliorer **MPC**, nous serons ravis que vous nous en fassiez part :mailbox_with_mail:
 
