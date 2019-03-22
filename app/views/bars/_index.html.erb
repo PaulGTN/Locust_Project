@@ -84,8 +84,6 @@
       </div>
 
 
-
-
       <!--     *********    BLOG CARDS     *********      -->
       <div class="cards">
         <div class="container">
@@ -103,7 +101,14 @@
                 </a>
               </div>
               <div class="card-body">
-                <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
+                <center><h4 class="category text-danger"><%= truncate(gig.name.upcase, length: 17, separator: ' ') %></h4></center>
+                <h5><center>
+                  <%= gig.bar.name %>
+                </h5></center>
+                <center><label>
+                  <%= gig.bar.city %>
+                </label></center>
+                <br></br>
                 <h6><center>
                   <%= gig.date.to_formatted_s(:long_ordinal) %>
                 </h6></center>
