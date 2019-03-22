@@ -27,7 +27,7 @@
             <div class="content-center">
               <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                  <h1 class="title">Choisis ta came !</h1>
+                  <h1 class="title">Choisis ta style !</h1>
                   <h4 class="description text-white">Rock, rap, jazz et plein d'autres !</h4>
                 </div>
               </div>
@@ -92,7 +92,7 @@
           <center><h2>LES NOUVEAUX CONCERTS   <i class="fas fa-music"></i></h2></center>
           <div class ="row">
             <%@gigs.each do |gig|%>
-
+            <% if gig.date > Time.now %>
             <div class="col-md-6 col-lg-3 d-flex">
               <div class="card card-blog">
                 <div class="card-image">
@@ -100,6 +100,7 @@
                   <%= image_tag gig.gigpicture, alt: 'gigpicture', :height => '160px', :width => '350px' %>
                   <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
+                  <%end%>
                   <%end%>
                 </a>
               </div>
