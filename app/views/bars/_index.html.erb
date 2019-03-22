@@ -97,7 +97,7 @@
               <div class="card card-blog">
                 <div class="card-image">
                   <%if gig.gigpicture.attached?%>
-                  <%= image_tag gig.gigpicture, alt: 'gigpicture', :height => '180px', :width => '350px' %>
+                  <%= image_tag gig.gigpicture, alt: 'gigpicture', :height => '160px', :width => '350px' %>
                   <%else%>
                   <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                   <%end%>
@@ -105,9 +105,9 @@
               </div>
               <div class="card-body">
                 <center><h4 class="category text-danger"><%= gig.name.upcase %></h4></center>
-                <h6>
+                <h6><center>
                   <%= gig.date.to_formatted_s(:long_ordinal) %>
-                </h6>
+                </h6></center>
                 <hr>
                 <center><%= link_to  "+ d'infos", gig_path(gig), class: "btn btn-primary btn-round" %></center>
               </hr>
