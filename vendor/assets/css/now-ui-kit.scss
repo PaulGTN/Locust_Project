@@ -25,6 +25,15 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
+.gigpicture_show {
+	height: 225px;
+	width: auto;
+}
+
+.barpicture_show {
+	height: 10%;
+	width: auto;
+}
 
 .image_tag_edit {
   height: 225px;
@@ -6872,7 +6881,7 @@ Created using IcoMoon - icomoon.io
 .section-story-overview {
   padding: 50px 0; }
   .section-story-overview .image-container {
-    height: 335px;
+    height: 500px;
     position: relative;
     background-position: center center;
     background-size: cover;

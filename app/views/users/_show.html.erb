@@ -39,7 +39,7 @@
                     <% end %></center>
                     <div class="row">
                         <div class="col-md-10 ml-auto mr-auto">
-                            <h2 class="title">Bar(s) Favori(s)</h2>
+                            <h2 class="title"><i class="far fa-star"></i>  Bar(s) Favori(s)</h2>
                             <br>
 														<% @user.favorites.each do |fav|%>
                             <div class="card card-plain card-blog">
@@ -81,7 +81,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 ml-auto mr-auto">
-                            <h2 class="title">Concert(s) à Venir</h2>
+                            <h2 class="title"><i class="far fa-calendar-alt"></i>  Concert(s) à Venir</h2>
                             <br>
 														<% @user.attendances.each do |att|%>
 														<% if att.gig.date > Time.now %>
@@ -113,7 +113,7 @@
 														<%end%>
                         </div>
 												<div class="col-md-10 ml-auto mr-auto">
-                            <h2 class="title">Concert(s) Passé(s)</h2>
+                            <h2 class="title"><i class="fas fa-history"></i>  Concert(s) Passé(s)</h2>
                             <br>
 														<% @user.attendances.each do |att|%>
 														<% if att.gig.date < Time.now %>
