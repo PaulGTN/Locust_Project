@@ -47,7 +47,7 @@
                                   <div class="col-md-4">
                                       <div class="card-image">
                                           <%if fav.bar.barpicture1.attached? %>
-                                            <%= image_tag fav.bar.barpicture1, alt: 'barpicture1', :height => '220px', :width => '285px' %>
+                                            <%= image_tag fav.bar.barpicture1, alt: 'barpicture1', :height => '200px', :width => '285px' %>
                                           <%else%>
                                             <p>=== Il n'y a pas encore de photo liée à ce bar ===</p>
                                         <% end %>
@@ -68,6 +68,7 @@
 																				<%end%>
                                       </h5>
                                       <div class="author">
+                                        <%= button_to "Voir le bar", bar_path(fav.bar), class: "btn btn-default btn-round", method: :get %>
 																				<%= button_to "Retirer des favoris", favorite_path(fav), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Es-tu sûr de vouloir retirer ce bar de la liste des tes favoris ?"} %>
                                       </div>
                                   </div>
@@ -95,13 +96,14 @@
 																					Lieu : <%= att.gig.bar.name %> <br></br> <%= att.gig.date.to_formatted_s(:long_ordinal) %>
                                         </h5>
                                         <div class="author">
+                                          <%= button_to "Voir le concert", gig_path(att.gig), class: "btn btn-default btn-round", method: :get %>
 																					<%= button_to "Ne plus participer", attendance_path(att), type: 'submit', class: "btn btn-primary btn-round", method: :delete, data: {confirm: "Êtes-vous sûr de ne plus vouloir participer à ce concert?"} %>
                                         </div>
                                     </div>
 																		<div class="col-md-4">
                                         <div class="card-image">
                                             <%if att.gig.gigpicture.attached? %>
-                                              <%= image_tag att.gig.gigpicture, alt: 'gigpicture', :height => '220px', :width => '285px' %>
+                                              <%= image_tag att.gig.gigpicture, alt: 'gigpicture', :height => '200px', :width => '285px' %>
                                             <%else%>
                                               <p>=== Il n'y a pas encore de photo liée à ce concert ===</p>
                                           <% end %>
